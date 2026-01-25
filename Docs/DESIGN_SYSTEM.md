@@ -723,3 +723,254 @@ export default NewSection
 | Body | `text-amber-800/80` |
 | Muted | `text-muted-foreground` |
 | Decorative text | `text-amber-200/50` |
+
+---
+
+## 15. STICKER PLAYGROUND
+
+Interactive sticker manipulation system for previewing assets.
+
+### 15.1 Components
+
+#### EditableSticker
+
+Transform wrapper with selection handles:
+
+```jsx
+import { EditableSticker } from "@/components/ui/editable-sticker"
+
+<EditableSticker
+  id={sticker.id}
+  selected={selectedId === sticker.id}
+  onSelect={() => setSelectedId(sticker.id)}
+  onTransformChange={({ scale, rotation, x, y }) => {
+    // Real-time updates during drag
+  }}
+  onTransformEnd={(finalState) => {
+    // Push to history when drag ends
+    pushState(newStickers)
+  }}
+  initialScale={1}
+  initialRotation={0}
+  initialPosition={{ x: 100, y: 100 }}
+  flipH={false}
+  flipV={false}
+  isPopped={false}
+  constraintsRef={canvasRef}
+>
+  <img src={stickerSrc} alt={name} />
+</EditableSticker>
+```
+
+**Features:**
+- Selection ring (dashed amber border)
+- 4 corner scale handles (drag to resize, maintains aspect ratio)
+- 1 rotation handle (circular, above sticker)
+- Touch gestures: pinch-to-zoom, two-finger rotate
+- Min scale: 0.5x, Max scale: 2x
+- Spring animations on release
+
+#### StickerToolbar
+
+Floating action toolbar:
+
+```jsx
+import { StickerToolbar } from "@/components/ui/sticker-toolbar"
+
+<StickerToolbar
+  visible={!!selectedSticker}
+  position={{ x: sticker.x, y: sticker.y }}
+  stickerBounds={{ width: sticker.width, height: sticker.height }}
+  canvasBounds={{ width: canvasWidth, height: canvasHeight }}
+  onDelete={handleDelete}
+  onDuplicate={handleDuplicate}
+  onFlipH={handleFlipH}
+  onFlipV={handleFlipV}
+  onBringForward={handleBringForward}
+  onSendBackward={handleSendBackward}
+  onToggleShadow={handleToggleShadow}
+  onConfetti={handleConfetti}
+  isPopped={sticker.isPopped}
+/>
+```
+
+**Actions (8 buttons):**
+| Icon | Action | Description |
+|------|--------|-------------|
+| Trash | Delete | Remove sticker |
+| Copy | Duplicate | Clone with offset |
+| FlipH | Flip horizontal | Mirror X axis |
+| FlipV | Flip vertical | Mirror Y axis |
+| Forward | Bring forward | Move up in layer stack |
+| Backward | Send backward | Move down in layer stack |
+| Shadow | Toggle shadow | Flat ↔ popped elevation |
+| Confetti | Celebrate | Trigger confetti burst |
+
+### 15.2 History Hook
+
+Undo/redo state management:
+
+```jsx
+import { useCanvasHistory } from "@/hooks/use-canvas-history"
+
+const {
+  canvasState,        // Current stickers array
+  setCanvasState,     // Update without history
+  pushState,          // Push to history stack
+  undo,               // Go back one state
+  redo,               // Go forward one state
+  canUndo,            // Boolean
+  canRedo,            // Boolean
+  clearHistory,       // Reset to initial
+  historyLength,      // Debug info
+  currentIndex,       // Debug info
+} = useCanvasHistory(initialStickers, maxHistory = 30)
+```
+
+**Keyboard Shortcuts:**
+- `Cmd/Ctrl + Z` - Undo
+- `Cmd/Ctrl + Shift + Z` - Redo
+- `Cmd/Ctrl + Y` - Redo (Windows)
+
+**Helper Functions:**
+
+```jsx
+import {
+  cloneStickerState,      // Deep clone for immutability
+  applyStickerTransform,  // Update single sticker
+  deleteSticker,          // Remove by ID
+  duplicateSticker,       // Clone with offset
+  bringForward,           // Move up in array
+  sendBackward,           // Move down in array
+} from "@/hooks/use-canvas-history"
+```
+
+---
+
+## 16. NOTEBOOK PAPER
+
+High-fidelity ruled paper styling.
+
+### 16.1 CSS Variables
+
+```css
+:root {
+  --notebook-line-height: 32px;      /* Ruling spacing */
+  --notebook-margin-left: 3.5rem;    /* Red margin position */
+  --notebook-paper-color: #FEFDFB;   /* Paper background */
+  --notebook-line-color: oklch(0.82 0.015 240 / 0.35);   /* Blue rules */
+  --notebook-margin-color: oklch(0.68 0.16 20 / 0.45);   /* Red margin */
+}
+```
+
+### 16.2 Usage
+
+```jsx
+{/* Basic notebook paper */}
+<div className="notebook-paper">
+  Content here
+</div>
+
+{/* With hole punches */}
+<div className="notebook-paper notebook-paper-holes">
+  <NotebookHoles />  {/* React component for holes */}
+  Content here
+</div>
+
+{/* FAQ accordion on notebook paper */}
+<div className="notebook-paper notebook-paper-holes relative">
+  <NotebookHoles />
+  <div style={{ paddingTop: "var(--notebook-line-height)" }}>
+    <Accordion>
+      <AccordionItem className="notebook-accordion-item">
+        <AccordionTrigger className="notebook-trigger">
+          Question?
+        </AccordionTrigger>
+        <AccordionContent className="notebook-content">
+          Answer text
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </div>
+</div>
+```
+
+### 16.3 CSS Classes
+
+| Class | Purpose |
+|-------|---------|
+| `.notebook-paper` | Base ruled paper with texture |
+| `.notebook-paper-holes` | Adds hole punch styling |
+| `.notebook-accordion-item` | Grid-aligned accordion item |
+| `.notebook-trigger` | Question text on baseline |
+| `.notebook-content` | Answer text with proper spacing |
+
+### 16.4 Visual Features
+
+**Paper Texture:**
+- SVG noise filter at 40% opacity
+- `mix-blend-mode: multiply` for paper feel
+- 150px tile size for seamless pattern
+
+**Red Margin Line:**
+- Positioned at `--notebook-margin-left`
+- Gradient with opacity variation for ink bleed effect
+- Subtle box-shadow for bleeding appearance
+
+**Hole Punches (React Component):**
+```jsx
+function NotebookHoles() {
+  return (
+    <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-10">
+      {/* Top hole at 15% */}
+      <div
+        className="absolute left-[10px] w-[14px] h-[14px] rounded-full"
+        style={{
+          top: "15%",
+          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
+          boxShadow: `
+            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
+            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
+            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
+          `,
+        }}
+      />
+      {/* Middle hole at 50% */}
+      {/* Bottom hole at 85% */}
+    </div>
+  )
+}
+```
+
+### 16.5 Baseline Grid Alignment
+
+Text sits ON the ruled lines through careful positioning:
+
+```css
+.notebook-trigger {
+  height: var(--notebook-line-height);
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 6px;  /* Fine-tune baseline */
+}
+
+.notebook-content {
+  line-height: var(--notebook-line-height);
+  padding-top: calc(var(--notebook-line-height) - 10px);
+}
+```
+
+### 16.6 Dark Mode
+
+```css
+.dark .notebook-paper {
+  --notebook-paper-color: oklch(0.22 0.015 60);
+  --notebook-line-color: oklch(0.35 0.015 240 / 0.4);
+  --notebook-margin-color: oklch(0.45 0.14 20 / 0.5);
+}
+
+.dark .notebook-paper::after {
+  opacity: 0.15;
+  mix-blend-mode: overlay;  /* Inverted blend for dark */
+}
+```
