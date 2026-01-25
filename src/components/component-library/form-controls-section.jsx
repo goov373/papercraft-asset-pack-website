@@ -1,8 +1,14 @@
 import { useState } from "react"
+import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Slider } from "@/components/ui/slider"
+import { Toggle } from "@/components/ui/toggle"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   Select,
   SelectContent,
@@ -28,6 +34,10 @@ function FormControlsSection() {
   const [textareaValue, setTextareaValue] = useState("")
   const [checked, setChecked] = useState(false)
   const [selectedValue, setSelectedValue] = useState("")
+  const [switchOn, setSwitchOn] = useState(false)
+  const [radioValue, setRadioValue] = useState("cardstock")
+  const [sliderValue, setSliderValue] = useState([50])
+  const [boldPressed, setBoldPressed] = useState(false)
 
   return (
     <div>
@@ -167,6 +177,209 @@ function FormControlsSection() {
             <Label htmlFor="disabled-checked-checkbox">
               Disabled and checked
             </Label>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Switch"
+        description="A paper slider that moves within a track, like a tab sliding through a slot cut in cardstock."
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Sizes</h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Switch size="sm" />
+                <Label className="text-sm">Small</Label>
+              </div>
+              <div className="flex items-center gap-3">
+                <Switch checked={switchOn} onCheckedChange={setSwitchOn} />
+                <Label className="text-sm">Default {switchOn ? "(On)" : "(Off)"}</Label>
+              </div>
+              <div className="flex items-center gap-3">
+                <Switch size="lg" defaultChecked />
+                <Label className="text-sm">Large (checked)</Label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">States</h4>
+            <div className="flex items-center gap-3">
+              <Switch disabled />
+              <Label className="text-sm text-muted-foreground">Disabled</Label>
+            </div>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Radio Group"
+        description="Radio buttons styled like punched holes in paper that fill with color when selected."
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Select Paper Type</h4>
+            <RadioGroup value={radioValue} onValueChange={setRadioValue}>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="cardstock" id="r1" />
+                <Label htmlFor="r1">Cardstock (heavy, rigid)</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="construction" id="r2" />
+                <Label htmlFor="r2">Construction Paper (medium, colorful)</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="kraft" id="r3" />
+                <Label htmlFor="r3">Kraft Paper (brown, natural)</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem value="tissue" id="r4" disabled />
+                <Label htmlFor="r4" className="text-muted-foreground">Tissue Paper (disabled)</Label>
+              </div>
+            </RadioGroup>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Selected: <span className="font-medium text-foreground">{radioValue}</span>
+          </p>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Slider"
+        description="A paper strip track with a draggable paper tab marker that lifts on hover."
+      >
+        <div className="space-y-6 max-w-md">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Slider</h4>
+            <Slider
+              value={sliderValue}
+              onValueChange={setSliderValue}
+              max={100}
+              step={1}
+            />
+            <p className="text-sm text-muted-foreground mt-2">
+              Value: {sliderValue[0]}%
+            </p>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Range Slider</h4>
+            <Slider defaultValue={[25, 75]} max={100} step={1} />
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Disabled</h4>
+            <Slider defaultValue={[50]} max={100} disabled />
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Toggle"
+        description="A paper button that shows pressed/raised states. When on, it lifts up like a flipped tab."
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Variants</h4>
+            <div className="flex flex-wrap gap-4">
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Default</p>
+                <Toggle aria-label="Toggle bold" pressed={boldPressed} onPressedChange={setBoldPressed}>
+                  <Bold className="size-4" />
+                </Toggle>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Outline</p>
+                <Toggle variant="outline" aria-label="Toggle italic">
+                  <Italic className="size-4" />
+                </Toggle>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Paper</p>
+                <Toggle variant="paper" aria-label="Toggle underline">
+                  <Underline className="size-4" />
+                </Toggle>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Sizes</h4>
+            <div className="flex items-end gap-4">
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Small</p>
+                <Toggle size="sm" variant="outline" aria-label="Bold">
+                  <Bold className="size-4" />
+                </Toggle>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Default</p>
+                <Toggle variant="outline" aria-label="Bold">
+                  <Bold className="size-4" />
+                </Toggle>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Large</p>
+                <Toggle size="lg" variant="outline" aria-label="Bold">
+                  <Bold className="size-4" />
+                </Toggle>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">With Text</h4>
+            <Toggle variant="outline" aria-label="Toggle bold">
+              <Bold className="size-4" />
+              Bold
+            </Toggle>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Toggle Group"
+        description="Connected paper tabs where one is raised at a time, like folder tabs."
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Connected (Single)</h4>
+            <ToggleGroup type="single" defaultValue="center">
+              <ToggleGroupItem value="left" aria-label="Align left">
+                <AlignLeft className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="center" aria-label="Align center">
+                <AlignCenter className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="right" aria-label="Align right">
+                <AlignRight className="size-4" />
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Connected (Multiple)</h4>
+            <ToggleGroup type="multiple" defaultValue={["bold", "italic"]}>
+              <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="size-4" />
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Spaced (Individual Paper Tabs)</h4>
+            <ToggleGroup type="single" spacing={1} defaultValue="bold">
+              <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic className="size-4" />
+              </ToggleGroupItem>
+              <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline className="size-4" />
+              </ToggleGroupItem>
+            </ToggleGroup>
           </div>
         </div>
       </ComponentShowcase>

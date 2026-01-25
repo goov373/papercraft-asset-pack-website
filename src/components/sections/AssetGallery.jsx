@@ -86,11 +86,11 @@ function AssetGallery() {
                 <motion.div key={asset.id} variants={itemVariants}>
                   <Card
                     variant="interactive"
-                    className="aspect-square cursor-pointer group"
+                    className="aspect-square cursor-pointer group !p-0 overflow-hidden bg-[var(--paper-cream)]"
                     onClick={() => setSelectedAsset(asset)}
                   >
-                    <div className="w-full h-full flex items-center justify-center bg-muted/50 rounded-lg">
-                      <span className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-amber-700/60 text-sm font-medium group-hover:text-amber-800 transition-colors">
                         {asset.name}
                       </span>
                     </div>

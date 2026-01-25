@@ -1,112 +1,74 @@
 import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
+import { Link } from "react-router-dom"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Container } from "@/components/ui/container"
-import { StarRating } from "@/components/ui/star-rating"
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
-
-const stagger = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
+import { PlaygroundCanvas } from "@/components/ui/playground-canvas"
 
 function Hero() {
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <section className="py-12 md:py-20">
       <Container>
-        <motion.div
-          className="grid lg:grid-cols-2 gap-12 items-center"
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-        >
-          {/* Content */}
-          <div className="text-center lg:text-left">
-            <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-              <Badge className="mb-6">150+ Hand-Crafted Elements</Badge>
-            </motion.div>
-
-            <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              Beautiful Papercraft{" "}
-              <span className="text-primary">Vector Assets</span>
-            </motion.h1>
-
-            <motion.p
-              className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              Hand-drawn classroom supplies, craft tools, and creative elements
-              for your next design project.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              <Button size="lg" className="text-base">
-                Get the Pack – $39
-              </Button>
-              <Button variant="outline" size="lg" className="text-base">
-                Preview Gallery
-              </Button>
-            </motion.div>
-
-            <motion.div
-              className="flex items-center gap-2 justify-center lg:justify-start"
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              <StarRating rating={5} size="default" />
-              <span className="text-muted-foreground text-sm">
-                Loved by 2,000+ designers
-              </span>
-            </motion.div>
-          </div>
-
-          {/* Hero Image Placeholder */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          {/* Left: Text content */}
           <motion.div
-            className="relative"
+            className="lg:col-span-5 text-center lg:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Badge
+              variant="secondary"
+              className="mb-6"
+            >
+              <span>150+ Hand-Crafted Assets</span>
+            </Badge>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-900 mb-6 leading-tight">
+              Beautiful papercraft assets for your{" "}
+              <span className="text-primary">creative projects</span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
+              Hand-crafted vector illustrations, patterns, and design elements
+              with a warm, tactile feel. Perfect for adding character to your
+              designs.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <Button size="lg" className="text-base" asChild>
+                <Link to="/pricing">
+                  Get the Pack – $39
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base"
+                asChild
+              >
+                <a href="#preview">
+                  View Gallery
+                  <ArrowRight className="ml-2 size-4" />
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Right: Interactive Canvas */}
+          <motion.div
+            className="lg:col-span-7"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="aspect-square max-w-lg mx-auto bg-gradient-to-br from-secondary to-muted rounded-3xl flex items-center justify-center border-2 border-border shadow-lg">
-              <div className="text-center p-8">
-                <p className="text-muted-foreground text-lg">
-                  Hero Image Placeholder
-                </p>
-                <p className="text-muted-foreground/60 text-sm mt-2">
-                  Scattered papercraft assets
-                </p>
-              </div>
-            </div>
-
-            {/* Floating decorative elements */}
-            <motion.div
-              className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 rounded-xl rotate-12"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent/20 rounded-lg -rotate-12"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            <PlaygroundCanvas
+              variant="corkboard"
+              showControls={false}
             />
           </motion.div>
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

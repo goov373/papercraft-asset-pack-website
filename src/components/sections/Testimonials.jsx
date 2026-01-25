@@ -81,14 +81,14 @@ function Testimonials() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex -ml-4">
+          <div className="overflow-hidden px-2" ref={emblaRef}>
+            <div className="flex -ml-4 py-6">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] pl-4"
+                  className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] pl-4 pr-2"
                 >
-                  <Card className="h-full">
+                  <Card className="h-full edge-deckled">
                     <CardContent className="p-6">
                       <StarRating rating={testimonial.rating} className="mb-4" />
                       <blockquote className="text-foreground mb-6">

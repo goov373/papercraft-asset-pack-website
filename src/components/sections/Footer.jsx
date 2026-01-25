@@ -22,7 +22,7 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-12 border-t border-border bg-[var(--paper-kraft)]/10">
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}

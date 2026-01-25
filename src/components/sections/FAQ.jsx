@@ -62,16 +62,23 @@ function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Accordion type="single" collapsible defaultValue="item-0">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {/* Notebook paper styled container */}
+          <div className="notebook-paper notebook-paper-holes p-6 md:p-8 edge-deckled">
+            <Accordion type="single" collapsible defaultValue="item-0">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="notebook-accordion-item"
+                >
+                  <AccordionTrigger className="text-left pl-4">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pl-4">{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
 
           <div className="text-center mt-8">
             <p className="text-muted-foreground">

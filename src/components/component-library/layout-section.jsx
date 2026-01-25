@@ -11,7 +11,9 @@ import { Container } from "@/components/ui/container"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MoreHorizontalIcon } from "lucide-react"
+import { BentoGrid, BentoCard, BentoCardSimple } from "@/components/ui/bento-grid"
+import { DotPattern, GridPattern } from "@/components/ui/dot-pattern"
+import { MoreHorizontalIcon, Palette, Layers, Sparkles, Star } from "lucide-react"
 
 function ComponentShowcase({ title, description, children }) {
   return (
@@ -255,6 +257,149 @@ function LayoutSection() {
                   title="Frequently Asked Questions"
                   subtitle="Everything you need to know about the asset pack"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Bento Grid"
+        description="Responsive grid layout with visually interesting card sizes. Based on Magic UI's BentoGrid with papercraft styling."
+      >
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Bento Grid</h4>
+            <BentoGrid>
+              <BentoCard
+                name="Vector Assets"
+                description="500+ hand-crafted vector illustrations ready for your projects."
+                Icon={Palette}
+                href="#"
+                cta="Browse assets"
+                className="lg:col-span-2"
+              />
+              <BentoCard
+                name="Categories"
+                description="12 organized collections to find exactly what you need."
+                Icon={Layers}
+                href="#"
+                cta="View collections"
+              />
+              <BentoCard
+                name="Premium Quality"
+                description="Every asset crafted with attention to detail."
+                Icon={Sparkles}
+                href="#"
+                cta="See examples"
+              />
+              <BentoCard
+                name="5-Star Rated"
+                description="Loved by designers and developers worldwide."
+                Icon={Star}
+                href="#"
+                cta="Read reviews"
+                className="lg:col-span-2"
+              />
+            </BentoGrid>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple Bento Cards</h4>
+            <p className="text-sm text-amber-600 mb-3">For display-only cards without CTAs.</p>
+            <BentoGrid>
+              <BentoCardSimple title="Icons" description="200+ unique icons">
+                <div className="mt-2 text-amber-500">
+                  <Palette className="h-8 w-8" />
+                </div>
+              </BentoCardSimple>
+              <BentoCardSimple title="Illustrations" description="150+ scenes">
+                <div className="mt-2 text-amber-500">
+                  <Layers className="h-8 w-8" />
+                </div>
+              </BentoCardSimple>
+              <BentoCardSimple title="Patterns" description="50+ backgrounds">
+                <div className="mt-2 text-amber-500">
+                  <Sparkles className="h-8 w-8" />
+                </div>
+              </BentoCardSimple>
+            </BentoGrid>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Dot Pattern"
+        description="Perforated paper dot pattern background. Based on Magic UI's DotPattern with warm amber styling."
+      >
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Dot Pattern</h4>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+              <DotPattern className="opacity-50" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Content over dot pattern</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Glowing Dots</h4>
+            <p className="text-sm text-amber-600 mb-3">Dots animate with a subtle glow effect.</p>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+              <DotPattern glow className="opacity-60" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Animated glow effect</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Dense Dots</h4>
+            <p className="text-sm text-amber-600 mb-3">Smaller spacing for denser pattern.</p>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+              <DotPattern width={10} height={10} className="opacity-40" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Dense dot pattern</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Grid Pattern"
+        description="Graph paper grid pattern background. Perfect for craft/technical aesthetics."
+      >
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Grid Pattern</h4>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+              <GridPattern className="opacity-60" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Content over grid pattern</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Dense Grid</h4>
+            <p className="text-sm text-amber-600 mb-3">Smaller grid cells.</p>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+              <GridPattern width={20} height={20} className="opacity-50" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Dense grid pattern</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Large Grid</h4>
+            <p className="text-sm text-amber-600 mb-3">Larger grid cells for subtle effect.</p>
+            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+              <GridPattern width={60} height={60} strokeWidth={2} className="opacity-40" />
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <p className="text-amber-800 font-medium">Large grid pattern</p>
               </div>
             </div>
           </div>

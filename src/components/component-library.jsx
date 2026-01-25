@@ -6,14 +6,20 @@ import { LayoutSection } from "@/components/component-library/layout-section"
 import { NavigationSection } from "@/components/component-library/navigation-section"
 import { OverlaysSection } from "@/components/component-library/overlays-section"
 import { DataDisplaySection } from "@/components/component-library/data-display-section"
+import { FeedbackSection } from "@/components/component-library/feedback-section"
+import { SpecializedInputsSection } from "@/components/component-library/specialized-inputs-section"
+import { UtilityLayoutSection } from "@/components/component-library/utility-layout-section"
 
 const categories = [
   { id: "form-controls", label: "Form Controls", component: FormControlsSection },
   { id: "actions", label: "Actions & Feedback", component: ActionsSection },
+  { id: "feedback", label: "Feedback", component: FeedbackSection },
   { id: "layout", label: "Layout", component: LayoutSection },
   { id: "navigation", label: "Navigation", component: NavigationSection },
   { id: "overlays", label: "Overlays", component: OverlaysSection },
   { id: "data-display", label: "Data Display", component: DataDisplaySection },
+  { id: "specialized-inputs", label: "Specialized Inputs", component: SpecializedInputsSection },
+  { id: "utility-layout", label: "Utility & Layout", component: UtilityLayoutSection },
 ]
 
 function ComponentLibrary() {

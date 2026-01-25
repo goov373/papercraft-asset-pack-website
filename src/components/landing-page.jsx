@@ -1,11 +1,12 @@
 import Nav from "@/components/sections/Nav"
 import Hero from "@/components/sections/Hero"
 import TrustBar from "@/components/sections/TrustBar"
+import CollectionsShowcase from "@/components/sections/CollectionsShowcase"
+import UseCases from "@/components/sections/UseCases"
 import AssetGallery from "@/components/sections/AssetGallery"
 import WhatsIncluded from "@/components/sections/WhatsIncluded"
-import UseCases from "@/components/sections/UseCases"
 import Testimonials from "@/components/sections/Testimonials"
-import Pricing from "@/components/sections/Pricing"
+import GetStarted from "@/components/sections/GetStarted"
 import FAQ from "@/components/sections/FAQ"
 import FinalCTA from "@/components/sections/FinalCTA"
 import Footer from "@/components/sections/Footer"
@@ -17,11 +18,12 @@ function LandingPage() {
       <main>
         <Hero />
         <TrustBar />
+        <CollectionsShowcase />
+        <UseCases />
         <AssetGallery />
         <WhatsIncluded />
-        <UseCases />
         <Testimonials />
-        <Pricing />
+        <GetStarted />
         <FAQ />
         <FinalCTA />
       </main>

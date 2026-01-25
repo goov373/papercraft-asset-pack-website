@@ -1,9 +1,48 @@
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
+import { Marquee, MarqueeContainer } from "@/components/ui/marquee"
+import { cn } from "@/lib/utils"
+
+/**
+ * Logo item for the marquee
+ * Uses paper-card styling for each brand
+ */
+function LogoItem({ name, className }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center",
+        "px-6 py-3",
+        "bg-amber-50/50 rounded-lg",
+        "border border-amber-200/40",
+        "[box-shadow:var(--paper-elevation-0)]",
+        "hover:[box-shadow:var(--paper-elevation-1)]",
+        "transition-all duration-200",
+        "hover:-translate-y-0.5",
+        className
+      )}
+    >
+      <span className="text-base font-semibold text-amber-700/70 whitespace-nowrap">
+        {name}
+      </span>
+    </div>
+  )
+}
+
+const brands = [
+  "Figma",
+  "Canva",
+  "Adobe",
+  "Sketch",
+  "Framer",
+  "Notion",
+  "Linear",
+  "Vercel",
+]
 
 function TrustBar() {
   return (
-    <section className="py-8 bg-secondary/50 border-y border-border">
+    <section className="py-10 bg-gradient-to-b from-amber-50/50 to-transparent border-y border-amber-200/40">
       <Container>
         <motion.div
           className="text-center"
@@ -12,22 +51,30 @@ function TrustBar() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-muted-foreground mb-6">
+          <p className="text-amber-600 text-sm font-medium mb-6 tracking-wide uppercase">
             Trusted by designers at
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
-            {/* Placeholder logos - replace with actual logos */}
-            {["Figma", "Canva", "Adobe", "Sketch", "Framer"].map((brand) => (
-              <span
-                key={brand}
-                className="text-lg font-semibold text-muted-foreground/70"
-              >
-                {brand}
-              </span>
-            ))}
-          </div>
         </motion.div>
       </Container>
+
+      {/* Full-width marquee section */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <MarqueeContainer fadeWidth="w-1/6">
+          <Marquee
+            pauseOnHover
+            className="[--duration:30s] [--gap:1rem]"
+          >
+            {brands.map((brand) => (
+              <LogoItem key={brand} name={brand} />
+            ))}
+          </Marquee>
+        </MarqueeContainer>
+      </motion.div>
     </section>
   )
 }

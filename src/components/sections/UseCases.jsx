@@ -1,88 +1,96 @@
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
-import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 const useCases = [
   {
-    title: "Social Media Graphics",
-    description: "Create eye-catching posts and stories with handcrafted elements",
-    image: "social-media",
+    title: "Social Media",
+    description: "Eye-catching posts, stories, and content graphics",
   },
   {
-    title: "Educational Materials",
-    description: "Design engaging worksheets, presentations, and learning resources",
-    image: "education",
+    title: "Education",
+    description: "Worksheets, presentations, and learning materials",
   },
   {
-    title: "Branding & Packaging",
-    description: "Add a handmade touch to logos, labels, and product packaging",
-    image: "branding",
+    title: "Branding",
+    description: "Logos, labels, packaging, and brand collateral",
   },
   {
-    title: "Website & App Design",
-    description: "Bring warmth and personality to digital interfaces",
-    image: "web-design",
+    title: "Web & App",
+    description: "UI elements, illustrations, and digital interfaces",
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
-
 function UseCases() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-32">
       <Container>
-        <SectionHeading
-          title="Perfect For"
-          subtitle="See how designers are using these assets in their projects"
-        />
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left: Large decorative type + intro */}
+          <motion.div
+            className="lg:col-span-5 lg:sticky lg:top-24"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            {/* Large decorative word */}
+            <div className="relative mb-6">
+              <span className="text-6xl sm:text-7xl lg:text-8xl font-bold text-amber-200/50 select-none leading-none">
+                Create
+              </span>
+            </div>
 
-        <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {useCases.map((useCase) => (
-            <motion.div key={useCase.title} variants={itemVariants}>
-              <Card variant="interactive" className="h-full group">
-                <div className="aspect-[4/3] bg-muted/50 rounded-t-lg relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-muted-foreground text-sm">
-                      {useCase.image}
-                    </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-4">
+              Perfect for any project
+            </h2>
+            <p className="text-muted-foreground">
+              From social posts to product packaging, these assets adapt to whatever you're building.
+            </p>
+          </motion.div>
+
+          {/* Right: Use cases list */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-8">
+              Use cases
+            </h3>
+
+            <div className="space-y-0">
+              {useCases.map((useCase, index) => (
+                <motion.div
+                  key={useCase.title}
+                  className="group border-t border-amber-200/60 py-6 first:border-t-0 first:pt-0"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-amber-900 mb-1 group-hover:text-primary transition-colors">
+                        {useCase.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {useCase.description}
+                      </p>
+                    </div>
+                    <ArrowRight className="size-5 text-amber-300 group-hover:text-primary group-hover:translate-x-1 transition-all mt-1" />
                   </div>
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <Button variant="secondary" size="sm">
-                      View Example
-                    </Button>
-                  </div>
-                </div>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{useCase.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">
-                    {useCase.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom note */}
+            <p className="mt-8 text-sm text-muted-foreground border-l-2 border-amber-200 pl-4">
+              All assets work seamlessly in Figma, Illustrator, Canva, Sketch, and any tool that supports SVG.
+            </p>
+          </motion.div>
+        </div>
       </Container>
     </section>
   )

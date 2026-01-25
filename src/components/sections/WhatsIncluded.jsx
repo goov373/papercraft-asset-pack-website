@@ -1,118 +1,109 @@
 import { motion } from "framer-motion"
-import { FileImage, Layers, Download } from "lucide-react"
+import { Check } from "lucide-react"
 import { Container } from "@/components/ui/container"
-import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-
-const stats = [
-  { icon: FileImage, value: "150+", label: "Vector Assets" },
-  { icon: Layers, value: "6", label: "Categories" },
-  { icon: Download, value: "SVG & PNG", label: "File Formats" },
-]
 
 const features = [
-  "Fully editable vector files",
-  "Commercial license included",
-  "Organized layer structure",
-  "Multiple color variations",
-  "High-resolution PNG exports",
-  "Regular free updates",
+  "Fully editable vectors",
+  "Commercial license",
+  "Organized layers",
+  "Color variations",
+  "Hi-res PNG exports",
+  "Free updates",
 ]
 
-const formats = ["SVG", "PNG", "AI", "EPS", "PDF"]
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
+const formats = [
+  { name: "SVG", desc: "Scalable" },
+  { name: "PNG", desc: "Transparent" },
+  { name: "AI", desc: "Illustrator" },
+  { name: "EPS", desc: "Universal" },
+  { name: "PDF", desc: "Print-ready" },
+]
 
 function WhatsIncluded() {
   return (
-    <section className="py-16 md:py-24 bg-secondary/30">
+    <section className="py-20 md:py-32">
       <Container>
-        <SectionHeading
-          title="What's Included"
-          subtitle="Everything you need for your creative projects"
-        />
-
-        {/* Stats */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } },
-          }}
-        >
-          {stats.map((stat) => (
-            <motion.div key={stat.label} variants={fadeInUp}>
-              <Card className="text-center p-6">
-                <CardContent className="p-0">
-                  <stat.icon className="size-8 mx-auto mb-3 text-primary" />
-                  <div className="text-3xl font-bold text-foreground mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Features Checklist */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left: Big number + title */}
           <motion.div
+            className="lg:col-span-5 lg:sticky lg:top-24"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-semibold text-foreground mb-4">
-              Features
-            </h3>
-            <div className="space-y-3">
-              {features.map((feature) => (
-                <div key={feature} className="flex items-center gap-3">
-                  <Checkbox checked disabled id={feature} />
-                  <Label
-                    htmlFor={feature}
-                    className="text-muted-foreground cursor-default"
-                  >
-                    {feature}
-                  </Label>
-                </div>
-              ))}
+            <div className="relative">
+              {/* Large decorative number */}
+              <span
+                className="text-[8rem] sm:text-[10rem] lg:text-[12rem] font-bold leading-none text-amber-200/60 select-none"
+                style={{ fontFamily: "system-ui" }}
+              >
+                150
+              </span>
+              <span className="absolute top-4 right-0 lg:right-auto lg:left-[70%] text-4xl sm:text-5xl font-bold text-primary">+</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-amber-900 -mt-8 lg:-mt-12">
+              Hand-crafted<br />vector assets
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-sm">
+              Everything you need for your creative projects, organized across 6 categories.
+            </p>
           </motion.div>
 
-          {/* File Formats */}
+          {/* Right: Features + Formats */}
           <motion.div
+            className="lg:col-span-7 space-y-12"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-xl font-semibold text-foreground mb-4">
-              File Formats
-            </h3>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {formats.map((format) => (
-                <Badge key={format} variant="secondary" className="text-sm">
-                  {format}
-                </Badge>
-              ))}
+            {/* Features Grid */}
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+                What you get
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4">
+                {features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <Check className="size-3 text-primary" />
+                    </div>
+                    <span className="text-sm text-amber-800">{feature}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <Card className="p-6 bg-muted/50">
-              <p className="text-muted-foreground text-sm">
-                All assets are provided in multiple formats for maximum
-                compatibility with your favorite design tools including Figma,
-                Sketch, Adobe Illustrator, and more.
-              </p>
-            </Card>
+
+            {/* Formats - Paper label style */}
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+                File formats included
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {formats.map((format, i) => (
+                  <motion.div
+                    key={format.name}
+                    className="group relative"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    style={{ transform: `rotate(${(i - 2) * 1.5}deg)` }}
+                  >
+                    <div className="px-4 py-3 bg-[var(--paper-cream)] border border-amber-200/60 rounded-sm shadow-sm hover:shadow-md transition-shadow">
+                      <div className="text-lg font-bold text-amber-900">{format.name}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-amber-600/70">{format.desc}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Compatibility note - inline */}
+            <p className="text-sm text-muted-foreground border-l-2 border-amber-200 pl-4">
+              Works with Figma, Sketch, Adobe Illustrator, Canva, and any tool that supports standard vector formats.
+            </p>
           </motion.div>
         </div>
       </Container>
