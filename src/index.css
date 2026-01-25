@@ -42,6 +42,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Papercraft surface colors */
+  --color-paper-white: var(--paper-white);
+  --color-paper-cream: var(--paper-cream);
+  --color-paper-kraft: var(--paper-kraft);
 }
 
 /* Papercraft Amber/Orange Theme */
@@ -78,6 +83,102 @@
   --sidebar-accent-foreground: oklch(0.476 0.114 52.304);
   --sidebar-border: oklch(0.905 0.093 95.136);
   --sidebar-ring: oklch(0.705 0.191 47.604);
+
+  /* ========================================
+     PAPERCRAFT DESIGN SYSTEM TOKENS
+     ======================================== */
+
+  /* Paper Surface Colors */
+  --paper-white: oklch(0.98 0.01 90);
+  --paper-cream: oklch(0.96 0.02 85);
+  --paper-kraft: oklch(0.75 0.08 70);
+
+  /* Shadow Color (warm gray, never pure black) */
+  --shadow-color: 40 10% 20%;
+
+  /* Elevation Shadows (Two-Shadow Model) */
+  --paper-elevation-0:
+    0 1px 1px hsl(var(--shadow-color) / 0.04);
+
+  --paper-elevation-1:
+    0 1px 1px hsl(var(--shadow-color) / 0.07),
+    0 2px 2px hsl(var(--shadow-color) / 0.06),
+    0 4px 4px hsl(var(--shadow-color) / 0.05);
+
+  --paper-elevation-2:
+    0 1px 1px hsl(var(--shadow-color) / 0.06),
+    0 2px 2px hsl(var(--shadow-color) / 0.06),
+    0 4px 4px hsl(var(--shadow-color) / 0.06),
+    0 8px 8px hsl(var(--shadow-color) / 0.05),
+    0 16px 16px hsl(var(--shadow-color) / 0.04);
+
+  --paper-elevation-3:
+    0 1px 1px hsl(var(--shadow-color) / 0.05),
+    0 2px 2px hsl(var(--shadow-color) / 0.05),
+    0 4px 4px hsl(var(--shadow-color) / 0.05),
+    0 8px 8px hsl(var(--shadow-color) / 0.05),
+    0 16px 16px hsl(var(--shadow-color) / 0.04),
+    0 32px 32px hsl(var(--shadow-color) / 0.03);
+
+  /* Special Shadows */
+  --paper-shadow-sticky:
+    0 3px 2px hsl(var(--shadow-color) / 0.06),
+    0 6px 4px hsl(var(--shadow-color) / 0.05),
+    0 12px 8px hsl(var(--shadow-color) / 0.04);
+
+  --paper-shadow-inset:
+    inset 0 1px 2px hsl(var(--shadow-color) / 0.1),
+    inset 0 2px 4px hsl(var(--shadow-color) / 0.05);
+
+  --paper-shadow-kraft:
+    0 1px 1px hsl(var(--shadow-color) / 0.1),
+    0 2px 2px hsl(var(--shadow-color) / 0.08),
+    0 4px 4px hsl(var(--shadow-color) / 0.06);
+
+  /* State Transforms */
+  --paper-state-default-transform: translateY(0);
+  --paper-state-hover-transform: translateY(-4px) rotateX(2deg);
+  --paper-state-active-transform: translateY(1px) scale(0.98);
+  --paper-state-dragging-transform: translateY(-8px) rotate(-2deg);
+
+  /* Transitions */
+  --paper-transition-lift: 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --paper-transition-press: 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  --paper-transition-settle: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  --paper-transition-fold: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Durations */
+  --paper-duration-instant: 100ms;
+  --paper-duration-fast: 150ms;
+  --paper-duration-normal: 250ms;
+  --paper-duration-slow: 400ms;
+  --paper-duration-deliberate: 600ms;
+
+  /* Focus */
+  --paper-focus-ring-width: 3px;
+  --paper-focus-ring-color: oklch(0.6 0.15 250);
+  --paper-focus-ring-offset: 2px;
+
+  /* Disabled States */
+  --paper-state-disabled-opacity: 0.5;
+  --paper-state-disabled-filter: grayscale(30%);
+
+  /* Texture Opacity Scale */
+  --texture-opacity-subtle: 0.04;
+  --texture-opacity-light: 0.08;
+  --texture-opacity-medium: 0.12;
+  --texture-opacity-heavy: 0.18;
+  --texture-opacity-dramatic: 0.25;
+
+  /* Stack Effects */
+  --paper-stack-offset-x: 4px;
+  --paper-stack-offset-y: 4px;
+  --paper-fan-angle: 8deg;
+
+  /* Fold Corner */
+  --fold-size: 25px;
+  --fold-color: oklch(0.88 0.01 90);
+  --fold-color-dark: oklch(0.82 0.01 90);
 }
 
 .dark {
@@ -112,6 +213,15 @@
   --sidebar-accent-foreground: oklch(0.905 0.093 95.136);
   --sidebar-border: oklch(0.40 0.06 55);
   --sidebar-ring: oklch(0.795 0.160 75.674);
+
+  /* Papercraft Dark Mode Adjustments */
+  --paper-white: oklch(0.30 0.03 55);
+  --paper-cream: oklch(0.28 0.03 55);
+  --paper-kraft: oklch(0.35 0.05 55);
+  --shadow-color: 40 5% 5%;
+  --fold-color: oklch(0.35 0.03 55);
+  --fold-color-dark: oklch(0.30 0.03 55);
+  --paper-focus-ring-color: oklch(0.75 0.15 75);
 }
 
 @layer base {
@@ -121,4 +231,237 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ========================================
+   PAPERCRAFT UTILITY CLASSES
+   ======================================== */
+
+/* Base Interactive Paper Element */
+.paper-interactive {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transform: var(--paper-state-default-transform);
+  box-shadow: var(--paper-elevation-1);
+  transition:
+    transform var(--paper-transition-settle),
+    box-shadow var(--paper-transition-settle);
+  cursor: pointer;
+  user-select: none;
+}
+
+.paper-interactive:hover {
+  transform: var(--paper-state-hover-transform);
+  box-shadow: var(--paper-elevation-2);
+}
+
+.paper-interactive:active {
+  transform: var(--paper-state-active-transform);
+  box-shadow: var(--paper-elevation-0);
+  transition:
+    transform var(--paper-transition-press),
+    box-shadow var(--paper-transition-press);
+}
+
+.paper-interactive:focus-visible {
+  outline: var(--paper-focus-ring-width) solid var(--paper-focus-ring-color);
+  outline-offset: var(--paper-focus-ring-offset);
+}
+
+.paper-interactive:disabled,
+.paper-interactive[disabled] {
+  opacity: var(--paper-state-disabled-opacity);
+  filter: var(--paper-state-disabled-filter);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Edge Filter Classes */
+.edge-deckled { filter: url(#edge-deckled); }
+.edge-handmade { filter: url(#edge-handmade); }
+.edge-torn { filter: url(#edge-torn); }
+.edge-torn-dramatic { filter: url(#edge-torn-dramatic); }
+
+/* Paper Stack Effect */
+.paper-stack {
+  position: relative;
+}
+
+.paper-stack::before,
+.paper-stack::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--card);
+  border-radius: inherit;
+  z-index: -1;
+  box-shadow: var(--paper-elevation-0);
+}
+
+.paper-stack::before {
+  transform: translate(var(--paper-stack-offset-x), var(--paper-stack-offset-y));
+}
+
+.paper-stack::after {
+  transform: translate(
+    calc(var(--paper-stack-offset-x) * 2),
+    calc(var(--paper-stack-offset-y) * 2)
+  );
+  z-index: -2;
+}
+
+/* Messy Stack Variant */
+.paper-stack-messy::before {
+  transform: translate(3px, 5px) rotate(-2deg);
+}
+
+.paper-stack-messy::after {
+  transform: translate(6px, 9px) rotate(3deg);
+}
+
+/* Folded Corner Effect */
+.paper-folded-corner {
+  position: relative;
+  background: var(--card);
+}
+
+.paper-folded-corner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 var(--fold-size) var(--fold-size) 0;
+  border-color: transparent var(--background) transparent transparent;
+}
+
+.paper-folded-corner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 var(--fold-size) var(--fold-size) 0;
+  border-color: transparent var(--fold-color) transparent transparent;
+  filter: drop-shadow(-1px 1px 1px hsl(var(--shadow-color) / 0.1));
+}
+
+/* Curled Corner Effect */
+.paper-curled-corner {
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-curled-corner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(
+    315deg,
+    transparent 40%,
+    var(--fold-color) 41%,
+    var(--fold-color) 48%,
+    var(--card) 49%
+  );
+  border-radius: 0 0 0 80%;
+  box-shadow: -2px -2px 5px hsl(var(--shadow-color) / 0.1);
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.paper-curled-corner:hover::after {
+  width: 60px;
+  height: 60px;
+}
+
+/* Sticky Note Style */
+.paper-sticky {
+  box-shadow: var(--paper-shadow-sticky);
+  transform: perspective(1000px) rotateX(-1deg);
+  transform-origin: top center;
+  position: relative;
+}
+
+.paper-sticky::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 20px;
+  background: transparent;
+  box-shadow: 0 8px 8px hsl(var(--shadow-color) / 0.15);
+  transform: rotate(2deg) translateY(5px);
+  transform-origin: bottom right;
+  z-index: -1;
+}
+
+/* Draggable States */
+.paper-draggable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.paper-draggable.is-dragging {
+  transform: scale(1.05) rotate(-3deg);
+  box-shadow: 0 16px 24px hsl(var(--shadow-color) / 0.2);
+  opacity: 0.9;
+  cursor: grabbing;
+  z-index: 9999;
+}
+
+/* ========================================
+   ACCESSIBILITY & PERFORMANCE
+   ======================================== */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .paper-interactive,
+  .paper-curled-corner::after,
+  .paper-draggable {
+    transition: none;
+  }
+
+  .paper-interactive:hover {
+    transform: none;
+  }
+
+  .paper-curled-corner:hover::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .paper-interactive:focus-visible {
+    outline: 4px double currentColor;
+    outline-offset: 4px;
+  }
+}
+
+/* Forced Colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .paper-interactive:focus-visible {
+    outline: 3px solid CanvasText;
+  }
+
+  .paper-stack::before,
+  .paper-stack::after {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Performance optimization for textured elements */
+.paper-textured {
+  contain: paint;
 }

@@ -1,6 +1,10 @@
+import { PaperFilters } from '@/components/ui/paper-filters'
+
 function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
+      {/* SVG filter definitions for papercraft effects */}
+      <PaperFilters />
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-amber-900">Papercraft Assets</div>
