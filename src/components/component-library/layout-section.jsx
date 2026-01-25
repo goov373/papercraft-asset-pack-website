@@ -7,6 +7,8 @@ import {
   CardFooter,
   CardAction,
 } from "@/components/ui/card"
+import { Container } from "@/components/ui/container"
+import { SectionHeading } from "@/components/ui/section-heading"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { MoreHorizontalIcon } from "lucide-react"
@@ -180,6 +182,80 @@ function LayoutSection() {
                   <Badge variant="destructive">Sale</Badge>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Container"
+        description="Responsive max-width wrapper that centers content and provides consistent horizontal padding."
+      >
+        <div className="space-y-6">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Container</h4>
+            <p className="text-sm text-amber-600 mb-3">Max-width: 1280px with responsive padding.</p>
+            <div className="bg-amber-100/50 border border-dashed border-amber-300 rounded-lg p-2">
+              <Container>
+                <div className="bg-primary/10 p-4 rounded text-center">
+                  <p className="text-sm text-foreground">Content inside Container</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Container provides max-w-7xl and horizontal padding
+                  </p>
+                </div>
+              </Container>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Usage Pattern</h4>
+            <pre className="bg-muted p-4 rounded-lg text-sm overflow-x-auto">
+{`<Container>
+  <SectionHeading title="..." subtitle="..." />
+  {/* Section content */}
+</Container>`}
+            </pre>
+          </div>
+        </div>
+      </ComponentShowcase>
+
+      <ComponentShowcase
+        title="Section Heading"
+        description="Consistent section titles with optional subtitle. Centers text and provides proper spacing."
+      >
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Title Only</h4>
+            <div className="bg-muted/50 rounded-lg p-6">
+              <SectionHeading title="Simple Section Title" />
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Title + Subtitle</h4>
+            <div className="bg-muted/50 rounded-lg p-6">
+              <SectionHeading
+                title="Featured Assets"
+                subtitle="Hand-crafted vector illustrations for your projects"
+              />
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium text-amber-800 mb-3">Real Examples</h4>
+            <div className="space-y-6">
+              <div className="bg-muted/50 rounded-lg p-6">
+                <SectionHeading
+                  title="What's Included"
+                  subtitle="Everything you need to bring your designs to life"
+                />
+              </div>
+              <div className="bg-muted/50 rounded-lg p-6">
+                <SectionHeading
+                  title="Frequently Asked Questions"
+                  subtitle="Everything you need to know about the asset pack"
+                />
+              </div>
             </div>
           </div>
         </div>

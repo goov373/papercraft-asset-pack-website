@@ -3,11 +3,17 @@ import { Button } from "@/components/ui/button"
 import { FormControlsSection } from "@/components/component-library/form-controls-section"
 import { ActionsSection } from "@/components/component-library/actions-section"
 import { LayoutSection } from "@/components/component-library/layout-section"
+import { NavigationSection } from "@/components/component-library/navigation-section"
+import { OverlaysSection } from "@/components/component-library/overlays-section"
+import { DataDisplaySection } from "@/components/component-library/data-display-section"
 
 const categories = [
   { id: "form-controls", label: "Form Controls", component: FormControlsSection },
   { id: "actions", label: "Actions & Feedback", component: ActionsSection },
   { id: "layout", label: "Layout", component: LayoutSection },
+  { id: "navigation", label: "Navigation", component: NavigationSection },
+  { id: "overlays", label: "Overlays", component: OverlaysSection },
+  { id: "data-display", label: "Data Display", component: DataDisplaySection },
 ]
 
 function ComponentLibrary() {
