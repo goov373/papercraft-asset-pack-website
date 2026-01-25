@@ -115,48 +115,17 @@ function FAQ() {
 /**
  * NotebookHoles - Realistic binder hole punches
  * Positioned to look like a 3-ring binder
+ * Uses .notebook-hole utility class from index.css
  */
 function NotebookHoles() {
   return (
     <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-10">
       {/* Top hole */}
-      <div
-        className="absolute left-[10px] w-[14px] h-[14px] rounded-full"
-        style={{
-          top: "15%",
-          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
-          boxShadow: `
-            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
-            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
-            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
-          `,
-        }}
-      />
+      <div className="notebook-hole absolute left-[10px] top-[15%]" />
       {/* Middle hole */}
-      <div
-        className="absolute left-[10px] top-1/2 -translate-y-1/2 w-[14px] h-[14px] rounded-full"
-        style={{
-          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
-          boxShadow: `
-            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
-            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
-            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
-          `,
-        }}
-      />
+      <div className="notebook-hole absolute left-[10px] top-1/2 -translate-y-1/2" />
       {/* Bottom hole */}
-      <div
-        className="absolute left-[10px] w-[14px] h-[14px] rounded-full"
-        style={{
-          bottom: "15%",
-          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
-          boxShadow: `
-            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
-            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
-            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
-          `,
-        }}
-      />
+      <div className="notebook-hole absolute left-[10px] bottom-[15%]" />
     </div>
   )
 }

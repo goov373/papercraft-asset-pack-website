@@ -12,8 +12,8 @@ function UtilityLayoutSection() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-semibold text-amber-900 mb-2">Utility & Layout</h2>
-        <p className="text-amber-700 mb-6">
+        <h2 className="text-xl font-semibold text-foreground mb-2">Utility & Layout</h2>
+        <p className="text-muted-foreground mb-6">
           Helper components and layout utilities with papercraft styling.
         </p>
       </div>
@@ -29,22 +29,22 @@ function UtilityLayoutSection() {
         <CardContent className="space-y-6">
           {/* Default variant */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Typewriter Style (Default)</p>
+            <p className="text-sm font-medium text-foreground">Typewriter Style (Default)</p>
             <div className="flex flex-wrap items-center gap-2">
               <Kbd>⌘</Kbd>
               <Kbd>K</Kbd>
-              <span className="text-amber-600 mx-1">or</span>
+              <span className="text-muted-foreground mx-1">or</span>
               <Kbd>Ctrl</Kbd>
-              <span className="text-amber-500">+</span>
+              <span className="text-muted-foreground">+</span>
               <Kbd>Shift</Kbd>
-              <span className="text-amber-500">+</span>
+              <span className="text-muted-foreground">+</span>
               <Kbd>P</Kbd>
             </div>
           </div>
 
           {/* Outline variant */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Label Maker Style</p>
+            <p className="text-sm font-medium text-foreground">Label Maker Style</p>
             <div className="flex flex-wrap items-center gap-2">
               <Kbd variant="outline">Enter</Kbd>
               <Kbd variant="outline">Space</Kbd>
@@ -54,15 +54,15 @@ function UtilityLayoutSection() {
 
           {/* Ghost variant */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Ghost Style</p>
-            <p className="text-sm text-amber-700">
+            <p className="text-sm font-medium text-foreground">Ghost Style</p>
+            <p className="text-sm text-muted-foreground">
               Press <Kbd variant="ghost">⌘</Kbd> + <Kbd variant="ghost">S</Kbd> to save
             </p>
           </div>
 
           {/* Sizes */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Sizes</p>
+            <p className="text-sm font-medium text-foreground">Sizes</p>
             <div className="flex items-center gap-3">
               <Kbd size="sm">sm</Kbd>
               <Kbd size="default">default</Kbd>
@@ -83,25 +83,25 @@ function UtilityLayoutSection() {
         <CardContent>
           <div className="grid grid-cols-3 gap-4">
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">16:9</p>
+              <p className="text-sm font-medium text-foreground">16:9</p>
               <AspectRatio ratio={16 / 9} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
-                <div className="flex items-center justify-center h-full text-amber-600 text-sm">
+                <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                   16:9
                 </div>
               </AspectRatio>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">1:1 (Square)</p>
+              <p className="text-sm font-medium text-foreground">1:1 (Square)</p>
               <AspectRatio ratio={1} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
-                <div className="flex items-center justify-center h-full text-amber-600 text-sm">
+                <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                   1:1
                 </div>
               </AspectRatio>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">4:3</p>
+              <p className="text-sm font-medium text-foreground">4:3</p>
               <AspectRatio ratio={4 / 3} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
-                <div className="flex items-center justify-center h-full text-amber-600 text-sm">
+                <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                   4:3
                 </div>
               </AspectRatio>
@@ -121,18 +121,18 @@ function UtilityLayoutSection() {
         <CardContent className="space-y-6">
           {/* Horizontal */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Horizontal Panels</p>
+            <p className="text-sm font-medium text-foreground">Horizontal Panels</p>
             <div className="h-48 rounded-md border border-amber-200/60 overflow-hidden">
               <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel defaultSize={50} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">
-                    <span className="text-amber-700">Panel 1</span>
+                    <span className="text-muted-foreground">Panel 1</span>
                   </div>
                 </ResizablePanel>
                 <ResizableHandle withHandle />
                 <ResizablePanel defaultSize={50} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">
-                    <span className="text-amber-700">Panel 2</span>
+                    <span className="text-muted-foreground">Panel 2</span>
                   </div>
                 </ResizablePanel>
               </ResizablePanelGroup>
@@ -141,18 +141,18 @@ function UtilityLayoutSection() {
 
           {/* Vertical */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Vertical Panels</p>
+            <p className="text-sm font-medium text-foreground">Vertical Panels</p>
             <div className="h-64 rounded-md border border-amber-200/60 overflow-hidden">
               <ResizablePanelGroup direction="vertical">
                 <ResizablePanel defaultSize={40} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">
-                    <span className="text-amber-700">Top Panel</span>
+                    <span className="text-muted-foreground">Top Panel</span>
                   </div>
                 </ResizablePanel>
                 <ResizableHandle withHandle />
                 <ResizablePanel defaultSize={60} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">
-                    <span className="text-amber-700">Bottom Panel</span>
+                    <span className="text-muted-foreground">Bottom Panel</span>
                   </div>
                 </ResizablePanel>
               </ResizablePanelGroup>
@@ -171,30 +171,30 @@ function UtilityLayoutSection() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">Sidebar Demo</p>
-            <p className="text-sm text-amber-600 mb-4">
+            <p className="text-sm font-medium text-foreground">Sidebar Demo</p>
+            <p className="text-sm text-muted-foreground mb-4">
               The sidebar component is designed for full-page layouts. Below is a preview of the menu styling.
             </p>
 
             {/* Inline sidebar preview */}
-            <div className="border border-amber-200/60 rounded-lg p-4 bg-amber-50/80 max-w-xs">
+            <div className="border border-amber-200/60 rounded-lg p-4 bg-background/80 max-w-xs">
               <div className="space-y-1">
-                <p className="text-xs font-medium text-amber-600 uppercase tracking-wide px-2 mb-2">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide px-2 mb-2">
                   Navigation
                 </p>
-                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-amber-800 hover:bg-amber-100 hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
+                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
                   <Home className="size-4" />
                   <span>Home</span>
                 </button>
-                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-amber-800 bg-amber-100 [box-shadow:var(--paper-elevation-1)]">
+                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-foreground bg-secondary [box-shadow:var(--paper-elevation-1)]">
                   <Inbox className="size-4" />
                   <span>Inbox</span>
                 </button>
-                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-amber-800 hover:bg-amber-100 hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
+                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
                   <FileText className="size-4" />
                   <span>Documents</span>
                 </button>
-                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-amber-800 hover:bg-amber-100 hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
+                <button className="flex w-full items-center gap-2 rounded-md p-2 text-sm text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-150 hover:[box-shadow:var(--paper-elevation-1)]">
                   <Settings className="size-4" />
                   <span>Settings</span>
                 </button>

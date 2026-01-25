@@ -109,8 +109,8 @@ import {
 function ComponentShowcase({ title, description, children }) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">{title}</h3>
-      <p className="text-amber-700 mb-4">{description}</p>
+      <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
         {children}
       </div>
@@ -132,7 +132,7 @@ function NavigationSection() {
       >
         <div className="flex flex-wrap gap-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Menu</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Menu</h4>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">Open Menu</Button>
@@ -173,7 +173,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Submenu</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Submenu</h4>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">
@@ -217,7 +217,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Checkboxes & Radios</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Checkboxes & Radios</h4>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">View Options</Button>
@@ -258,9 +258,9 @@ function NavigationSection() {
       >
         <div className="flex flex-wrap gap-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Right-click the area below</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Right-click the area below</h4>
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-36 w-64 items-center justify-center rounded-lg border-2 border-dashed border-amber-300 bg-amber-50/50 text-amber-700">
+              <ContextMenuTrigger className="flex h-36 w-64 items-center justify-center rounded-lg border-2 border-dashed border-amber-300 bg-background/50 text-muted-foreground">
                 Right-click here
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64">
@@ -307,7 +307,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Main Navigation</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Main Navigation</h4>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -366,7 +366,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Application Menubar</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Application Menubar</h4>
             <Menubar>
               <MenubarMenu>
                 <MenubarTrigger>File</MenubarTrigger>
@@ -447,7 +447,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Breadcrumb</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Breadcrumb</h4>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -466,7 +466,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Ellipsis</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Ellipsis</h4>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -495,7 +495,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Custom Separator</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Custom Separator</h4>
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -526,7 +526,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Pagination</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Pagination</h4>
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -549,7 +549,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Ellipsis</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Ellipsis</h4>
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -592,7 +592,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Tabs</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Default Tabs</h4>
             <Tabs defaultValue="tab1" className="max-w-lg">
               <TabsList>
                 <TabsTrigger value="tab1">Overview</TabsTrigger>
@@ -618,7 +618,7 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Disabled Tab</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Disabled Tab</h4>
             <Tabs defaultValue="active1" className="max-w-lg">
               <TabsList>
                 <TabsTrigger value="active1">Active</TabsTrigger>
@@ -647,7 +647,7 @@ function NavigationSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Single Expand (Default)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Single Expand (Default)</h4>
             <Accordion type="single" collapsible defaultValue="item-1" className="max-w-lg">
               <AccordionItem value="item-1">
                 <AccordionTrigger>What file formats are included?</AccordionTrigger>
@@ -674,8 +674,8 @@ function NavigationSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Multiple Expand</h4>
-            <p className="text-sm text-amber-600 mb-3">Multiple items can be open at once.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Multiple Expand</h4>
+            <p className="text-sm text-muted-foreground mb-3">Multiple items can be open at once.</p>
             <Accordion type="multiple" className="max-w-lg">
               <AccordionItem value="multi-1">
                 <AccordionTrigger>First Section</AccordionTrigger>

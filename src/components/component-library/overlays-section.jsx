@@ -67,8 +67,8 @@ import { InfoIcon, AlertTriangleIcon, TrashIcon, SettingsIcon, MenuIcon } from "
 function ComponentShowcase({ title, description, children }) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">{title}</h3>
-      <p className="text-amber-700 mb-4">{description}</p>
+      <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
         {children}
       </div>
@@ -88,7 +88,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Tooltips</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Tooltips</h4>
             <div className="flex flex-wrap gap-4">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -124,7 +124,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Tooltip Positions</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Tooltip Positions</h4>
             <div className="flex flex-wrap gap-4 justify-center py-8">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -173,7 +173,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Popover</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Popover</h4>
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline">Open Popover</Button>
@@ -198,7 +198,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Popover Positions</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Popover Positions</h4>
             <div className="flex flex-wrap gap-4 justify-center py-4">
               <Popover>
                 <PopoverTrigger asChild>
@@ -247,7 +247,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">User Preview Card</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">User Preview Card</h4>
             <div className="flex gap-4">
               <HoverCard>
                 <HoverCardTrigger asChild>
@@ -259,7 +259,7 @@ function OverlaysSection() {
                       ✂️
                     </div>
                     <div className="space-y-1 flex-1">
-                      <h4 className="text-sm font-semibold text-amber-900">Papercraft Studio</h4>
+                      <h4 className="text-sm font-semibold text-foreground">Papercraft Studio</h4>
                       <p className="text-sm text-muted-foreground">
                         Creating beautiful vector assets for your projects.
                       </p>
@@ -283,7 +283,7 @@ function OverlaysSection() {
                       🎨
                     </div>
                     <div className="space-y-1 flex-1">
-                      <h4 className="text-sm font-semibold text-amber-900">Design Assets</h4>
+                      <h4 className="text-sm font-semibold text-foreground">Design Assets</h4>
                       <p className="text-sm text-muted-foreground">
                         Premium design resources for creators.
                       </p>
@@ -308,7 +308,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Destructive Action</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Destructive Action</h4>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="destructive">Delete Account</Button>
@@ -333,7 +333,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Warning Confirmation</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Warning Confirmation</h4>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline">Discard Changes</Button>
@@ -358,7 +358,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Small Variant</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Small Variant</h4>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="secondary">Log Out</Button>
@@ -387,7 +387,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Sheet Directions</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Sheet Directions</h4>
             <div className="flex flex-wrap gap-4">
               <Sheet>
                 <SheetTrigger asChild>
@@ -488,7 +488,7 @@ function OverlaysSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Bottom Drawer (Swipeable)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Bottom Drawer (Swipeable)</h4>
             <Drawer>
               <DrawerTrigger asChild>
                 <Button variant="outline">
@@ -527,7 +527,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Directional Drawers</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Directional Drawers</h4>
             <div className="flex flex-wrap gap-4">
               <Drawer direction="left">
                 <DrawerTrigger asChild>
@@ -595,7 +595,7 @@ function OverlaysSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Dialog</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Dialog</h4>
             <Dialog>
               <DialogTrigger asChild>
                 <Button>Open Dialog</Button>
@@ -624,7 +624,7 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Dialog with Form</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Dialog with Form</h4>
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="secondary">Edit Profile</Button>
@@ -657,8 +657,8 @@ function OverlaysSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Controlled Dialog</h4>
-            <p className="text-sm text-amber-600 mb-3">
+            <h4 className="text-sm font-medium text-foreground mb-3">Controlled Dialog</h4>
+            <p className="text-sm text-muted-foreground mb-3">
               Open state controlled externally. Current state: {controlledOpen ? "Open" : "Closed"}
             </p>
             <div className="flex gap-2">

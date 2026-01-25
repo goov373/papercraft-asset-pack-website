@@ -23,8 +23,8 @@ import { MoreHorizontalIcon, Palette, Layers, Sparkles, Star, Package, Image, Fi
 function ComponentShowcase({ title, description, children }) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">{title}</h3>
-      <p className="text-amber-700 mb-4">{description}</p>
+      <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
         {children}
       </div>
@@ -41,7 +41,7 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Card</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Default Card</h4>
             <div className="max-w-md">
               <Card>
                 <CardHeader>
@@ -61,8 +61,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Interactive Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Lifts on hover, presses on click.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Interactive Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Lifts on hover, presses on click.</p>
             <div className="max-w-md">
               <Card variant="interactive">
                 <CardHeader>
@@ -79,8 +79,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Sticky Note Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Post-it note style with slight rotation.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Sticky Note Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Post-it note style with slight rotation.</p>
             <div className="max-w-md">
               <Card variant="sticky">
                 <CardHeader>
@@ -96,8 +96,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Notebook Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Lined paper with red margin.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Notebook Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Lined paper with red margin.</p>
             <div className="max-w-md">
               <Card variant="notebook">
                 <CardHeader>
@@ -115,8 +115,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Kraft Paper Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Brown kraft paper aesthetic.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Kraft Paper Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Brown kraft paper aesthetic.</p>
             <div className="max-w-md">
               <Card variant="kraft">
                 <CardHeader>
@@ -133,8 +133,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Card with Action</h4>
-            <p className="text-sm text-amber-600 mb-3">Header with action button.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Card with Action</h4>
+            <p className="text-sm text-muted-foreground mb-3">Header with action button.</p>
             <div className="max-w-md">
               <Card>
                 <CardHeader>
@@ -160,7 +160,7 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Card Grid Example</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Card Grid Example</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card variant="interactive">
                 <CardHeader>
@@ -200,9 +200,9 @@ function LayoutSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Container</h4>
-            <p className="text-sm text-amber-600 mb-3">Max-width: 1280px with responsive padding.</p>
-            <div className="bg-amber-100/50 border border-dashed border-amber-300 rounded-lg p-2">
+            <h4 className="text-sm font-medium text-foreground mb-3">Default Container</h4>
+            <p className="text-sm text-muted-foreground mb-3">Max-width: 1280px with responsive padding.</p>
+            <div className="bg-secondary/50 border border-dashed border-amber-300 rounded-lg p-2">
               <Container>
                 <div className="bg-primary/10 p-4 rounded text-center">
                   <p className="text-sm text-foreground">Content inside Container</p>
@@ -215,7 +215,7 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Usage Pattern</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Usage Pattern</h4>
             <pre className="bg-muted p-4 rounded-lg text-sm overflow-x-auto">
 {`<Container>
   <SectionHeading title="..." subtitle="..." />
@@ -232,14 +232,14 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Title Only</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Title Only</h4>
             <div className="bg-muted/50 rounded-lg p-6">
               <SectionHeading title="Simple Section Title" />
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Title + Subtitle</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Title + Subtitle</h4>
             <div className="bg-muted/50 rounded-lg p-6">
               <SectionHeading
                 title="Featured Assets"
@@ -249,7 +249,7 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Real Examples</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Real Examples</h4>
             <div className="space-y-6">
               <div className="bg-muted/50 rounded-lg p-6">
                 <SectionHeading
@@ -274,7 +274,7 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Bento Grid</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Bento Grid</h4>
             <BentoGrid>
               <BentoCard
                 name="Vector Assets"
@@ -310,8 +310,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple Bento Cards</h4>
-            <p className="text-sm text-amber-600 mb-3">For display-only cards without CTAs.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Simple Bento Cards</h4>
+            <p className="text-sm text-muted-foreground mb-3">For display-only cards without CTAs.</p>
             <BentoGrid>
               <BentoCardSimple title="Icons" description="200+ unique icons">
                 <div className="mt-2 text-amber-500">
@@ -339,33 +339,33 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Dot Pattern</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Dot Pattern</h4>
             <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
               <DotPattern className="opacity-50" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Content over dot pattern</p>
+                <p className="text-foreground font-medium">Content over dot pattern</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Glowing Dots</h4>
-            <p className="text-sm text-amber-600 mb-3">Dots animate with a subtle glow effect.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Glowing Dots</h4>
+            <p className="text-sm text-muted-foreground mb-3">Dots animate with a subtle glow effect.</p>
             <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
               <DotPattern glow className="opacity-60" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Animated glow effect</p>
+                <p className="text-foreground font-medium">Animated glow effect</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Dense Dots</h4>
-            <p className="text-sm text-amber-600 mb-3">Smaller spacing for denser pattern.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Dense Dots</h4>
+            <p className="text-sm text-muted-foreground mb-3">Smaller spacing for denser pattern.</p>
             <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
               <DotPattern width={10} height={10} className="opacity-40" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Dense dot pattern</p>
+                <p className="text-foreground font-medium">Dense dot pattern</p>
               </div>
             </div>
           </div>
@@ -378,33 +378,33 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Basic Grid Pattern</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Basic Grid Pattern</h4>
             <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
               <GridPattern className="opacity-60" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Content over grid pattern</p>
+                <p className="text-foreground font-medium">Content over grid pattern</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Dense Grid</h4>
-            <p className="text-sm text-amber-600 mb-3">Smaller grid cells.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Dense Grid</h4>
+            <p className="text-sm text-muted-foreground mb-3">Smaller grid cells.</p>
             <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
               <GridPattern width={20} height={20} className="opacity-50" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Dense grid pattern</p>
+                <p className="text-foreground font-medium">Dense grid pattern</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Large Grid</h4>
-            <p className="text-sm text-amber-600 mb-3">Larger grid cells for subtle effect.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Large Grid</h4>
+            <p className="text-sm text-muted-foreground mb-3">Larger grid cells for subtle effect.</p>
             <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
               <GridPattern width={60} height={60} strokeWidth={2} className="opacity-40" />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Large grid pattern</p>
+                <p className="text-foreground font-medium">Large grid pattern</p>
               </div>
             </div>
           </div>
@@ -417,85 +417,85 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Paper Grain (Default)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Paper Grain (Default)</h4>
             <div className="relative h-48 rounded-lg overflow-hidden border border-amber-200">
               <div className="absolute inset-0 bg-[var(--paper-cream)]" />
               <TextureOverlay texture="paperGrain" opacity={0.8} />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-800 font-medium">Natural paper grain texture</p>
+                <p className="text-foreground font-medium">Natural paper grain texture</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Texture Types</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Texture Types</h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="dots" opacity={0.6} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Dots</p>
+                  <p className="text-xs text-muted-foreground">Dots</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="grid" opacity={0.5} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Grid</p>
+                  <p className="text-xs text-muted-foreground">Grid</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="crosshatch" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Crosshatch</p>
+                  <p className="text-xs text-muted-foreground">Crosshatch</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="linen" opacity={0.6} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Linen</p>
+                  <p className="text-xs text-muted-foreground">Linen</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="canvas" opacity={0.5} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Canvas</p>
+                  <p className="text-xs text-muted-foreground">Canvas</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="noise" opacity={0.3} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Noise</p>
+                  <p className="text-xs text-muted-foreground">Noise</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="diagonalLines" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Diagonal</p>
+                  <p className="text-xs text-muted-foreground">Diagonal</p>
                 </div>
               </div>
               <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
                 <div className="absolute inset-0 bg-amber-50" />
                 <TextureOverlay texture="horizontalLines" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
-                  <p className="text-xs text-amber-700">Horizontal</p>
+                  <p className="text-xs text-muted-foreground">Horizontal</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Kraft Paper Effect</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Kraft Paper Effect</h4>
             <div className="relative h-48 rounded-lg overflow-hidden border border-amber-300">
               <div className="absolute inset-0 bg-amber-100" />
               <TextureOverlay texture="paperGrain" opacity={1} />
               <div className="relative z-10 flex items-center justify-center h-full">
-                <p className="text-amber-900 font-medium">Brown kraft paper style</p>
+                <p className="text-foreground font-medium">Brown kraft paper style</p>
               </div>
             </div>
           </div>
@@ -508,8 +508,8 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Animated Waves</h4>
-            <p className="text-sm text-amber-600 mb-3">Canvas-based smooth wave animation.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Animated Waves</h4>
+            <p className="text-sm text-muted-foreground mb-3">Canvas-based smooth wave animation.</p>
             <div className="relative h-64 rounded-lg overflow-hidden border border-amber-200">
               <WavyBackground
                 className="flex items-center justify-center h-full"
@@ -517,28 +517,28 @@ function LayoutSection() {
                 blur={6}
               >
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-amber-900">Hero Content</h3>
-                  <p className="text-amber-700 mt-2">Content appears above the waves</p>
+                  <h3 className="text-2xl font-bold text-foreground">Hero Content</h3>
+                  <p className="text-muted-foreground mt-2">Content appears above the waves</p>
                 </div>
               </WavyBackground>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple Wave (Static SVG)</h4>
-            <p className="text-sm text-amber-600 mb-3">Non-animated version for lighter weight.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Simple Wave (Static SVG)</h4>
+            <p className="text-sm text-muted-foreground mb-3">Non-animated version for lighter weight.</p>
             <div className="rounded-lg overflow-hidden border border-amber-200">
               <WavyBackgroundSimple className="py-16">
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold text-amber-900">Static Waves</h3>
-                  <p className="text-amber-700 mt-1">SVG-based wave decoration</p>
+                  <h3 className="text-xl font-semibold text-foreground">Static Waves</h3>
+                  <p className="text-muted-foreground mt-1">SVG-based wave decoration</p>
                 </div>
               </WavyBackgroundSimple>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Custom Wave Color</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Custom Wave Color</h4>
             <div className="rounded-lg overflow-hidden border border-amber-200">
               <WavyBackgroundSimple
                 className="py-12"
@@ -546,7 +546,7 @@ function LayoutSection() {
                 backgroundColor="#fffbf5"
               >
                 <div className="text-center">
-                  <p className="text-amber-800 font-medium">Orange wave variation</p>
+                  <p className="text-foreground font-medium">Orange wave variation</p>
                 </div>
               </WavyBackgroundSimple>
             </div>
@@ -560,13 +560,13 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Default 3D Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Hover to see the tilt effect with glare.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Default 3D Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Hover to see the tilt effect with glare.</p>
             <div className="flex justify-center">
               <Card3D className="w-72">
                 <Card3DContent className="p-6">
-                  <h4 className="font-semibold text-amber-900">Premium Pack</h4>
-                  <p className="text-sm text-amber-700 mt-2">
+                  <h4 className="font-semibold text-foreground">Premium Pack</h4>
+                  <p className="text-sm text-muted-foreground mt-2">
                     Hover over this card to see it tilt and follow your cursor.
                   </p>
                   <Button size="sm" className="mt-4">Explore</Button>
@@ -576,8 +576,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">3D Card with Items</h4>
-            <p className="text-sm text-amber-600 mb-3">Elements inside can have different depth levels.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">3D Card with Items</h4>
+            <p className="text-sm text-muted-foreground mb-3">Elements inside can have different depth levels.</p>
             <div className="flex justify-center">
               <Card3D className="w-80">
                 <Card3DContent className="p-6">
@@ -585,10 +585,10 @@ function LayoutSection() {
                     <Badge variant="secondary">Featured</Badge>
                   </Card3DItem>
                   <Card3DItem translateZ={40} className="mt-3">
-                    <h4 className="text-xl font-bold text-amber-900">Asset Collection</h4>
+                    <h4 className="text-xl font-bold text-foreground">Asset Collection</h4>
                   </Card3DItem>
                   <Card3DItem translateZ={30} className="mt-2">
-                    <p className="text-sm text-amber-700">
+                    <p className="text-sm text-muted-foreground">
                       500+ hand-crafted vectors in one pack.
                     </p>
                   </Card3DItem>
@@ -601,8 +601,8 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple 3D Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Quick one-liner API for simple use cases.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Simple 3D Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Quick one-liner API for simple use cases.</p>
             <div className="flex justify-center gap-4">
               <Card3DSimple className="w-48 h-32 flex items-center justify-center">
                 <Palette className="w-8 h-8 text-amber-600" />
@@ -621,8 +621,8 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Click to Expand</h4>
-            <p className="text-sm text-amber-600 mb-3">Click any card to see it expand with full details.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Click to Expand</h4>
+            <p className="text-sm text-muted-foreground mb-3">Click any card to see it expand with full details.</p>
             <ExpandableCards className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <ExpandableCard
                 title="Icon Pack"
@@ -630,10 +630,10 @@ function LayoutSection() {
                 thumbnail="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=400&h=250&fit=crop&auto=format"
               >
                 <div className="space-y-3">
-                  <p className="text-amber-700">
+                  <p className="text-muted-foreground">
                     A comprehensive collection of hand-drawn icons perfect for any project.
                   </p>
-                  <ul className="text-sm text-amber-600 space-y-1">
+                  <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• SVG and PNG formats</li>
                     <li>• Multiple sizes included</li>
                     <li>• Regular updates</li>
@@ -647,10 +647,10 @@ function LayoutSection() {
                 thumbnail="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=250&fit=crop&auto=format"
               >
                 <div className="space-y-3">
-                  <p className="text-amber-700">
+                  <p className="text-muted-foreground">
                     Beautiful illustrations for landing pages, apps, and presentations.
                   </p>
-                  <ul className="text-sm text-amber-600 space-y-1">
+                  <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Editable source files</li>
                     <li>• Commercial license</li>
                     <li>• Color customizable</li>
@@ -664,10 +664,10 @@ function LayoutSection() {
                 thumbnail="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&h=250&fit=crop&auto=format"
               >
                 <div className="space-y-3">
-                  <p className="text-amber-700">
+                  <p className="text-muted-foreground">
                     Seamless patterns for backgrounds, textures, and decorative elements.
                   </p>
-                  <ul className="text-sm text-amber-600 space-y-1">
+                  <ul className="text-sm text-muted-foreground space-y-1">
                     <li>• Tileable designs</li>
                     <li>• High resolution</li>
                     <li>• Print ready</li>
@@ -679,18 +679,18 @@ function LayoutSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple Inline Expand</h4>
-            <p className="text-sm text-amber-600 mb-3">Accordion-style expansion without overlay.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Simple Inline Expand</h4>
+            <p className="text-sm text-muted-foreground mb-3">Accordion-style expansion without overlay.</p>
             <div className="max-w-md space-y-3">
               <ExpandableCardSimple title="What's included?" preview="500+ vector assets">
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-muted-foreground">
                   This pack includes over 500 carefully crafted vector assets including icons,
                   illustrations, patterns, and decorative elements. All files come in SVG,
                   PNG, and source format.
                 </p>
               </ExpandableCardSimple>
               <ExpandableCardSimple title="License details" preview="Commercial use allowed">
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-muted-foreground">
                   All assets come with a commercial license allowing unlimited use in personal
                   and commercial projects. No attribution required.
                 </p>
@@ -706,22 +706,22 @@ function LayoutSection() {
       >
         <div className="space-y-8">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Simple Parallax</h4>
-            <p className="text-sm text-amber-600 mb-3">Content moves at a different rate than scroll.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Simple Parallax</h4>
+            <p className="text-sm text-muted-foreground mb-3">Content moves at a different rate than scroll.</p>
             <div className="h-48 rounded-lg overflow-hidden border border-amber-200 bg-gradient-to-b from-amber-50 to-amber-100">
               <ParallaxScrollSimple className="h-full" speed={0.3}>
                 <div className="flex flex-col items-center justify-center h-64 gap-4">
                   <Package className="w-12 h-12 text-amber-600" />
-                  <h4 className="text-xl font-semibold text-amber-900">Scroll to see effect</h4>
-                  <p className="text-amber-700">This content moves slower than the scroll</p>
+                  <h4 className="text-xl font-semibold text-foreground">Scroll to see effect</h4>
+                  <p className="text-muted-foreground">This content moves slower than the scroll</p>
                 </div>
               </ParallaxScrollSimple>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Parallax Card</h4>
-            <p className="text-sm text-amber-600 mb-3">Card with parallax background image.</p>
+            <h4 className="text-sm font-medium text-foreground mb-3">Parallax Card</h4>
+            <p className="text-sm text-muted-foreground mb-3">Card with parallax background image.</p>
             <ParallaxCard
               backgroundImage="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=400&fit=crop&auto=format"
               className="h-64 max-w-lg mx-auto"
@@ -737,7 +737,7 @@ function LayoutSection() {
           </div>
 
           <div className="bg-amber-50 rounded-lg p-4">
-            <p className="text-sm text-amber-700">
+            <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full multi-column ParallaxScroll component requires
               more vertical space (200vh+). Use ParallaxScrollSimple or ParallaxCard for
               smaller sections like this demo.

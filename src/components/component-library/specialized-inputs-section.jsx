@@ -42,8 +42,8 @@ function SpecializedInputsSection() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-semibold text-amber-900 mb-2">Specialized Inputs</h2>
-        <p className="text-amber-700 mb-6">
+        <h2 className="text-xl font-semibold text-foreground mb-2">Specialized Inputs</h2>
+        <p className="text-muted-foreground mb-6">
           Complex input patterns for specific use cases, styled with papercraft aesthetics.
         </p>
       </div>
@@ -112,14 +112,14 @@ function SpecializedInputsSection() {
           <div className="flex flex-wrap gap-8">
             {/* Single Date */}
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">Single Date</p>
+              <p className="text-sm font-medium text-foreground">Single Date</p>
               <Calendar
                 mode="single"
                 selected={date}
                 onSelect={setDate}
               />
               {date && (
-                <p className="text-sm text-amber-600">
+                <p className="text-sm text-muted-foreground">
                   Selected: {date.toLocaleDateString()}
                 </p>
               )}
@@ -127,7 +127,7 @@ function SpecializedInputsSection() {
 
             {/* Date Range */}
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">Date Range</p>
+              <p className="text-sm font-medium text-foreground">Date Range</p>
               <Calendar
                 mode="range"
                 selected={dateRange}
@@ -135,7 +135,7 @@ function SpecializedInputsSection() {
                 numberOfMonths={1}
               />
               {dateRange?.from && dateRange?.to && (
-                <p className="text-sm text-amber-600">
+                <p className="text-sm text-muted-foreground">
                   Range: {dateRange.from.toLocaleDateString()} - {dateRange.to.toLocaleDateString()}
                 </p>
               )}
@@ -155,7 +155,7 @@ function SpecializedInputsSection() {
         <CardContent className="space-y-6">
           {/* Standard OTP */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">6-digit Code</p>
+            <p className="text-sm font-medium text-foreground">6-digit Code</p>
             <InputOTP maxLength={6} value={otpValue} onChange={setOtpValue}>
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -170,7 +170,7 @@ function SpecializedInputsSection() {
               </InputOTPGroup>
             </InputOTP>
             {otpValue && (
-              <p className="text-sm text-amber-600">
+              <p className="text-sm text-muted-foreground">
                 Value: {otpValue}
               </p>
             )}
@@ -178,7 +178,7 @@ function SpecializedInputsSection() {
 
           {/* Continuous OTP */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-amber-800">4-digit PIN</p>
+            <p className="text-sm font-medium text-foreground">4-digit PIN</p>
             <InputOTP maxLength={4}>
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -203,7 +203,7 @@ function SpecializedInputsSection() {
           <div className="space-y-8">
             {/* Basic Carousel */}
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">Basic Carousel</p>
+              <p className="text-sm font-medium text-foreground">Basic Carousel</p>
               <div className="px-14">
                 <Carousel className="w-full max-w-sm">
                   <CarouselContent>
@@ -211,7 +211,7 @@ function SpecializedInputsSection() {
                       <CarouselItem key={index}>
                         <div className="p-6">
                           <div className="flex aspect-square items-center justify-center">
-                            <span className="text-4xl font-semibold text-amber-700">{index}</span>
+                            <span className="text-4xl font-semibold text-muted-foreground">{index}</span>
                           </div>
                         </div>
                       </CarouselItem>
@@ -225,17 +225,17 @@ function SpecializedInputsSection() {
 
             {/* Content Carousel */}
             <div className="space-y-2">
-              <p className="text-sm font-medium text-amber-800">Content Cards</p>
+              <p className="text-sm font-medium text-foreground">Content Cards</p>
               <div className="px-14">
                 <Carousel className="w-full max-w-lg">
                   <CarouselContent>
                     <CarouselItem>
                       <div className="p-6">
                         <div className="flex items-center gap-4">
-                          <FileText className="size-10 text-amber-600" />
+                          <FileText className="size-10 text-muted-foreground" />
                           <div>
-                            <h4 className="font-medium text-amber-900">Documents</h4>
-                            <p className="text-sm text-amber-600">Manage your files</p>
+                            <h4 className="font-medium text-foreground">Documents</h4>
+                            <p className="text-sm text-muted-foreground">Manage your files</p>
                           </div>
                         </div>
                       </div>
@@ -243,10 +243,10 @@ function SpecializedInputsSection() {
                     <CarouselItem>
                       <div className="p-6">
                         <div className="flex items-center gap-4">
-                          <Image className="size-10 text-amber-600" />
+                          <Image className="size-10 text-muted-foreground" />
                           <div>
-                            <h4 className="font-medium text-amber-900">Images</h4>
-                            <p className="text-sm text-amber-600">View your gallery</p>
+                            <h4 className="font-medium text-foreground">Images</h4>
+                            <p className="text-sm text-muted-foreground">View your gallery</p>
                           </div>
                         </div>
                       </div>
@@ -254,10 +254,10 @@ function SpecializedInputsSection() {
                     <CarouselItem>
                       <div className="p-6">
                         <div className="flex items-center gap-4">
-                          <Music className="size-10 text-amber-600" />
+                          <Music className="size-10 text-muted-foreground" />
                           <div>
-                            <h4 className="font-medium text-amber-900">Music</h4>
-                            <p className="text-sm text-amber-600">Play your tracks</p>
+                            <h4 className="font-medium text-foreground">Music</h4>
+                            <p className="text-sm text-muted-foreground">Play your tracks</p>
                           </div>
                         </div>
                       </div>

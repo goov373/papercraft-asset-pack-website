@@ -4,6 +4,7 @@ import { PaperFilters } from '@/components/ui/paper-filters'
 import { LandingPage } from '@/components/landing-page'
 import { ComponentLibrary } from '@/components/component-library'
 import PricingPage from '@/components/pages/PricingPage'
+import PreviewPage from '@/components/pages/PreviewPage'
 import { ViewToggle } from '@/components/ui/view-toggle'
 import { CursorProvider } from '@/components/ui/custom-cursor'
 import { Toaster } from '@/components/ui/sonner'
@@ -21,6 +22,7 @@ function App() {
               view === 'website' ? <LandingPage /> : <ComponentLibrary />
             } />
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/preview" element={<PreviewPage />} />
           </Routes>
           <ViewToggle
             view={view}

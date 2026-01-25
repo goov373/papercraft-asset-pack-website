@@ -118,11 +118,11 @@ function DockIcon({ item, mouseX }) {
         "relative flex items-center justify-center rounded-xl",
         // Papercraft styling
         "bg-gradient-to-b from-amber-50 to-amber-100",
-        "border border-amber-200/60",
+        "border border-border/60",
         "[box-shadow:0_2px_4px_rgba(180,83,9,0.08)]",
         "transition-colors duration-200",
         "hover:from-amber-100 hover:to-amber-200",
-        "dark:from-amber-900/50 dark:to-amber-800/50 dark:border-amber-700/40"
+        "dark:from-amber-900/50 dark:to-amber-800/50 dark:border-border/40"
       )}
     >
       {/* Icon */}
@@ -191,10 +191,10 @@ function FloatingDockMobile({ items, className }) {
               className={cn(
                 "flex items-center gap-2 px-3 py-2 rounded-lg",
                 "bg-[var(--paper-cream,#FFFBF5)]",
-                "border border-amber-200/60",
+                "border border-border/60",
                 "[box-shadow:0_2px_8px_rgba(180,83,9,0.12)]",
                 "text-foreground",
-                "dark:bg-amber-900/90 dark:border-amber-700/40"
+                "dark:bg-amber-900/90 dark:border-border/40"
               )}
             >
               <span className="w-5 h-5">{item.icon}</span>

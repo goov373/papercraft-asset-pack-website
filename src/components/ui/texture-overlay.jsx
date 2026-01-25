@@ -20,6 +20,10 @@ import { cn } from "@/lib/utils"
  * @see https://www.cult-ui.com/docs/components/texture-overlay
  */
 
+/**
+ * Texture patterns using amber-900 base tint: rgba(180, 83, 9, X)
+ * Opacity varies by pattern: 0.03 (faint) to 0.25 (intense)
+ */
 const texturePatterns = {
   // Paper grain - default, subtle crossed lines like real paper
   paperGrain:

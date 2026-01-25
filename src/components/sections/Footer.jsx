@@ -3,8 +3,7 @@ import { Container } from "@/components/ui/container"
 
 const footerLinks = {
   product: [
-    { label: "Preview", href: "#preview" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Preview", href: "/preview" },
     { label: "FAQ", href: "#faq" },
   ],
   legal: [

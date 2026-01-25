@@ -434,7 +434,7 @@ function FeedbackSection() {
               <ShineBorderCard className="bg-[var(--paper-cream)]">
                 <div className="p-6">
                   <h4 className="font-semibold text-foreground">Premium Pack</h4>
-                  <p className="text-sm text-amber-700 mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     The animated border draws attention to this featured card.
                   </p>
                 </div>
@@ -465,7 +465,7 @@ function FeedbackSection() {
               <ShineBorderCard duration={4} borderWidth={3} className="bg-[var(--paper-cream)]">
                 <div className="p-6">
                   <h4 className="font-semibold text-foreground">Fast & Bold</h4>
-                  <p className="text-sm text-amber-700 mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     Faster animation with thicker border.
                   </p>
                 </div>
@@ -508,22 +508,22 @@ function FeedbackSection() {
             <div className="grid grid-cols-2 gap-4 max-w-md">
               <BlurFade direction="up" delay={0}>
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
-                  <p className="text-amber-800 text-sm">Up</p>
+                  <p className="text-foreground text-sm">Up</p>
                 </div>
               </BlurFade>
               <BlurFade direction="down" delay={0.1}>
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
-                  <p className="text-amber-800 text-sm">Down</p>
+                  <p className="text-foreground text-sm">Down</p>
                 </div>
               </BlurFade>
               <BlurFade direction="left" delay={0.2}>
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
-                  <p className="text-amber-800 text-sm">Left</p>
+                  <p className="text-foreground text-sm">Left</p>
                 </div>
               </BlurFade>
               <BlurFade direction="right" delay={0.3}>
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
-                  <p className="text-amber-800 text-sm">Right</p>
+                  <p className="text-foreground text-sm">Right</p>
                 </div>
               </BlurFade>
             </div>
@@ -535,7 +535,7 @@ function FeedbackSection() {
               {["First item", "Second item", "Third item", "Fourth item"].map((item, i) => (
                 <BlurFade key={item} delay={0.1 * i}>
                   <div className="p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <p className="text-amber-800 text-sm">{item}</p>
+                    <p className="text-foreground text-sm">{item}</p>
                   </div>
                 </BlurFade>
               ))}
@@ -675,7 +675,7 @@ function FeedbackSection() {
                 {
                   title: "2024",
                   content: (
-                    <p className="text-amber-700 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Launched the complete papercraft asset pack with 500+ vectors.
                     </p>
                   ),
@@ -683,7 +683,7 @@ function FeedbackSection() {
                 {
                   title: "2023",
                   content: (
-                    <p className="text-amber-700 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Started developing the unique papercraft design system.
                     </p>
                   ),
@@ -691,7 +691,7 @@ function FeedbackSection() {
                 {
                   title: "2022",
                   content: (
-                    <p className="text-amber-700 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Initial concept and style exploration for warm, tactile aesthetics.
                     </p>
                   ),
@@ -715,7 +715,7 @@ function FeedbackSection() {
           </div>
 
           <div className="bg-amber-50 rounded-lg p-4">
-            <p className="text-sm text-amber-700">
+            <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full scroll-animated Timeline component works best in
               full-page layouts. Use TimelineSimple for component library demos and smaller sections.
             </p>
@@ -739,7 +739,7 @@ function FeedbackSection() {
             >
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-foreground">Hero Content</h3>
-                <p className="text-amber-700 mt-2">Spotlight animates behind the content</p>
+                <p className="text-muted-foreground mt-2">Spotlight animates behind the content</p>
               </div>
             </Spotlight>
           </div>
@@ -759,7 +759,7 @@ function FeedbackSection() {
             >
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-foreground">Multiple Glows</h3>
-                <p className="text-amber-700 mt-2">Three animated spotlights at different positions</p>
+                <p className="text-muted-foreground mt-2">Three animated spotlights at different positions</p>
               </div>
             </MultiSpotlight>
           </div>
@@ -771,7 +771,7 @@ function FeedbackSection() {
               <SpotlightCard className="w-64" fill="#fcd34d" size={150}>
                 <div className="p-6">
                   <h4 className="font-semibold text-foreground">Hover Me</h4>
-                  <p className="text-sm text-amber-700 mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     The spotlight follows your cursor.
                   </p>
                 </div>
@@ -779,7 +779,7 @@ function FeedbackSection() {
               <SpotlightCard className="w-64" fill="#fdba74" size={200}>
                 <div className="p-6">
                   <h4 className="font-semibold text-foreground">Orange Glow</h4>
-                  <p className="text-sm text-amber-700 mt-2">
+                  <p className="text-sm text-muted-foreground mt-2">
                     Custom color and larger size.
                   </p>
                 </div>

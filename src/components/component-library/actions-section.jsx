@@ -398,7 +398,7 @@ function ActionsSection() {
                 </p>
               </DirectionAwareTabsContent>
               <DirectionAwareTabsContent value="features">
-                <ul className="text-amber-700 space-y-2">
+                <ul className="text-muted-foreground space-y-2">
                   <li>• 500+ vector assets</li>
                   <li>• SVG and PNG formats</li>
                   <li>• Commercial license</li>
@@ -406,7 +406,7 @@ function ActionsSection() {
                 </ul>
               </DirectionAwareTabsContent>
               <DirectionAwareTabsContent value="pricing">
-                <div className="text-amber-700">
+                <div className="text-muted-foreground">
                   <p className="font-semibold">$49 one-time</p>
                   <p className="text-sm mt-1">Lifetime access with free updates</p>
                 </div>
@@ -489,7 +489,7 @@ function ActionsSection() {
           </div>
 
           <div className="bg-amber-50 rounded-lg p-4">
-            <p className="text-sm text-amber-700">
+            <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full FloatingDock component is fixed-positioned for
               actual navigation. Use FloatingDockStatic for inline demos like this. The dock
               includes a mobile variant that appears as an expandable FAB.

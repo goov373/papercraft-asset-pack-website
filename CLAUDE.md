@@ -80,7 +80,20 @@ High-fidelity ruled paper styling in FAQ section:
 ```
 
 ## Documentation
+
+### Core Documentation
+- `/Docs/COMPONENT_API.md` - Props & usage reference for all 122 components
+- `/Docs/DEVELOPMENT_GUIDE.md` - Getting started, common tasks, code conventions
+- `/Docs/ARCHITECTURE.md` - System overview, data flow, component hierarchy
+- `/Docs/TESTING.md` - Test setup, patterns, and examples
+- `/Docs/DEPLOYMENT.md` - Build process, hosting options, CI/CD
+
+### Feature Documentation
+- `/Docs/PREVIEW_PAGE.md` - Preview page with shopping cart implementation
 - `/Docs/DESIGN_SYSTEM.md` - Complete design system reference
 - `/Docs/landing-page-design-spec.md` - Page layout specifications
 - `/Docs/shadcn-customization-guide.md` - Component customization
+
+### Project Files
+- `/.env.example` - Environment variables template
 - `/CHANGELOG.md` - Version history with technical notes

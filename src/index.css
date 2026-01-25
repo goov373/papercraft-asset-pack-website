@@ -26,15 +26,9 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -48,6 +42,40 @@
   --color-paper-white: var(--paper-white);
   --color-paper-cream: var(--paper-cream);
   --color-paper-kraft: var(--paper-kraft);
+
+  /* ========================================
+     SHADOW THEME TOKENS
+     Enables shadow-* utility classes in Tailwind
+     ======================================== */
+
+  /* Elevation Scale */
+  --shadow-paper-0: var(--paper-elevation-0);
+  --shadow-paper-1: var(--paper-elevation-1);
+  --shadow-paper-2: var(--paper-elevation-2);
+  --shadow-paper-3: var(--paper-elevation-3);
+
+  /* Special Shadows */
+  --shadow-paper-sticky: var(--paper-shadow-sticky);
+  --shadow-paper-inset: var(--paper-shadow-inset);
+  --shadow-paper-kraft: var(--paper-shadow-kraft);
+
+  /* Semantic Component Shadows */
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-button: var(--shadow-button);
+  --shadow-button-hover: var(--shadow-button-hover);
+  --shadow-dropdown: var(--shadow-dropdown);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-modal: var(--shadow-modal);
+  --shadow-tooltip: var(--shadow-tooltip);
+  --shadow-toast: var(--shadow-toast);
+
+  /* Focus & Glow */
+  --shadow-focus: var(--shadow-focus);
+  --shadow-focus-ring: var(--shadow-focus-ring);
+  --shadow-glow-primary: var(--shadow-glow-primary);
+  --shadow-glow-accent: var(--shadow-glow-accent);
+  --shadow-glow-subtle: var(--shadow-glow-subtle);
 }
 
 /* Papercraft Amber/Orange Theme */
@@ -68,15 +96,9 @@
   --accent: oklch(0.705 0.191 47.604);            /* orange-500 */
   --accent-foreground: oklch(1 0 0);              /* white */
   --destructive: oklch(0.577 0.245 27.325);
-  --success: oklch(0.55 0.15 145);                /* green for confirmations */
   --border: oklch(0.905 0.093 95.136);            /* amber-200 */
   --input: oklch(0.905 0.093 95.136);
   --ring: oklch(0.705 0.191 47.604);              /* orange-500 */
-  --chart-1: oklch(0.666 0.179 58.318);           /* amber-600 */
-  --chart-2: oklch(0.646 0.222 41.116);           /* orange-600 */
-  --chart-3: oklch(0.769 0.188 70.08);            /* yellow-orange */
-  --chart-4: oklch(0.828 0.189 84.429);           /* warm yellow */
-  --chart-5: oklch(0.555 0.163 48.998);           /* amber-700 */
   --sidebar: oklch(0.987 0.022 95.277);           /* amber-50 */
   --sidebar-foreground: oklch(0.414 0.112 45.904);
   --sidebar-primary: oklch(0.666 0.179 58.318);
@@ -137,6 +159,41 @@
     0 2px 2px hsl(var(--shadow-color) / 0.08),
     0 4px 4px hsl(var(--shadow-color) / 0.06);
 
+  /* ========================================
+     SEMANTIC SHADOW ALIASES
+     Map components to elevation primitives
+     ======================================== */
+
+  /* Cards & Containers */
+  --shadow-card: var(--paper-elevation-1);
+  --shadow-card-hover: var(--paper-elevation-2);
+  --shadow-card-active: var(--paper-elevation-0);
+
+  /* Buttons */
+  --shadow-button: var(--paper-elevation-1);
+  --shadow-button-hover: var(--paper-elevation-2);
+  --shadow-button-pressed: var(--paper-elevation-0);
+
+  /* Form Elements */
+  --shadow-input: var(--paper-shadow-inset);
+  --shadow-input-focus: var(--paper-shadow-inset), 0 0 0 2px var(--ring);
+
+  /* Overlays & Floating */
+  --shadow-dropdown: var(--paper-elevation-2);
+  --shadow-popover: var(--paper-elevation-2);
+  --shadow-modal: var(--paper-elevation-3);
+  --shadow-tooltip: var(--paper-elevation-1);
+  --shadow-toast: var(--paper-elevation-2);
+
+  /* Focus & Glow Effects */
+  --shadow-focus: 0 0 0 var(--paper-focus-ring-width) var(--paper-focus-ring-color);
+  --shadow-focus-ring:
+    0 0 0 var(--paper-focus-ring-offset) var(--background),
+    0 0 0 calc(var(--paper-focus-ring-offset) + var(--paper-focus-ring-width)) var(--paper-focus-ring-color);
+  --shadow-glow-primary: 0 4px 16px oklch(0.666 0.179 58.318 / 0.25);
+  --shadow-glow-accent: 0 4px 16px oklch(0.705 0.191 47.604 / 0.25);
+  --shadow-glow-subtle: 0 2px 8px hsl(var(--shadow-color) / 0.15);
+
   /* State Transforms */
   --paper-state-default-transform: translateY(0);
   --paper-state-hover-transform: translateY(-4px) rotateX(2deg);
@@ -144,17 +201,12 @@
   --paper-state-dragging-transform: translateY(-8px) rotate(-2deg);
 
   /* Transitions */
-  --paper-transition-lift: 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  --paper-transition-press: 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   --paper-transition-settle: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  --paper-transition-fold: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Durations */
   --paper-duration-instant: 100ms;
   --paper-duration-fast: 150ms;
   --paper-duration-normal: 250ms;
-  --paper-duration-slow: 400ms;
-  --paper-duration-deliberate: 600ms;
 
   /* Focus */
   --paper-focus-ring-width: 3px;
@@ -165,17 +217,15 @@
   --paper-state-disabled-opacity: 0.5;
   --paper-state-disabled-filter: grayscale(30%);
 
-  /* Texture Opacity Scale */
-  --texture-opacity-subtle: 0.04;
-  --texture-opacity-light: 0.08;
-  --texture-opacity-medium: 0.12;
-  --texture-opacity-heavy: 0.18;
-  --texture-opacity-dramatic: 0.25;
+  /* Texture Opacity Scale (intensity descriptors) */
+  --texture-opacity-faint: 0.04;
+  --texture-opacity-light: 0.15;
+  --texture-opacity-medium: 0.25;
+  --texture-opacity-strong: 0.40;
 
-  /* Stack Effects */
-  --paper-stack-offset-x: 4px;
-  --paper-stack-offset-y: 4px;
-  --paper-fan-angle: 8deg;
+  /* Texture SVG Patterns (consolidated) */
+  --texture-noise-svg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --torn-edge-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2 Q 5 0, 10 2 T 20 2 T 30 2 T 40 2 T 50 2 T 60 2 T 70 2 T 80 2 T 90 2 T 100 2 L 100 4 L 0 4 Z' fill='black'/%3E%3C/svg%3E");
 
   /* Fold Corner */
   --fold-size: 25px;
@@ -202,11 +252,6 @@
   --border: oklch(0.473 0.137 46.201);            /* amber-800 */
   --input: oklch(0.473 0.137 46.201);             /* amber-800 */
   --ring: oklch(0.795 0.160 75.674);
-  --chart-1: oklch(0.795 0.160 75.674);
-  --chart-2: oklch(0.705 0.191 47.604);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.666 0.179 58.318);
   --sidebar: oklch(0.28 0.04 55);
   --sidebar-foreground: oklch(0.962 0.059 95.617);
   --sidebar-primary: oklch(0.795 0.160 75.674);
@@ -224,6 +269,11 @@
   --fold-color: oklch(0.35 0.03 55);
   --fold-color-dark: oklch(0.30 0.03 55);
   --paper-focus-ring-color: oklch(0.75 0.15 75);
+
+  /* Dark mode glow effects (brighter to be visible) */
+  --shadow-glow-primary: 0 4px 20px oklch(0.795 0.160 75.674 / 0.35);
+  --shadow-glow-accent: 0 4px 20px oklch(0.769 0.188 70.08 / 0.35);
+  --shadow-glow-subtle: 0 2px 12px hsl(var(--shadow-color) / 0.3);
 }
 
 @layer base {
@@ -250,9 +300,9 @@
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: var(--texture-opacity-subtle);
+  opacity: var(--texture-opacity-faint);
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+  background-image: var(--texture-noise-svg);
   background-repeat: repeat;
   background-size: 200px 200px;
 }
@@ -340,14 +390,11 @@
 }
 
 .paper-stack::before {
-  transform: translate(var(--paper-stack-offset-x), var(--paper-stack-offset-y));
+  transform: translate(4px, 4px);
 }
 
 .paper-stack::after {
-  transform: translate(
-    calc(var(--paper-stack-offset-x) * 2),
-    calc(var(--paper-stack-offset-y) * 2)
-  );
+  transform: translate(8px, 8px);
   z-index: -2;
 }
 
@@ -360,122 +407,18 @@
   transform: translate(6px, 9px) rotate(3deg);
 }
 
-/* Folded Corner Effect */
-.paper-folded-corner {
-  position: relative;
-  background: var(--card);
-}
-
-.paper-folded-corner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 var(--fold-size) var(--fold-size) 0;
-  border-color: transparent var(--background) transparent transparent;
-}
-
-.paper-folded-corner::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 var(--fold-size) var(--fold-size) 0;
-  border-color: transparent var(--fold-color) transparent transparent;
-  filter: drop-shadow(-1px 1px 1px hsl(var(--shadow-color) / 0.1));
-}
-
-/* Curled Corner Effect */
-.paper-curled-corner {
-  position: relative;
-  overflow: hidden;
-}
-
-.paper-curled-corner::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(
-    315deg,
-    transparent 40%,
-    var(--fold-color) 41%,
-    var(--fold-color) 48%,
-    var(--card) 49%
-  );
-  border-radius: 0 0 0 80%;
-  box-shadow: -2px -2px 5px hsl(var(--shadow-color) / 0.1);
-  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.paper-curled-corner:hover::after {
-  width: 60px;
-  height: 60px;
-}
-
-/* Sticky Note Style */
-.paper-sticky {
-  box-shadow: var(--paper-shadow-sticky);
-  transform: perspective(1000px) rotateX(-1deg);
-  transform-origin: top center;
-  position: relative;
-}
-
-.paper-sticky::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 20px;
-  background: transparent;
-  box-shadow: 0 8px 8px hsl(var(--shadow-color) / 0.15);
-  transform: rotate(2deg) translateY(5px);
-  transform-origin: bottom right;
-  z-index: -1;
-}
-
-/* Draggable States */
-.paper-draggable {
-  cursor: grab;
-  touch-action: none;
-}
-
-.paper-draggable.is-dragging {
-  transform: scale(1.05) rotate(-3deg);
-  box-shadow: 0 16px 24px hsl(var(--shadow-color) / 0.2);
-  opacity: 0.9;
-  cursor: grabbing;
-  z-index: 9999;
-}
-
 /* ========================================
    ACCESSIBILITY & PERFORMANCE
    ======================================== */
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .paper-interactive,
-  .paper-curled-corner::after,
-  .paper-draggable {
+  .paper-interactive {
     transition: none;
   }
 
   .paper-interactive:hover {
     transform: none;
-  }
-
-  .paper-curled-corner:hover::after {
-    width: 20px;
-    height: 20px;
   }
 }
 
@@ -545,9 +488,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: var(--texture-opacity-strong);
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-image: var(--texture-noise-svg);
   background-size: 150px 150px;
   z-index: 0;
 }
@@ -582,94 +525,35 @@
   padding-left: 1rem;
 }
 
-/* Realistic hole punches with depth */
-.notebook-paper-holes .notebook-holes-overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2rem;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Individual hole punch styling via pseudo-elements */
-.notebook-paper-holes::before {
-  content: '';
-  position: absolute;
-  left: 0.65rem;
-  top: 2.5rem;
+/* Notebook hole punch utility class (use with React component) */
+.notebook-hole {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  /* Hole punch with realistic depth */
-  background:
-    radial-gradient(
-      circle at 40% 35%,
-      var(--background) 0%,
-      oklch(0.92 0.01 80) 100%
-    );
-  box-shadow:
-    /* Inner shadow for depth */
-    inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
-    inset -1px -1px 2px oklch(1 0 0 / 0.5),
-    /* Outer ring - slightly darker edge */
-    0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
-    /* Subtle drop shadow */
-    0 1px 2px oklch(0.5 0.02 80 / 0.1);
-  z-index: 3;
-}
-
-/* Multiple hole punches using box-shadow */
-.notebook-paper-holes::after {
-  content: '';
-  position: absolute;
-  left: 0.65rem;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  transform: translateY(-50%);
-  background:
-    radial-gradient(
-      circle at 40% 35%,
-      var(--background) 0%,
-      oklch(0.92 0.01 80) 100%
-    );
-  box-shadow:
-    /* This hole's inner shadow */
-    inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
-    inset -1px -1px 2px oklch(1 0 0 / 0.5),
-    0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
-    0 1px 2px oklch(0.5 0.02 80 / 0.1),
-    /* Top hole */
-    0 calc(-50% + 2.5rem + 7px) 0 0 var(--background),
-    /* Bottom hole */
-    0 calc(50% - 2.5rem - 7px) 0 0 var(--background);
-  z-index: 3;
-}
-
-/* Bottom hole punch */
-.notebook-paper-holes > .notebook-hole-bottom {
-  position: absolute;
-  left: 0.65rem;
-  bottom: 2.5rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 40% 35%,
-      var(--background) 0%,
-      oklch(0.92 0.01 80) 100%
-    );
+  background: radial-gradient(
+    circle at 40% 35%,
+    var(--background) 0%,
+    oklch(0.92 0.01 80) 100%
+  );
   box-shadow:
     inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
     inset -1px -1px 2px oklch(1 0 0 / 0.5),
     0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
     0 1px 2px oklch(0.5 0.02 80 / 0.1);
-  z-index: 3;
   pointer-events: none;
+}
+
+.dark .notebook-hole {
+  background: radial-gradient(
+    circle at 40% 35%,
+    var(--background) 0%,
+    oklch(0.35 0.02 55) 100%
+  );
+  box-shadow:
+    inset 1px 2px 3px oklch(0.15 0.02 55 / 0.5),
+    inset -1px -1px 2px oklch(0.4 0 0 / 0.3),
+    0 0 0 0.5px oklch(0.25 0.02 55 / 0.4),
+    0 1px 2px oklch(0.1 0.02 55 / 0.2);
 }
 
 /* Notebook accordion item styling - ALIGNED TO LINES */
@@ -767,12 +651,6 @@
   color: oklch(0.45 0.08 55);
 }
 
-/* Remove conflicting pseudo-element holes since we use React component */
-.notebook-paper-holes::before,
-.notebook-paper-holes::after {
-  display: none;
-}
-
 /* Paper edge refinement */
 .notebook-paper {
   /* Subtle top highlight like real paper catching light */
@@ -788,7 +666,7 @@
 }
 
 .dark .notebook-paper::after {
-  opacity: 0.15;
+  opacity: var(--texture-opacity-light);
   mix-blend-mode: overlay;
 }
 
@@ -802,6 +680,28 @@
 
 .dark .notebook-content {
   color: oklch(0.75 0.02 55);
+}
+
+/* ========================================
+   GRADIENT UTILITIES
+   Common gradient patterns as reusable classes
+   ======================================== */
+
+@layer utilities {
+  /* Dark CTA section background (FinalCTA, playground dark variant) */
+  .bg-gradient-dark-cta {
+    @apply bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900;
+  }
+
+  /* Soft paper surface gradient (timeline, cards) */
+  .bg-gradient-paper-soft {
+    @apply bg-gradient-to-b from-amber-100 to-amber-200;
+  }
+
+  /* Horizontal fade edge (dividers, separators, marquee masks) */
+  .bg-gradient-fade-edge {
+    @apply bg-gradient-to-r from-transparent via-amber-300/50 to-transparent;
+  }
 }
 
 /* ========================================

@@ -20,8 +20,8 @@ import {
 function ComponentShowcase({ title, description, children }) {
   return (
     <div className="mb-12">
-      <h3 className="text-xl font-semibold text-amber-900 mb-2">{title}</h3>
-      <p className="text-amber-700 mb-4">{description}</p>
+      <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
         {children}
       </div>
@@ -187,7 +187,7 @@ function FormControlsSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Sizes</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Sizes</h4>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Switch size="sm" />
@@ -204,7 +204,7 @@ function FormControlsSection() {
             </div>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">States</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">States</h4>
             <div className="flex items-center gap-3">
               <Switch disabled />
               <Label className="text-sm text-muted-foreground">Disabled</Label>
@@ -219,7 +219,7 @@ function FormControlsSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Select Paper Type</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Select Paper Type</h4>
             <RadioGroup value={radioValue} onValueChange={setRadioValue}>
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="cardstock" id="r1" />
@@ -251,7 +251,7 @@ function FormControlsSection() {
       >
         <div className="space-y-6 max-w-md">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Default Slider</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Default Slider</h4>
             <Slider
               value={sliderValue}
               onValueChange={setSliderValue}
@@ -263,11 +263,11 @@ function FormControlsSection() {
             </p>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Range Slider</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Range Slider</h4>
             <Slider defaultValue={[25, 75]} max={100} step={1} />
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Disabled</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Disabled</h4>
             <Slider defaultValue={[50]} max={100} disabled />
           </div>
         </div>
@@ -279,7 +279,7 @@ function FormControlsSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Variants</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Variants</h4>
             <div className="flex flex-wrap gap-4">
               <div className="space-y-2">
                 <p className="text-xs text-muted-foreground">Default</p>
@@ -302,7 +302,7 @@ function FormControlsSection() {
             </div>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Sizes</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Sizes</h4>
             <div className="flex items-end gap-4">
               <div className="space-y-2">
                 <p className="text-xs text-muted-foreground">Small</p>
@@ -325,7 +325,7 @@ function FormControlsSection() {
             </div>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">With Text</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">With Text</h4>
             <Toggle variant="outline" aria-label="Toggle bold">
               <Bold className="size-4" />
               Bold
@@ -340,7 +340,7 @@ function FormControlsSection() {
       >
         <div className="space-y-6">
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Connected (Single)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Connected (Single)</h4>
             <ToggleGroup type="single" defaultValue="center">
               <ToggleGroupItem value="left" aria-label="Align left">
                 <AlignLeft className="size-4" />
@@ -354,7 +354,7 @@ function FormControlsSection() {
             </ToggleGroup>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Connected (Multiple)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Connected (Multiple)</h4>
             <ToggleGroup type="multiple" defaultValue={["bold", "italic"]}>
               <ToggleGroupItem value="bold" aria-label="Toggle bold">
                 <Bold className="size-4" />
@@ -368,7 +368,7 @@ function FormControlsSection() {
             </ToggleGroup>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-amber-800 mb-3">Spaced (Individual Paper Tabs)</h4>
+            <h4 className="text-sm font-medium text-foreground mb-3">Spaced (Individual Paper Tabs)</h4>
             <ToggleGroup type="single" spacing={1} defaultValue="bold">
               <ToggleGroupItem value="bold" aria-label="Toggle bold">
                 <Bold className="size-4" />

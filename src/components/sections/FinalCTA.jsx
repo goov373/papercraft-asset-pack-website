@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button"
 function FinalCTA() {
   return (
     <section className="py-24 md:py-32 bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900 relative overflow-hidden">
-      {/* Texture overlay */}
+      {/* Texture overlay - uses consolidated noise token */}
       <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E")`,
+          backgroundImage: `var(--texture-noise-svg)`,
+          backgroundSize: '200px 200px',
+          opacity: 'var(--texture-opacity-light)',
         }}
       />
 
