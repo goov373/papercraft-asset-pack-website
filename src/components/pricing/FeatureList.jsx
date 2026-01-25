@@ -17,7 +17,7 @@ function FeatureList({ features = defaultFeatures, className = "" }) {
           <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
             <Check className="size-3 text-primary" />
           </div>
-          <span className="text-amber-800/80">{feature}</span>
+          <span className="text-foreground/80">{feature}</span>
         </li>
       ))}
     </ul>

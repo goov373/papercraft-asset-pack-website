@@ -33,7 +33,7 @@ function Collapsible({
       data-slot="collapsible"
       className={cn(
         // Papercraft: Paper card container
-        "rounded-lg border border-amber-200/80",
+        "rounded-lg border border-border/80",
         "bg-card",
         "[box-shadow:var(--paper-elevation-1)]",
         className
@@ -59,7 +59,7 @@ function CollapsibleTrigger({
         // Papercraft: Interactive paper element
         "transition-[background-color,transform,box-shadow] duration-150",
         // Hover: Paper lifts
-        "hover:bg-amber-50/50",
+        "hover:bg-background/50",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         // Active/Press: Paper flattens
         "active:translate-y-0 active:scale-[0.99]",
@@ -67,7 +67,7 @@ function CollapsibleTrigger({
         // Focus states
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         // Open state: Settled with subtle pressed feel
-        "data-[state=open]:bg-amber-50/70",
+        "data-[state=open]:bg-background/70",
         "data-[state=open]:rounded-b-none",
         "data-[state=open]:translate-y-0",
         className
@@ -76,7 +76,7 @@ function CollapsibleTrigger({
     >
       {children}
       <ChevronDown className={cn(
-        "size-4 text-amber-600",
+        "size-4 text-primary",
         "transition-transform duration-200",
         // Rotate when open
         "[[data-state=open]_&]:rotate-180",
@@ -96,7 +96,7 @@ function CollapsibleContent({
         // Papercraft: Content area
         "px-4 pb-4 pt-3",
         // Border top to separate from trigger
-        "border-t border-amber-200/50",
+        "border-t border-border/50",
         // Paper unfold animation - NO fade (paper is opaque)
         "overflow-hidden",
         // Transform origin from top for paper fold effect

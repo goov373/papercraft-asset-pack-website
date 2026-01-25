@@ -30,7 +30,7 @@ function Table({
       className={cn(
         "relative w-full overflow-x-auto",
         // Papercraft: Paper card container
-        "rounded-lg border border-amber-200/80",
+        "rounded-lg border border-border/80",
         "bg-card",
         "[box-shadow:var(--paper-elevation-1)]",
       )}
@@ -56,8 +56,8 @@ function TableHeader({
       data-slot="table-header"
       className={cn(
         // Papercraft: Header like paper label strip
-        "[&_tr]:border-b [&_tr]:border-amber-200",
-        "bg-amber-50/70",
+        "[&_tr]:border-b [&_tr]:border-border",
+        "bg-background/70",
         className
       )}
       {...props}
@@ -90,8 +90,8 @@ function TableFooter({
       data-slot="table-footer"
       className={cn(
         // Papercraft: Footer like paper summary strip
-        "border-t border-amber-200",
-        "bg-amber-50/50 font-medium",
+        "border-t border-border",
+        "bg-background/50 font-medium",
         "[&>tr]:last:border-b-0",
         className
       )}
@@ -109,13 +109,13 @@ function TableRow({
       data-slot="table-row"
       className={cn(
         // Papercraft: Ruled line styling
-        "border-b border-amber-100/80",
+        "border-b border-secondary/80",
         // Interactive: Row lifts slightly on hover
         "transition-[background-color,transform,box-shadow] duration-150",
-        "hover:bg-amber-50/50",
+        "hover:bg-background/50",
         "hover:-translate-y-px hover:[box-shadow:0_2px_4px_-2px_rgba(0,0,0,0.05)]",
         // Selected state
-        "data-[state=selected]:bg-amber-100/60",
+        "data-[state=selected]:bg-secondary/60",
         className
       )}
       {...props}
@@ -133,9 +133,9 @@ function TableHead({
       className={cn(
         // Papercraft: Header cell styling
         "h-11 px-3 text-left align-middle font-semibold whitespace-nowrap",
-        "text-amber-900",
+        "text-foreground",
         // Vertical divider between columns
-        "border-r border-amber-200/50 last:border-r-0",
+        "border-r border-border/50 last:border-r-0",
         "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className
       )}
@@ -155,7 +155,7 @@ function TableCell({
         // Papercraft: Cell styling
         "p-3 align-middle whitespace-nowrap",
         // Subtle vertical divider for grid paper feel
-        "border-r border-amber-100/30 last:border-r-0",
+        "border-r border-secondary/30 last:border-r-0",
         "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className
       )}
@@ -173,7 +173,7 @@ function TableCaption({
       data-slot="table-caption"
       className={cn(
         // Papercraft: Caption like handwritten note
-        "mt-3 text-sm text-amber-700/70",
+        "mt-3 text-sm text-muted-foreground/70",
         "italic",
         className
       )}

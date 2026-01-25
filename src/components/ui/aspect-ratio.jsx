@@ -21,8 +21,8 @@ const aspectRatioVariants = cva(
         default: "",
         frame: [
           // Paper mat board styling
-          "bg-amber-50",
-          "border border-amber-200/60",
+          "bg-background",
+          "border border-border/60",
           "rounded-sm",
           "[box-shadow:var(--paper-elevation-1)]",
           // Inner content area styling
@@ -30,15 +30,15 @@ const aspectRatioVariants = cva(
         ],
         card: [
           // Paper card styling with stronger elevation
-          "bg-amber-50/90",
-          "border border-amber-200/60",
+          "bg-background/90",
+          "border border-border/60",
           "rounded-md",
           "[box-shadow:var(--paper-elevation-2)]",
         ],
         inset: [
           // Inset/recessed paper look
-          "bg-amber-100/50",
-          "border border-amber-200/40",
+          "bg-secondary/50",
+          "border border-border/40",
           "rounded-sm",
           "[box-shadow:inset_0_1px_2px_rgba(0,0,0,0.05)]",
         ],

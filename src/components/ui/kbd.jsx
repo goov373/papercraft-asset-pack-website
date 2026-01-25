@@ -23,7 +23,7 @@ const kbdVariants = cva(
       variant: {
         default: [
           // Typewriter key style - elevated paper key
-          "bg-amber-100 text-amber-800",
+          "bg-amber-100 text-foreground",
           "border border-amber-300/60",
           "border-b-2 border-b-amber-400/50",
           "[box-shadow:var(--paper-elevation-1)]",
@@ -36,7 +36,7 @@ const kbdVariants = cva(
         ],
         outline: [
           // Label maker style
-          "bg-transparent text-amber-700",
+          "bg-transparent text-muted-foreground",
           "border border-amber-400/60",
           "border-dashed",
           "px-1.5 py-0.5",
@@ -45,14 +45,14 @@ const kbdVariants = cva(
         ],
         ghost: [
           // Subtle inline style
-          "bg-amber-100/50 text-amber-700",
+          "bg-amber-100/50 text-muted-foreground",
           "px-1 py-0.5",
           // Hover brightens
           "hover:bg-amber-100",
         ],
         raised: [
           // More prominent raised key style
-          "bg-amber-50 text-amber-800",
+          "bg-amber-50 text-foreground",
           "border border-amber-200/60",
           "border-b-[3px] border-b-amber-300/70",
           "[box-shadow:var(--paper-elevation-2)]",

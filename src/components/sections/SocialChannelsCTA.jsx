@@ -40,7 +40,7 @@ function SocialChannelsCTA() {
   }
 
   return (
-    <section className="py-20 md:py-28 border-t border-amber-200/50">
+    <section className="py-20 md:py-28 border-t border-border/50">
       <Container>
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left: Newsletter signup - the focal point */}
@@ -49,10 +49,10 @@ function SocialChannelsCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
               Stay in the loop
             </h3>
-            <h2 className="text-3xl sm:text-4xl font-bold text-amber-900 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
               Get 3 free assets
             </h2>
             <p className="text-muted-foreground mb-6 max-w-md">
@@ -66,7 +66,7 @@ function SocialChannelsCTA() {
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-white border-amber-200"
+                  className="flex-1 bg-white border-border"
                   required
                 />
                 <Button type="submit" className="shrink-0">
@@ -78,7 +78,7 @@ function SocialChannelsCTA() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex items-center gap-2 text-green-700"
+                className="flex items-center gap-2 text-success"
               >
                 <CheckIcon className="size-5" />
                 <span className="font-medium">Check your inbox for your free assets!</span>
@@ -93,7 +93,7 @@ function SocialChannelsCTA() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
               Follow along
             </h3>
             <div className="space-y-4">
@@ -101,7 +101,7 @@ function SocialChannelsCTA() {
                 <a
                   key={social.name}
                   href={social.href}
-                  className={`group flex items-center gap-4 text-amber-800 ${social.color} transition-colors`}
+                  className={`group flex items-center gap-4 text-foreground ${social.color} transition-colors`}
                 >
                   <social.icon className="size-5" />
                   <span className="font-medium">{social.name}</span>

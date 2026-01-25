@@ -90,7 +90,7 @@ function AssetGallery() {
                     onClick={() => setSelectedAsset(asset)}
                   >
                     <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-amber-700/60 text-sm font-medium group-hover:text-amber-800 transition-colors">
+                      <span className="text-muted-foreground/60 text-sm font-medium group-hover:text-foreground transition-colors">
                         {asset.name}
                       </span>
                     </div>

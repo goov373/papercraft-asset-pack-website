@@ -12,7 +12,7 @@ function TrustBadges({ badges = defaultBadges, className = "" }) {
       {badges.map((badge) => (
         <div
           key={badge.label}
-          className="flex items-center gap-1.5 text-amber-700/70 text-xs"
+          className="flex items-center gap-1.5 text-muted-foreground/70 text-xs"
         >
           <badge.icon className="size-3.5" />
           <span>{badge.label}</span>

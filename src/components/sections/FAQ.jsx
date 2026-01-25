@@ -63,21 +63,36 @@ function FAQ() {
           transition={{ duration: 0.5 }}
         >
           {/* Notebook paper styled container */}
-          <div className="notebook-paper notebook-paper-holes p-6 md:p-8 edge-deckled">
-            <Accordion type="single" collapsible defaultValue="item-0">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="notebook-accordion-item"
-                >
-                  <AccordionTrigger className="text-left pl-4">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="pl-4">{faq.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="notebook-paper notebook-paper-holes relative">
+            {/* Hole punches - positioned absolutely */}
+            <NotebookHoles />
+
+            {/* Content area - starts exactly on a ruled line */}
+            <div
+              className="relative"
+              style={{
+                /* Start content so first question baseline lands on a line */
+                paddingTop: "var(--notebook-line-height)",
+                paddingBottom: "calc(var(--notebook-line-height) * 0.5)",
+              }}
+            >
+              <Accordion type="single" collapsible defaultValue="item-0">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="notebook-accordion-item"
+                  >
+                    <AccordionTrigger className="notebook-trigger text-left">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="notebook-content">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
 
           <div className="text-center mt-8">
@@ -94,6 +109,55 @@ function FAQ() {
         </motion.div>
       </Container>
     </section>
+  )
+}
+
+/**
+ * NotebookHoles - Realistic binder hole punches
+ * Positioned to look like a 3-ring binder
+ */
+function NotebookHoles() {
+  return (
+    <div className="absolute left-0 top-0 bottom-0 w-8 pointer-events-none z-10">
+      {/* Top hole */}
+      <div
+        className="absolute left-[10px] w-[14px] h-[14px] rounded-full"
+        style={{
+          top: "15%",
+          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
+          boxShadow: `
+            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
+            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
+            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
+          `,
+        }}
+      />
+      {/* Middle hole */}
+      <div
+        className="absolute left-[10px] top-1/2 -translate-y-1/2 w-[14px] h-[14px] rounded-full"
+        style={{
+          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
+          boxShadow: `
+            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
+            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
+            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
+          `,
+        }}
+      />
+      {/* Bottom hole */}
+      <div
+        className="absolute left-[10px] w-[14px] h-[14px] rounded-full"
+        style={{
+          bottom: "15%",
+          background: `radial-gradient(circle at 40% 35%, var(--background) 0%, oklch(0.92 0.01 80) 100%)`,
+          boxShadow: `
+            inset 1px 2px 4px oklch(0.45 0.02 80 / 0.3),
+            inset -0.5px -0.5px 2px oklch(1 0 0 / 0.6),
+            0 0 0 0.5px oklch(0.75 0.02 80 / 0.3)
+          `,
+        }}
+      />
+    </div>
   )
 }
 

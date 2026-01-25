@@ -13,8 +13,8 @@ function LogoItem({ name, className }) {
       className={cn(
         "flex items-center justify-center",
         "px-6 py-3",
-        "bg-amber-50/50 rounded-lg",
-        "border border-amber-200/40",
+        "bg-background/50 rounded-lg",
+        "border border-border/40",
         "[box-shadow:var(--paper-elevation-0)]",
         "hover:[box-shadow:var(--paper-elevation-1)]",
         "transition-all duration-200",
@@ -22,7 +22,7 @@ function LogoItem({ name, className }) {
         className
       )}
     >
-      <span className="text-base font-semibold text-amber-700/70 whitespace-nowrap">
+      <span className="text-base font-semibold text-muted-foreground/70 whitespace-nowrap">
         {name}
       </span>
     </div>
@@ -42,7 +42,7 @@ const brands = [
 
 function TrustBar() {
   return (
-    <section className="py-10 bg-gradient-to-b from-amber-50/50 to-transparent border-y border-amber-200/40">
+    <section className="py-10 bg-gradient-to-b from-muted/50 to-transparent border-y border-border/40">
       <Container>
         <motion.div
           className="text-center"
@@ -51,7 +51,7 @@ function TrustBar() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-amber-600 text-sm font-medium mb-6 tracking-wide uppercase">
+          <p className="text-primary text-sm font-medium mb-6 tracking-wide uppercase">
             Trusted by designers at
           </p>
         </motion.div>

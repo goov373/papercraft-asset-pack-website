@@ -45,7 +45,7 @@ function ScrollArea({
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar />
       <ScrollBar orientation="horizontal" />
-      <ScrollAreaPrimitive.Corner className="bg-amber-100/50" />
+      <ScrollAreaPrimitive.Corner className="bg-secondary/50" />
     </ScrollAreaPrimitive.Root>
   );
 }
@@ -66,12 +66,12 @@ function ScrollBar({
         orientation === "vertical" && [
           "h-full w-2.5",
           // Paper edge indicator
-          "border-l border-amber-200/30",
+          "border-l border-border/30",
         ],
         orientation === "horizontal" && [
           "h-2.5 flex-col",
           // Paper edge indicator
-          "border-t border-amber-200/30",
+          "border-t border-border/30",
         ],
         className
       )}

@@ -108,7 +108,7 @@ const DraggableAsset = forwardRef(function DraggableAsset(
       ) : (
         // Placeholder for when no image is provided
         <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-amber-200 to-orange-200 flex items-center justify-center">
-          <span className="text-amber-800 text-2xl">✂️</span>
+          <span className="text-foreground text-2xl">✂️</span>
         </div>
       )}
     </motion.div>

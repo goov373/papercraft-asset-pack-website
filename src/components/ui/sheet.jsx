@@ -68,8 +68,8 @@ function SheetContent({
         data-slot="sheet-content"
         className={cn(
           // Paper panel styling
-          "bg-amber-50/95 fixed z-50 flex flex-col gap-4 transition ease-in-out",
-          "border-amber-200/60",
+          "bg-background/95 fixed z-50 flex flex-col gap-4 transition ease-in-out",
+          "border-border/60",
           "[box-shadow:var(--paper-elevation-3)]",
           // Animation timing
           "data-[state=closed]:duration-300 data-[state=open]:duration-300",
@@ -91,11 +91,11 @@ function SheetContent({
             className={cn(
               "absolute top-4 right-4 rounded-md p-1",
               // Paper button styling
-              "text-amber-700 opacity-70",
-              "hover:opacity-100 hover:bg-amber-100 hover:-translate-y-0.5",
-              "active:translate-y-0 active:bg-amber-200/50",
+              "text-muted-foreground opacity-70",
+              "hover:opacity-100 hover:bg-secondary hover:-translate-y-0.5",
+              "active:translate-y-0 active:bg-border/50",
               "transition-all duration-150",
-              "focus:ring-2 focus:ring-amber-400/30 focus:ring-offset-2 focus:outline-hidden",
+              "focus:ring-2 focus:ring-ring/30 focus:ring-offset-2 focus:outline-hidden",
               "disabled:pointer-events-none"
             )}>
             <XIcon className="size-4" />
@@ -114,7 +114,7 @@ function SheetHeader({
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 p-4 text-amber-900", className)}
+      className={cn("flex flex-col gap-1.5 p-4 text-foreground", className)}
       {...props}
     />
   );
@@ -140,7 +140,7 @@ function SheetTitle({
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn("text-amber-900 font-semibold", className)}
+      className={cn("text-foreground font-semibold", className)}
       {...props}
     />
   );
@@ -153,7 +153,7 @@ function SheetDescription({
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn("text-amber-700 text-sm", className)}
+      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   );

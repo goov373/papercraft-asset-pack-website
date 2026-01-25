@@ -54,9 +54,9 @@ function ContextMenuSubTrigger({ className, inset, children, ...props }) {
         "flex cursor-default items-center rounded-md px-2 py-1.5 text-sm outline-hidden select-none",
         // Papercraft: Lift on focus/open
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
-        "data-[state=open]:bg-amber-50 data-[state=open]:text-amber-900",
+        "data-[state=open]:bg-background data-[state=open]:text-foreground",
         // Icon styling
         "[&_svg:not([class*='text-'])]:text-muted-foreground",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -141,7 +141,7 @@ function ContextMenuItem({ className, inset, variant = "default", ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // Destructive variant
         "data-[variant=destructive]:text-destructive",
@@ -170,7 +170,7 @@ function ContextMenuCheckboxItem({ className, children, checked, ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // States
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -182,7 +182,7 @@ function ContextMenuCheckboxItem({ className, children, checked, ...props }) {
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <CheckIcon className="size-4 text-amber-600" />
+          <CheckIcon className="size-4 text-primary" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -199,7 +199,7 @@ function ContextMenuRadioItem({ className, children, ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // States
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -210,7 +210,7 @@ function ContextMenuRadioItem({ className, children, ...props }) {
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-amber-600 text-amber-600" />
+          <CircleIcon className="size-2 fill-primary text-primary" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -225,7 +225,7 @@ function ContextMenuLabel({ className, inset, ...props }) {
       data-inset={inset}
       className={cn(
         // Papercraft: Warm label color
-        "px-2 py-1.5 text-sm font-semibold text-amber-900",
+        "px-2 py-1.5 text-sm font-semibold text-foreground",
         "data-[inset]:pl-8",
         className
       )}
@@ -240,7 +240,7 @@ function ContextMenuSeparator({ className, ...props }) {
       data-slot="context-menu-separator"
       className={cn(
         // Papercraft: Subtle paper fold line
-        "-mx-1 my-1 h-px bg-amber-200/60",
+        "-mx-1 my-1 h-px bg-border/60",
         className
       )}
       {...props}
@@ -254,7 +254,7 @@ function ContextMenuShortcut({ className, ...props }) {
       data-slot="context-menu-shortcut"
       className={cn(
         // Papercraft: Muted shortcut text
-        "ml-auto text-xs tracking-widest text-amber-600/70",
+        "ml-auto text-xs tracking-widest text-primary/70",
         className
       )}
       {...props}

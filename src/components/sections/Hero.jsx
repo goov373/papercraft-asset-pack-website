@@ -25,7 +25,7 @@ function Hero() {
               <span>150+ Hand-Crafted Assets</span>
             </Badge>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-900 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Beautiful papercraft assets for your{" "}
               <span className="text-primary">creative projects</span>
             </h1>

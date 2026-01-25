@@ -118,8 +118,8 @@ function MarqueeItem({ className, children, ...props }) {
       className={cn(
         "flex items-center justify-center",
         "px-4 py-2",
-        "bg-amber-50/50 rounded-lg",
-        "border border-amber-200/40",
+        "bg-background/50 rounded-lg",
+        "border border-border/40",
         "[box-shadow:var(--paper-elevation-0)]",
         "hover:[box-shadow:var(--paper-elevation-1)]",
         "transition-shadow duration-200",

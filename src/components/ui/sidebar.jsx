@@ -225,10 +225,10 @@ function Sidebar({
           className={cn(
             "flex h-full w-full flex-col",
             // Paper panel background
-            "bg-amber-50/80",
+            "bg-background/80",
             // Floating variant - paper card styling
             "group-data-[variant=floating]:rounded-lg",
-            "group-data-[variant=floating]:border group-data-[variant=floating]:border-amber-200/60",
+            "group-data-[variant=floating]:border group-data-[variant=floating]:border-border/60",
             "group-data-[variant=floating]:[box-shadow:var(--paper-elevation-2)]"
           )}>
           {children}
@@ -471,25 +471,25 @@ function SidebarMenuItem({
 const sidebarMenuButtonVariants = cva(
   [
     "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden",
-    "text-amber-800",
+    "text-secondary-foreground",
     // Transition
     "transition-all duration-150",
     // Hover - paper tab lift
-    "hover:bg-amber-100 hover:-translate-y-0.5",
+    "hover:bg-secondary hover:-translate-y-0.5",
     "hover:[box-shadow:var(--paper-elevation-1)]",
     // Focus
-    "ring-amber-400/30 focus-visible:ring-2",
+    "ring-ring/30 focus-visible:ring-2",
     // Active/pressed
-    "active:translate-y-0 active:bg-amber-200/50",
+    "active:translate-y-0 active:bg-border/50",
     "active:[box-shadow:var(--paper-elevation-0)]",
     // Disabled
     "disabled:pointer-events-none disabled:opacity-50",
     "aria-disabled:pointer-events-none aria-disabled:opacity-50",
     // Active item
-    "data-[active=true]:bg-amber-100 data-[active=true]:font-medium",
+    "data-[active=true]:bg-secondary data-[active=true]:font-medium",
     "data-[active=true]:[box-shadow:var(--paper-elevation-1)]",
     // Open state
-    "data-[state=open]:bg-amber-100",
+    "data-[state=open]:bg-secondary",
     // Collapsed mode
     "group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
     "group-has-data-[sidebar=menu-action]/menu-item:pr-8",
@@ -500,7 +500,7 @@ const sidebarMenuButtonVariants = cva(
       variant: {
         default: "",
         outline: [
-          "bg-amber-50 border border-amber-200/60",
+          "bg-background border border-border/60",
           "[box-shadow:var(--paper-elevation-0)]",
           "hover:[box-shadow:var(--paper-elevation-1)]",
         ],

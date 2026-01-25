@@ -1,9 +1,20 @@
-import { useRef, useState, useCallback } from "react"
+import { useRef, useState, useCallback, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { DraggableAsset } from "@/components/ui/draggable-asset"
+import { EditableSticker } from "@/components/ui/editable-sticker"
+import { StickerToolbar } from "@/components/ui/sticker-toolbar"
 import { Button } from "@/components/ui/button"
+import { useConfetti } from "@/components/ui/confetti"
+import {
+  useCanvasHistory,
+  cloneStickerState,
+  applyStickerTransform,
+  deleteSticker,
+  duplicateSticker,
+  bringForward,
+  sendBackward,
+} from "@/hooks/use-canvas-history"
 import { cn } from "@/lib/utils"
-import { RotateCcwIcon, CameraIcon } from "lucide-react"
+import { RotateCcwIcon, Undo2Icon, Redo2Icon } from "lucide-react"
 
 // Sample asset data - will be replaced with real assets
 const DEFAULT_TRAY_ASSETS = [
@@ -19,9 +30,9 @@ const DEFAULT_TRAY_ASSETS = [
 
 // Pre-positioned assets on the canvas (for initial aesthetic)
 const DEFAULT_CANVAS_ASSETS = [
-  { id: "canvas-scissors", emoji: "✂️", position: { x: 60, y: 40 }, rotation: -15 },
-  { id: "canvas-pencil", emoji: "✏️", position: { x: 180, y: 120 }, rotation: 25 },
-  { id: "canvas-paper", emoji: "📄", position: { x: 100, y: 180 }, rotation: -5 },
+  { id: "canvas-scissors", emoji: "✂️", x: 60, y: 40, rotation: -15, scale: 1, flipH: false, flipV: false, isPopped: false },
+  { id: "canvas-pencil", emoji: "✏️", x: 180, y: 120, rotation: 25, scale: 1, flipH: false, flipV: false, isPopped: false },
+  { id: "canvas-paper", emoji: "📄", x: 100, y: 180, rotation: -5, scale: 1, flipH: false, flipV: false, isPopped: false },
 ]
 
 function PlaygroundCanvas({
@@ -32,11 +43,48 @@ function PlaygroundCanvas({
   showControls = true,
   onAssetMove,
   onReset,
-  onScreenshot,
 }) {
   const canvasRef = useRef(null)
-  const [canvasAssets, setCanvasAssets] = useState(initialCanvasAssets)
-  const [highestZ, setHighestZ] = useState(initialCanvasAssets.length + 1)
+  const [selectedId, setSelectedId] = useState(null)
+  const [canvasBounds, setCanvasBounds] = useState({ width: 800, height: 600 })
+
+  // History management with undo/redo
+  const {
+    canvasState: stickers,
+    setCanvasState: setStickers,
+    pushState,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
+    clearHistory,
+  } = useCanvasHistory(initialCanvasAssets)
+
+  // Confetti effect
+  const { trigger: fireConfetti, ConfettiComponent } = useConfetti()
+
+  // Update canvas bounds on resize
+  useEffect(() => {
+    const updateBounds = () => {
+      if (canvasRef.current) {
+        const rect = canvasRef.current.getBoundingClientRect()
+        setCanvasBounds({ width: rect.width, height: rect.height })
+      }
+    }
+    updateBounds()
+    window.addEventListener("resize", updateBounds)
+    return () => window.removeEventListener("resize", updateBounds)
+  }, [])
+
+  // Get selected sticker data
+  const selectedSticker = stickers.find((s) => s.id === selectedId)
+
+  // Calculate toolbar position based on selected sticker
+  const toolbarPosition = selectedSticker
+    ? { x: selectedSticker.x, y: selectedSticker.y }
+    : { x: 0, y: 0 }
+
+  const stickerBounds = { width: 64, height: 64 } // Approximate sticker size
 
   // Get background style based on variant
   const getCanvasBackground = () => {
@@ -67,7 +115,6 @@ function PlaygroundCanvas({
       case "whiteboard":
         return (
           <div className="absolute inset-0 pointer-events-none">
-            {/* Grid lines */}
             <div
               className="absolute inset-0 opacity-[0.03]"
               style={{
@@ -86,66 +133,143 @@ function PlaygroundCanvas({
   }
 
   // Add asset to canvas from tray
-  const handleAddAsset = useCallback((assetId, dropPoint) => {
-    const trayAsset = trayAssets.find((a) => a.id === assetId)
-    if (!trayAsset || !canvasRef.current) return
+  const handleAddAsset = useCallback(
+    (assetId, dropPoint) => {
+      const trayAsset = trayAssets.find((a) => a.id === assetId)
+      if (!trayAsset || !canvasRef.current) return
 
-    // Calculate position relative to canvas
-    const canvasRect = canvasRef.current.getBoundingClientRect()
-    const position = {
-      x: Math.max(20, Math.min(dropPoint.x - canvasRect.left - 30, canvasRect.width - 80)),
-      y: Math.max(20, Math.min(dropPoint.y - canvasRect.top - 30, canvasRect.height - 80)),
-    }
+      const canvasRect = canvasRef.current.getBoundingClientRect()
+      const x = Math.max(20, Math.min(dropPoint.x - canvasRect.left - 30, canvasRect.width - 80))
+      const y = Math.max(20, Math.min(dropPoint.y - canvasRect.top - 30, canvasRect.height - 80))
 
-    const newAsset = {
-      id: `canvas-${assetId}-${Date.now()}`,
-      emoji: trayAsset.emoji,
-      src: trayAsset.src,
-      position,
-      rotation: (Math.random() - 0.5) * 20,
-      zIndex: highestZ,
-    }
+      const newSticker = {
+        id: `canvas-${assetId}-${Date.now()}`,
+        emoji: trayAsset.emoji,
+        src: trayAsset.src,
+        x,
+        y,
+        rotation: (Math.random() - 0.5) * 20,
+        scale: 1,
+        flipH: false,
+        flipV: false,
+        isPopped: false,
+      }
 
-    setCanvasAssets((prev) => [...prev, newAsset])
-    setHighestZ((prev) => prev + 1)
-  }, [trayAssets, highestZ])
+      const newState = [...stickers, newSticker]
+      pushState(newState)
+      setSelectedId(newSticker.id)
+    },
+    [trayAssets, stickers, pushState]
+  )
 
-  // Update asset position
-  const handleAssetMove = useCallback((assetId, newPosition) => {
-    setCanvasAssets((prev) =>
-      prev.map((asset) =>
-        asset.id === assetId
-          ? { ...asset, position: newPosition }
-          : asset
+  // Handle sticker selection
+  const handleSelect = useCallback((id) => {
+    setSelectedId(id)
+  }, [])
+
+  // Handle canvas click (deselect)
+  const handleCanvasClick = useCallback(() => {
+    setSelectedId(null)
+  }, [])
+
+  // Handle transform change (live updates without history)
+  const handleTransformChange = useCallback(
+    (transform) => {
+      setStickers((prev) =>
+        prev.map((s) =>
+          s.id === transform.id
+            ? {
+                ...s,
+                scale: transform.scale,
+                rotation: transform.rotation,
+                x: transform.x,
+                y: transform.y,
+              }
+            : s
+        )
       )
-    )
-    onAssetMove?.(assetId, newPosition)
-  }, [onAssetMove])
+      onAssetMove?.(transform.id, { x: transform.x, y: transform.y })
+    },
+    [setStickers, onAssetMove]
+  )
 
-  // Bring asset to front when dragged
-  const handleAssetDragStart = useCallback((assetId) => {
-    setHighestZ((prev) => prev + 1)
-    setCanvasAssets((prev) =>
-      prev.map((asset) =>
-        asset.id === assetId
-          ? { ...asset, zIndex: highestZ + 1 }
-          : asset
-      )
+  // Handle transform end (save to history)
+  const handleTransformEnd = useCallback(
+    (transform) => {
+      const newState = applyStickerTransform(stickers, transform.id, {
+        scale: transform.scale,
+        rotation: transform.rotation,
+        x: transform.x,
+        y: transform.y,
+      })
+      pushState(cloneStickerState(newState))
+    },
+    [stickers, pushState]
+  )
+
+  // Toolbar actions
+  const handleDelete = useCallback(() => {
+    if (!selectedId) return
+    const newState = deleteSticker(stickers, selectedId)
+    pushState(newState)
+    setSelectedId(null)
+  }, [selectedId, stickers, pushState])
+
+  const handleDuplicate = useCallback(() => {
+    if (!selectedId) return
+    const newState = duplicateSticker(stickers, selectedId)
+    pushState(newState)
+    // Select the new duplicate
+    const newSticker = newState[newState.length - 1]
+    setSelectedId(newSticker.id)
+  }, [selectedId, stickers, pushState])
+
+  const handleFlipH = useCallback(() => {
+    if (!selectedId) return
+    const newState = stickers.map((s) =>
+      s.id === selectedId ? { ...s, flipH: !s.flipH } : s
     )
-  }, [highestZ])
+    pushState(newState)
+  }, [selectedId, stickers, pushState])
+
+  const handleFlipV = useCallback(() => {
+    if (!selectedId) return
+    const newState = stickers.map((s) =>
+      s.id === selectedId ? { ...s, flipV: !s.flipV } : s
+    )
+    pushState(newState)
+  }, [selectedId, stickers, pushState])
+
+  const handleBringForward = useCallback(() => {
+    if (!selectedId) return
+    const newState = bringForward(stickers, selectedId)
+    pushState(newState)
+  }, [selectedId, stickers, pushState])
+
+  const handleSendBackward = useCallback(() => {
+    if (!selectedId) return
+    const newState = sendBackward(stickers, selectedId)
+    pushState(newState)
+  }, [selectedId, stickers, pushState])
+
+  const handleToggleShadow = useCallback(() => {
+    if (!selectedId) return
+    const newState = stickers.map((s) =>
+      s.id === selectedId ? { ...s, isPopped: !s.isPopped } : s
+    )
+    pushState(newState)
+  }, [selectedId, stickers, pushState])
+
+  const handleConfetti = useCallback(() => {
+    fireConfetti(30)
+  }, [fireConfetti])
 
   // Reset canvas to initial state
   const handleReset = useCallback(() => {
-    setCanvasAssets(initialCanvasAssets)
-    setHighestZ(initialCanvasAssets.length + 1)
+    clearHistory(initialCanvasAssets)
+    setSelectedId(null)
     onReset?.()
-  }, [initialCanvasAssets, onReset])
-
-  // Screenshot functionality (placeholder)
-  const handleScreenshot = useCallback(() => {
-    onScreenshot?.()
-    // Future: Use html2canvas or similar
-  }, [onScreenshot])
+  }, [initialCanvasAssets, clearHistory, onReset])
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
@@ -174,6 +298,7 @@ function PlaygroundCanvas({
       {/* Canvas */}
       <div
         ref={canvasRef}
+        onClick={handleCanvasClick}
         className={cn(
           "relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-xl overflow-hidden",
           "border-4 border-amber-900/30",
@@ -183,6 +308,9 @@ function PlaygroundCanvas({
       >
         {/* Texture overlay */}
         {getTextureOverlay()}
+
+        {/* Confetti container */}
+        <ConfettiComponent className="z-[300]" />
 
         {/* Pin holes for corkboard */}
         {variant === "corkboard" && (
@@ -194,11 +322,11 @@ function PlaygroundCanvas({
           </div>
         )}
 
-        {/* Draggable assets on canvas */}
+        {/* Editable stickers */}
         <AnimatePresence>
-          {canvasAssets.map((asset) => (
+          {stickers.map((sticker, index) => (
             <motion.div
-              key={asset.id}
+              key={sticker.id}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
@@ -207,28 +335,60 @@ function PlaygroundCanvas({
                 stiffness: 400,
                 damping: 25,
               }}
+              style={{ zIndex: index + 1 }}
             >
-              <DraggableAsset
-                id={asset.id}
-                src={asset.src}
-                initialPosition={asset.position}
-                initialRotation={asset.rotation}
+              <EditableSticker
+                id={sticker.id}
+                selected={selectedId === sticker.id}
+                onSelect={handleSelect}
+                onTransformChange={handleTransformChange}
+                onTransformEnd={handleTransformEnd}
+                initialScale={sticker.scale}
+                initialRotation={sticker.rotation}
+                initialPosition={{ x: sticker.x, y: sticker.y }}
+                flipH={sticker.flipH}
+                flipV={sticker.flipV}
+                isPopped={sticker.isPopped}
                 constraintsRef={canvasRef}
-                onDragStart={handleAssetDragStart}
-                onPositionChange={handleAssetMove}
               >
-                {!asset.src && (
+                {sticker.src ? (
+                  <img
+                    src={sticker.src}
+                    alt="Sticker"
+                    className="w-14 h-14 sm:w-16 sm:h-16 object-contain pointer-events-none"
+                    draggable={false}
+                  />
+                ) : (
                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-card flex items-center justify-center [box-shadow:var(--paper-elevation-1)]">
-                    <span className="text-2xl sm:text-3xl">{asset.emoji}</span>
+                    <span className="text-2xl sm:text-3xl pointer-events-none">
+                      {sticker.emoji}
+                    </span>
                   </div>
                 )}
-              </DraggableAsset>
+              </EditableSticker>
             </motion.div>
           ))}
         </AnimatePresence>
 
+        {/* Sticker Toolbar */}
+        <StickerToolbar
+          visible={!!selectedSticker}
+          position={toolbarPosition}
+          stickerBounds={stickerBounds}
+          canvasBounds={canvasBounds}
+          onDelete={handleDelete}
+          onDuplicate={handleDuplicate}
+          onFlipH={handleFlipH}
+          onFlipV={handleFlipV}
+          onBringForward={handleBringForward}
+          onSendBackward={handleSendBackward}
+          onToggleShadow={handleToggleShadow}
+          onConfetti={handleConfetti}
+          isPopped={selectedSticker?.isPopped || false}
+        />
+
         {/* Empty state hint */}
-        {canvasAssets.length === 0 && (
+        {stickers.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center text-amber-200/60 pointer-events-none">
             <p className="text-sm font-medium">Drag assets here to create your collage</p>
           </div>
@@ -237,7 +397,34 @@ function PlaygroundCanvas({
 
       {/* Controls */}
       {showControls && (
-        <div className="flex gap-2 justify-end">
+        <div className="flex gap-2 justify-between">
+          {/* Undo/Redo */}
+          <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={undo}
+              disabled={!canUndo}
+              title="Undo (Cmd+Z)"
+              className="gap-1.5"
+            >
+              <Undo2Icon className="size-4" />
+              <span className="hidden sm:inline">Undo</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={redo}
+              disabled={!canRedo}
+              title="Redo (Cmd+Shift+Z)"
+              className="gap-1.5"
+            >
+              <Redo2Icon className="size-4" />
+              <span className="hidden sm:inline">Redo</span>
+            </Button>
+          </div>
+
+          {/* Reset */}
           <Button
             variant="outline"
             size="sm"
@@ -247,22 +434,13 @@ function PlaygroundCanvas({
             <RotateCcwIcon className="size-4" />
             Reset
           </Button>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={handleScreenshot}
-            className="gap-2"
-          >
-            <CameraIcon className="size-4" />
-            Share
-          </Button>
         </div>
       )}
     </div>
   )
 }
 
-// Re-export AssetTrayItem for use in the canvas
+// Asset Tray Item - for assets in the tray that can be dragged onto canvas
 function AssetTrayItem({
   id,
   src,

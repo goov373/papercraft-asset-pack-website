@@ -26,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -63,10 +64,11 @@
   --secondary: oklch(0.962 0.059 95.617);         /* amber-100 */
   --secondary-foreground: oklch(0.476 0.114 52.304); /* amber-800 */
   --muted: oklch(0.943 0.051 95.386);             /* light amber */
-  --muted-foreground: oklch(0.666 0.088 57.249);  /* amber-500 muted */
+  --muted-foreground: oklch(0.555 0.163 48.998);  /* amber-700 */
   --accent: oklch(0.705 0.191 47.604);            /* orange-500 */
   --accent-foreground: oklch(1 0 0);              /* white */
   --destructive: oklch(0.577 0.245 27.325);
+  --success: oklch(0.55 0.15 145);                /* green for confirmations */
   --border: oklch(0.905 0.093 95.136);            /* amber-200 */
   --input: oklch(0.905 0.093 95.136);
   --ring: oklch(0.705 0.191 47.604);              /* orange-500 */
@@ -197,8 +199,8 @@
   --accent: oklch(0.769 0.188 70.08);             /* warm orange */
   --accent-foreground: oklch(0.25 0.04 55);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(0.40 0.06 55);
-  --input: oklch(0.40 0.06 55);
+  --border: oklch(0.473 0.137 46.201);            /* amber-800 */
+  --input: oklch(0.473 0.137 46.201);             /* amber-800 */
   --ring: oklch(0.795 0.160 75.674);
   --chart-1: oklch(0.795 0.160 75.674);
   --chart-2: oklch(0.705 0.191 47.604);
@@ -504,73 +506,302 @@
 
 /* ========================================
    NOTEBOOK PAPER STYLES
+   High-end realistic ruled paper effect
    ======================================== */
 
-/* Notebook paper background with lines */
-.notebook-paper {
-  position: relative;
-  background-color: var(--card);
-  background-image:
-    repeating-linear-gradient(
-      transparent,
-      transparent 27px,
-      oklch(0.85 0.02 250 / 0.3) 27px,
-      oklch(0.85 0.02 250 / 0.3) 28px
-    );
-  border-radius: var(--radius);
-  box-shadow: var(--paper-elevation-1);
+/* CSS variables for notebook grid alignment */
+:root {
+  --notebook-line-height: 32px;
+  --notebook-margin-left: 3.5rem;
+  --notebook-paper-color: #FEFDFB;
+  --notebook-line-color: oklch(0.82 0.015 240 / 0.35);
+  --notebook-margin-color: oklch(0.68 0.16 20 / 0.45);
 }
 
-/* Red margin line */
+/* Notebook paper background with lines + subtle texture */
+.notebook-paper {
+  position: relative;
+  background-color: var(--notebook-paper-color);
+  /* Ruled lines - precisely spaced for text alignment */
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(var(--notebook-line-height) - 1px),
+      var(--notebook-line-color) calc(var(--notebook-line-height) - 1px),
+      var(--notebook-line-color) var(--notebook-line-height)
+    );
+  background-position: 0 0;
+  border-radius: var(--radius);
+  box-shadow:
+    var(--paper-elevation-2),
+    inset 0 0 0 1px oklch(0.85 0.02 80 / 0.3);
+  overflow: hidden;
+}
+
+/* Subtle paper texture overlay */
+.notebook-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  z-index: 0;
+}
+
+/* Red margin line with realistic ink bleed */
 .notebook-paper::before {
   content: '';
   position: absolute;
-  left: 2.5rem;
+  left: var(--notebook-margin-left);
   top: 0;
   bottom: 0;
-  width: 2px;
-  background-color: oklch(0.65 0.2 25 / 0.4);
-  z-index: 1;
+  width: 1.5px;
+  background: linear-gradient(
+    to bottom,
+    var(--notebook-margin-color) 0%,
+    oklch(0.62 0.18 18 / 0.5) 25%,
+    var(--notebook-margin-color) 50%,
+    oklch(0.65 0.15 22 / 0.4) 75%,
+    var(--notebook-margin-color) 100%
+  );
+  /* Subtle ink bleed effect */
+  box-shadow:
+    0.5px 0 0 oklch(0.7 0.12 20 / 0.15),
+    -0.5px 0 0 oklch(0.7 0.12 20 / 0.1);
+  z-index: 2;
 }
 
-/* Hole punches */
+/* Hole punches container */
 .notebook-paper-holes {
   position: relative;
+  /* Add left padding to account for hole punch area */
+  padding-left: 1rem;
 }
 
+/* Realistic hole punches with depth */
+.notebook-paper-holes .notebook-holes-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Individual hole punch styling via pseudo-elements */
+.notebook-paper-holes::before {
+  content: '';
+  position: absolute;
+  left: 0.65rem;
+  top: 2.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  /* Hole punch with realistic depth */
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      var(--background) 0%,
+      oklch(0.92 0.01 80) 100%
+    );
+  box-shadow:
+    /* Inner shadow for depth */
+    inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
+    inset -1px -1px 2px oklch(1 0 0 / 0.5),
+    /* Outer ring - slightly darker edge */
+    0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
+    /* Subtle drop shadow */
+    0 1px 2px oklch(0.5 0.02 80 / 0.1);
+  z-index: 3;
+}
+
+/* Multiple hole punches using box-shadow */
 .notebook-paper-holes::after {
   content: '';
   position: absolute;
-  left: 0.75rem;
+  left: 0.65rem;
   top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: var(--background);
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
+  transform: translateY(-50%);
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      var(--background) 0%,
+      oklch(0.92 0.01 80) 100%
+    );
   box-shadow:
-    0 -80px 0 var(--background),
-    0 80px 0 var(--background),
-    inset 0 1px 2px hsl(var(--shadow-color) / 0.15);
+    /* This hole's inner shadow */
+    inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
+    inset -1px -1px 2px oklch(1 0 0 / 0.5),
+    0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
+    0 1px 2px oklch(0.5 0.02 80 / 0.1),
+    /* Top hole */
+    0 calc(-50% + 2.5rem + 7px) 0 0 var(--background),
+    /* Bottom hole */
+    0 calc(50% - 2.5rem - 7px) 0 0 var(--background);
+  z-index: 3;
 }
 
-/* Notebook accordion item styling */
+/* Bottom hole punch */
+.notebook-paper-holes > .notebook-hole-bottom {
+  position: absolute;
+  left: 0.65rem;
+  bottom: 2.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 40% 35%,
+      var(--background) 0%,
+      oklch(0.92 0.01 80) 100%
+    );
+  box-shadow:
+    inset 1px 2px 3px oklch(0.5 0.02 80 / 0.25),
+    inset -1px -1px 2px oklch(1 0 0 / 0.5),
+    0 0 0 0.5px oklch(0.8 0.02 80 / 0.4),
+    0 1px 2px oklch(0.5 0.02 80 / 0.1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Notebook accordion item styling - ALIGNED TO LINES */
 .notebook-accordion-item {
   border-bottom: none !important;
-  padding-left: 3rem;
-  margin-bottom: 0.5rem;
+  padding-left: calc(var(--notebook-margin-left) + 0.75rem);
   position: relative;
+  z-index: 1;
+  /* Each item occupies exactly one line height */
+  min-height: var(--notebook-line-height);
 }
 
-/* Bullet point */
+/* Accordion trigger - text baseline sits ON the ruled line */
+.notebook-accordion-item [data-radix-collection-item] {
+  height: var(--notebook-line-height);
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  /* Align baseline to bottom of container (where the line is) */
+  align-items: flex-end;
+  padding-bottom: 6px; /* Fine-tune: push text up so baseline lands on line */
+}
+
+/* Bullet point - aligned to text baseline on the line */
 .notebook-accordion-item::before {
-  content: '•';
+  content: '';
   position: absolute;
-  left: 3.25rem;
-  top: 0.875rem;
-  color: var(--primary);
-  font-size: 1.25rem;
-  line-height: 1;
+  left: calc(var(--notebook-margin-left) + 0.25rem);
+  /* Position at the ruled line */
+  top: calc(var(--notebook-line-height) - 8px);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: oklch(0.55 0.12 55);
+}
+
+/* Accordion content baseline alignment */
+.notebook-accordion-item [data-state="open"] + [data-radix-accordion-content] {
+  padding-left: 0.5rem;
+}
+
+/* Notebook trigger - question text */
+.notebook-trigger {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: oklch(0.30 0.06 55);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-right: 1rem;
+  /* Line height for multi-line questions */
+  line-height: var(--notebook-line-height);
+}
+
+.notebook-trigger:hover {
+  color: oklch(0.25 0.08 55);
+}
+
+/* Notebook content - answer text with baseline on lines */
+.notebook-content {
+  color: oklch(0.38 0.03 55);
+  font-size: 0.9rem;
+  /* Each line of text sits on a ruled line */
+  line-height: var(--notebook-line-height);
+  padding-left: calc(var(--notebook-margin-left) + 1.25rem);
+  padding-right: 1.5rem;
+  /* Offset so first line baseline sits on the next ruled line */
+  padding-top: calc(var(--notebook-line-height) - 10px);
+  padding-bottom: 6px;
+}
+
+.notebook-content > div {
+  /* Inner content wrapper - maintain grid alignment */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Refine accordion item spacing */
+.notebook-accordion-item {
+  /* Each FAQ item aligns to the grid */
+  margin-bottom: 0;
+}
+
+.notebook-accordion-item:not(:last-child) {
+  /* Spacing between items - one blank line */
+  padding-bottom: var(--notebook-line-height);
+}
+
+/* Chevron icon styling */
+.notebook-accordion-item [data-radix-collection-item] svg {
+  color: oklch(0.55 0.06 55);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.notebook-accordion-item [data-radix-collection-item]:hover svg {
+  color: oklch(0.45 0.08 55);
+}
+
+/* Remove conflicting pseudo-element holes since we use React component */
+.notebook-paper-holes::before,
+.notebook-paper-holes::after {
+  display: none;
+}
+
+/* Paper edge refinement */
+.notebook-paper {
+  /* Subtle top highlight like real paper catching light */
+  border-top: 1px solid oklch(1 0 0 / 0.4);
+}
+
+/* Dark mode adjustments */
+.dark .notebook-paper {
+  --notebook-paper-color: oklch(0.22 0.015 60);
+  --notebook-line-color: oklch(0.35 0.015 240 / 0.4);
+  --notebook-margin-color: oklch(0.45 0.14 20 / 0.5);
+  border-top-color: oklch(0.35 0.015 60 / 0.3);
+}
+
+.dark .notebook-paper::after {
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+.dark .notebook-trigger {
+  color: oklch(0.85 0.04 55);
+}
+
+.dark .notebook-trigger:hover {
+  color: oklch(0.92 0.05 55);
+}
+
+.dark .notebook-content {
+  color: oklch(0.75 0.02 55);
 }
 
 /* ========================================

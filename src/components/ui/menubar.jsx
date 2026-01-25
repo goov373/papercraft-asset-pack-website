@@ -63,13 +63,13 @@ function MenubarTrigger({ className, ...props }) {
         // Papercraft: Interactive paper tab
         "transition-all duration-150",
         // Hover: Tab lifts
-        "hover:bg-amber-50 hover:text-amber-900",
+        "hover:bg-background hover:text-foreground",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         // Focus: Visible state
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // Open: Tab pressed down
-        "data-[state=open]:bg-amber-100 data-[state=open]:text-amber-900",
+        "data-[state=open]:bg-secondary data-[state=open]:text-foreground",
         "data-[state=open]:translate-y-0 data-[state=open]:[box-shadow:var(--paper-elevation-0)]",
         className
       )}
@@ -123,7 +123,7 @@ function MenubarItem({ className, inset, variant = "default", ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // Destructive variant
         "data-[variant=destructive]:text-destructive",
@@ -152,7 +152,7 @@ function MenubarCheckboxItem({ className, children, checked, ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // States
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -164,7 +164,7 @@ function MenubarCheckboxItem({ className, children, checked, ...props }) {
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon className="size-4 text-amber-600" />
+          <CheckIcon className="size-4 text-primary" />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -181,7 +181,7 @@ function MenubarRadioItem({ className, children, ...props }) {
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm outline-hidden select-none",
         // Papercraft: Subtle lift on focus
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
         // States
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -192,7 +192,7 @@ function MenubarRadioItem({ className, children, ...props }) {
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-amber-600 text-amber-600" />
+          <CircleIcon className="size-2 fill-primary text-primary" />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -207,7 +207,7 @@ function MenubarLabel({ className, inset, ...props }) {
       data-inset={inset}
       className={cn(
         // Papercraft: Warm label color
-        "px-2 py-1.5 text-sm font-semibold text-amber-900",
+        "px-2 py-1.5 text-sm font-semibold text-foreground",
         "data-[inset]:pl-8",
         className
       )}
@@ -222,7 +222,7 @@ function MenubarSeparator({ className, ...props }) {
       data-slot="menubar-separator"
       className={cn(
         // Papercraft: Subtle paper fold line
-        "-mx-1 my-1 h-px bg-amber-200/60",
+        "-mx-1 my-1 h-px bg-border/60",
         className
       )}
       {...props}
@@ -236,7 +236,7 @@ function MenubarShortcut({ className, ...props }) {
       data-slot="menubar-shortcut"
       className={cn(
         // Papercraft: Muted shortcut text
-        "ml-auto text-xs tracking-widest text-amber-600/70",
+        "ml-auto text-xs tracking-widest text-primary/70",
         className
       )}
       {...props}
@@ -258,9 +258,9 @@ function MenubarSubTrigger({ className, inset, children, ...props }) {
         "flex cursor-default items-center rounded-md px-2 py-1.5 text-sm outline-none select-none",
         // Papercraft: Lift on focus/open
         "transition-all duration-150",
-        "focus:bg-amber-50 focus:text-amber-900",
+        "focus:bg-background focus:text-foreground",
         "focus:-translate-y-0.5 focus:[box-shadow:var(--paper-elevation-1)]",
-        "data-[state=open]:bg-amber-50 data-[state=open]:text-amber-900",
+        "data-[state=open]:bg-background data-[state=open]:text-foreground",
         "data-[inset]:pl-8",
         className
       )}

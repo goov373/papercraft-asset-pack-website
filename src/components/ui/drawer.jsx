@@ -108,7 +108,7 @@ function DrawerContent({ className, children, ...props }) {
           className={cn(
             "mx-auto mt-4 hidden h-1.5 w-16 shrink-0 rounded-full",
             // Papercraft: Warm handle color
-            "bg-amber-300/60",
+            "bg-border/60",
             "group-data-[vaul-drawer-direction=bottom]/drawer-content:block"
           )}
         />
@@ -158,7 +158,7 @@ function DrawerTitle({ className, ...props }) {
       data-slot="drawer-title"
       className={cn(
         // Papercraft: Warm title color
-        "font-semibold text-amber-900",
+        "font-semibold text-foreground",
         className
       )}
       {...props}

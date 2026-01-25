@@ -61,14 +61,14 @@ function PaginationLink({ className, isActive, size = "icon", ...props }) {
         // Papercraft overrides
         isActive && [
           // Active: Pressed paper tab
-          "bg-amber-100 text-amber-900 border-amber-300",
+          "bg-secondary text-foreground border-border",
           "[box-shadow:var(--paper-elevation-0)]",
           "translate-y-0",
         ],
         !isActive && [
           // Inactive: Liftable paper tab
           "transition-all duration-150",
-          "hover:bg-amber-50 hover:text-amber-900",
+          "hover:bg-background hover:text-foreground",
           "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         ],
         className
@@ -87,7 +87,7 @@ function PaginationPrevious({ className, ...props }) {
         "gap-1 px-2.5 sm:pl-2.5",
         // Papercraft: Navigation button styling
         "transition-all duration-150",
-        "hover:bg-amber-50 hover:text-amber-900",
+        "hover:bg-background hover:text-foreground",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         className
       )}
@@ -108,7 +108,7 @@ function PaginationNext({ className, ...props }) {
         "gap-1 px-2.5 sm:pr-2.5",
         // Papercraft: Navigation button styling
         "transition-all duration-150",
-        "hover:bg-amber-50 hover:text-amber-900",
+        "hover:bg-background hover:text-foreground",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         className
       )}
@@ -128,7 +128,7 @@ function PaginationEllipsis({ className, ...props }) {
       className={cn(
         // Papercraft: Ellipsis indicator
         "flex size-9 items-center justify-center",
-        "text-amber-600",
+        "text-primary",
         className
       )}
       {...props}

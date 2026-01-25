@@ -44,7 +44,7 @@ function PricingPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
                   One-time purchase
                 </h3>
                 <PriceDisplay price="$39" suffix="" size="large" className="mb-6" />
@@ -61,11 +61,11 @@ function PricingPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="bg-[var(--paper-cream)] rounded-2xl p-8 md:p-12 border border-amber-200/60 shadow-lg">
-                  <h1 className="text-3xl sm:text-4xl font-bold text-amber-900 mb-4">
+                <div className="bg-[var(--paper-cream)] rounded-2xl p-8 md:p-12 border border-border/60 shadow-lg">
+                  <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                     Complete Papercraft Pack
                   </h1>
-                  <p className="text-amber-800/70 mb-8">
+                  <p className="text-muted-foreground mb-8">
                     Everything you need to add warmth and character to your creative projects.
                   </p>
 
@@ -76,7 +76,7 @@ function PricingPage() {
                     </Button>
                   </ConfettiButton>
 
-                  <TrustBadges className="mt-8 pt-8 border-t border-amber-200/60" />
+                  <TrustBadges className="mt-8 pt-8 border-t border-border/60" />
                 </div>
               </motion.div>
             </div>
@@ -84,7 +84,7 @@ function PricingPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 md:py-24 border-t border-amber-200/50">
+        <section className="py-16 md:py-24 border-t border-border/50">
           <Container>
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
               <motion.div
@@ -93,10 +93,10 @@ function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4">
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
                   Questions
                 </h3>
-                <h2 className="text-2xl sm:text-3xl font-bold text-amber-900">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
                   Frequently asked
                 </h2>
               </motion.div>
@@ -112,9 +112,9 @@ function PricingPage() {
                   {faqItems.map((item, index) => (
                     <div
                       key={item.q}
-                      className="border-t border-amber-200/60 py-6 first:border-t-0 first:pt-0"
+                      className="border-t border-border/60 py-6 first:border-t-0 first:pt-0"
                     >
-                      <h4 className="text-lg font-semibold text-amber-900 mb-2">
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
                         {item.q}
                       </h4>
                       <p className="text-muted-foreground">

@@ -35,13 +35,13 @@ function GetStarted() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
               One-time purchase
             </h3>
 
             {/* Large price */}
             <div className="mb-6">
-              <span className="text-7xl sm:text-8xl lg:text-9xl font-bold text-amber-900 leading-none">
+              <span className="text-7xl sm:text-8xl lg:text-9xl font-bold text-foreground leading-none">
                 $39
               </span>
             </div>
@@ -57,7 +57,7 @@ function GetStarted() {
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Check className="size-3 text-primary" />
                   </div>
-                  <span className="text-sm text-amber-800">{feature}</span>
+                  <span className="text-sm text-foreground">{feature}</span>
                 </div>
               ))}
             </div>
@@ -86,17 +86,17 @@ function GetStarted() {
 
             {/* Divider */}
             <div className="flex items-center gap-4 mb-10">
-              <div className="flex-1 h-px bg-amber-200/60" />
-              <span className="text-xs text-amber-600/60 uppercase tracking-wider">or</span>
-              <div className="flex-1 h-px bg-amber-200/60" />
+              <div className="flex-1 h-px bg-border/60" />
+              <span className="text-xs text-muted-foreground/60 uppercase tracking-wider">or</span>
+              <div className="flex-1 h-px bg-border/60" />
             </div>
 
             {/* Newsletter alternative */}
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
                 Not ready yet?
               </h3>
-              <p className="text-amber-900 font-medium mb-4">
+              <p className="text-foreground font-medium mb-4">
                 Get 3 free assets to try first
               </p>
 
@@ -107,7 +107,7 @@ function GetStarted() {
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 bg-white border-amber-200"
+                    className="flex-1 bg-white border-border"
                     required
                   />
                   <Button type="submit" variant="outline" className="shrink-0">
@@ -118,7 +118,7 @@ function GetStarted() {
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-green-700 text-sm font-medium"
+                  className="text-success text-sm font-medium"
                 >
                   ✓ Check your inbox for your free assets!
                 </motion.p>

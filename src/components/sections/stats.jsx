@@ -20,7 +20,7 @@ function StatCard({ label, value, suffix, description, animated = true, classNam
     <div
       className={cn(
         "flex flex-col items-center gap-2 p-6 text-center",
-        "bg-amber-50/50 rounded-lg border border-amber-200/40",
+        "bg-muted/50 rounded-lg border border-border/40",
         "[box-shadow:var(--paper-elevation-1)]",
         "hover:-translate-y-1 hover:[box-shadow:var(--paper-elevation-2)]",
         "transition-all duration-200",
@@ -28,7 +28,7 @@ function StatCard({ label, value, suffix, description, animated = true, classNam
       )}
     >
       {label && (
-        <div className="text-sm font-medium text-amber-600 uppercase tracking-wide">
+        <div className="text-sm font-medium text-primary uppercase tracking-wide">
           {label}
         </div>
       )}
@@ -36,21 +36,21 @@ function StatCard({ label, value, suffix, description, animated = true, classNam
         {animated && isNumeric ? (
           <NumberTicker
             value={numericValue}
-            className="text-4xl sm:text-5xl font-bold text-amber-900"
+            className="text-4xl sm:text-5xl font-bold text-foreground"
           />
         ) : (
-          <span className="text-4xl sm:text-5xl font-bold text-amber-900">
+          <span className="text-4xl sm:text-5xl font-bold text-foreground">
             {value}
           </span>
         )}
         {suffix && (
-          <span className="text-2xl font-semibold text-amber-600">
+          <span className="text-2xl font-semibold text-primary">
             {suffix}
           </span>
         )}
       </div>
       {description && (
-        <div className="text-sm text-amber-700 text-pretty">
+        <div className="text-sm text-muted-foreground text-pretty">
           {description}
         </div>
       )}
@@ -90,7 +90,7 @@ function Stats({
     <Section variant="paper" divider="fold" className={className}>
       <div className="flex flex-col gap-8">
         {title && (
-          <h2 className="text-2xl sm:text-3xl font-semibold text-amber-900 text-center">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground text-center">
             {title}
           </h2>
         )}

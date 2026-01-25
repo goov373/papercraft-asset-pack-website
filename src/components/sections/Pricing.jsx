@@ -47,10 +47,10 @@ function Pricing() {
             <Card className="relative overflow-hidden border-2 border-primary/80 bg-[var(--paper-cream)] shadow-xl">
               <ShineBorder duration={10} />
               <CardHeader className="text-center pb-4 pt-10">
-              <CardTitle className="text-2xl text-amber-900">Complete Pack</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Complete Pack</CardTitle>
               <div className="mt-4">
-                <span className="text-5xl font-bold text-amber-900">$39</span>
-                <span className="text-amber-700/70 ml-2">one-time</span>
+                <span className="text-5xl font-bold text-foreground">$39</span>
+                <span className="text-muted-foreground/70 ml-2">one-time</span>
               </div>
             </CardHeader>
             <CardContent>
@@ -58,7 +58,7 @@ function Pricing() {
                 {features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className="size-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-amber-800/80">{feature}</span>
+                    <span className="text-foreground/80">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -70,11 +70,11 @@ function Pricing() {
               </ConfettiButton>
 
               {/* Trust Badges */}
-              <div className="flex items-center justify-center gap-6 mt-6 pt-6 border-t border-amber-200/60">
+              <div className="flex items-center justify-center gap-6 mt-6 pt-6 border-t border-border/60">
                 {trustBadges.map((badge) => (
                   <div
                     key={badge.label}
-                    className="flex items-center gap-1.5 text-amber-700/70 text-xs"
+                    className="flex items-center gap-1.5 text-muted-foreground/70 text-xs"
                   >
                     <badge.icon className="size-3.5" />
                     <span>{badge.label}</span>

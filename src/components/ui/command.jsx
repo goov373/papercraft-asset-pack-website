@@ -31,9 +31,9 @@ function Command({
       data-slot="command"
       className={cn(
         // Base paper card styling
-        "bg-amber-50/80 text-amber-900 flex h-full w-full flex-col overflow-hidden rounded-md",
+        "bg-background/80 text-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
         // Paper elevation and border
-        "border border-amber-200/60",
+        "border border-border/60",
         "[box-shadow:var(--paper-elevation-2)]",
         className
       )}
@@ -76,15 +76,15 @@ function CommandInput({
       data-slot="command-input-wrapper"
       className={cn(
         // Paper label strip styling
-        "flex h-10 items-center gap-2 border-b border-amber-200/60 px-3",
-        "bg-amber-100/50"
+        "flex h-10 items-center gap-2 border-b border-border/60 px-3",
+        "bg-secondary/50"
       )}>
-      <SearchIcon className="size-4 shrink-0 text-amber-600" />
+      <SearchIcon className="size-4 shrink-0 text-primary" />
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "placeholder:text-amber-500 flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden",
-          "text-amber-900",
+          "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden",
+          "text-foreground",
           "disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
@@ -103,7 +103,7 @@ function CommandList({
       className={cn(
         "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
         // Paper stack background
-        "bg-amber-50/60",
+        "bg-background/60",
         className
       )}
       {...props} />
@@ -116,7 +116,7 @@ function CommandEmpty({
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      className="py-6 text-center text-sm text-amber-600/70"
+      className="py-6 text-center text-sm text-primary/70"
       {...props}
     />
   );
@@ -130,9 +130,9 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "text-amber-900 overflow-hidden p-1",
+        "text-foreground overflow-hidden p-1",
         // Group heading styling - like a paper tab label
-        "[&_[cmdk-group-heading]]:text-amber-700",
+        "[&_[cmdk-group-heading]]:text-muted-foreground",
         "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5",
         "[&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
         "[&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wide",
@@ -152,7 +152,7 @@ function CommandSeparator({
       className={cn(
         // Paper fold line separator
         "-mx-1 h-px",
-        "bg-gradient-to-r from-transparent via-amber-300/50 to-transparent",
+        "bg-gradient-to-r from-transparent via-border/50 to-transparent",
         className
       )}
       {...props} />
@@ -169,12 +169,12 @@ function CommandItem({
       className={cn(
         // Base paper card styling
         "relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none",
-        "text-amber-900",
+        "text-foreground",
         // Icon styling
-        "[&_svg:not([class*='text-'])]:text-amber-600",
+        "[&_svg:not([class*='text-'])]:text-primary",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         // Selected state - paper lift effect
-        "data-[selected=true]:bg-amber-100",
+        "data-[selected=true]:bg-secondary",
         "data-[selected=true]:-translate-y-0.5",
         "data-[selected=true]:[box-shadow:var(--paper-elevation-1)]",
         // Transition
@@ -197,7 +197,7 @@ function CommandShortcut({
       className={cn(
         // Typewriter key styling
         "ml-auto text-xs tracking-widest",
-        "text-amber-600/70",
+        "text-primary/70",
         "font-mono",
         className
       )}

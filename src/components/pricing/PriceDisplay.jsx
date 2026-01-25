@@ -12,11 +12,11 @@ function PriceDisplay({
 
   return (
     <div className={className}>
-      <span className={`${sizeClasses[size]} font-bold text-amber-900 leading-none`}>
+      <span className={`${sizeClasses[size]} font-bold text-foreground leading-none`}>
         {price}
       </span>
       {suffix && (
-        <span className="text-amber-700/70 ml-2 text-lg">{suffix}</span>
+        <span className="text-muted-foreground/70 ml-2 text-lg">{suffix}</span>
       )}
     </div>
   )

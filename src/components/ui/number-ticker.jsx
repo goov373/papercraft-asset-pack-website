@@ -64,7 +64,7 @@ function NumberTicker({
       ref={ref}
       className={cn(
         "inline-block tracking-wider tabular-nums",
-        "text-amber-900", // Papercraft warm color
+        "text-foreground", // Papercraft warm color
         className
       )}
       {...props}

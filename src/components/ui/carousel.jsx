@@ -145,8 +145,8 @@ function CarouselItem({
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         // Paper card styling for slide content
-        "[&>*]:rounded-md [&>*]:border [&>*]:border-amber-200/60",
-        "[&>*]:bg-amber-50/80 [&>*]:[box-shadow:var(--paper-elevation-1)]",
+        "[&>*]:rounded-md [&>*]:border [&>*]:border-border/60",
+        "[&>*]:bg-background/80 [&>*]:[box-shadow:var(--paper-elevation-1)]",
         className
       )}
       {...props} />
@@ -169,14 +169,14 @@ function CarouselPrevious({
       className={cn(
         "absolute size-9 rounded-full",
         // Paper button styling
-        "bg-amber-50 border-amber-200/60 text-amber-700",
+        "bg-background border-border/60 text-muted-foreground",
         "[box-shadow:var(--paper-elevation-1)]",
         // Hover - lift effect
-        "hover:bg-amber-100 hover:-translate-y-0.5",
+        "hover:bg-secondary hover:-translate-y-0.5",
         "hover:[box-shadow:var(--paper-elevation-2)]",
         // Active - press down
         "active:translate-y-0 active:[box-shadow:var(--paper-elevation-0)]",
-        "active:bg-amber-200/50",
+        "active:bg-border/50",
         // Disabled
         "disabled:opacity-50 disabled:cursor-not-allowed",
         "disabled:hover:translate-y-0 disabled:hover:[box-shadow:var(--paper-elevation-1)]",
@@ -213,14 +213,14 @@ function CarouselNext({
       className={cn(
         "absolute size-9 rounded-full",
         // Paper button styling
-        "bg-amber-50 border-amber-200/60 text-amber-700",
+        "bg-background border-border/60 text-muted-foreground",
         "[box-shadow:var(--paper-elevation-1)]",
         // Hover - lift effect
-        "hover:bg-amber-100 hover:-translate-y-0.5",
+        "hover:bg-secondary hover:-translate-y-0.5",
         "hover:[box-shadow:var(--paper-elevation-2)]",
         // Active - press down
         "active:translate-y-0 active:[box-shadow:var(--paper-elevation-0)]",
-        "active:bg-amber-200/50",
+        "active:bg-border/50",
         // Disabled
         "disabled:opacity-50 disabled:cursor-not-allowed",
         "disabled:hover:translate-y-0 disabled:hover:[box-shadow:var(--paper-elevation-1)]",

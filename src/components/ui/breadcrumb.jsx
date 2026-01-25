@@ -66,7 +66,7 @@ function BreadcrumbLink({
         "transition-[color,transform,box-shadow,background-color]",
         "duration-150",
         // Hover: Paper label lifts
-        "hover:text-foreground hover:bg-amber-50/50",
+        "hover:text-foreground hover:bg-background/50",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         // Focus states
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -89,7 +89,7 @@ function BreadcrumbPage({
       className={cn(
         // Papercraft: Current page is a distinct paper label
         "rounded-sm px-1.5 py-0.5",
-        "bg-amber-50/70 text-amber-900 font-medium",
+        "bg-background/70 text-foreground font-medium",
         "[box-shadow:var(--paper-elevation-1)]",
         className
       )}
@@ -109,7 +109,7 @@ function BreadcrumbSeparator({
       aria-hidden="true"
       className={cn(
         // Papercraft: Subtle separator in warm amber
-        "[&>svg]:size-3.5 text-amber-400",
+        "[&>svg]:size-3.5 text-primary",
         className
       )}
       {...props}>

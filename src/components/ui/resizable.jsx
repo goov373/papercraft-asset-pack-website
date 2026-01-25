@@ -38,7 +38,7 @@ function ResizablePanel({
       data-slot="resizable-panel"
       className={cn(
         // Paper panel styling
-        "bg-amber-50/50",
+        "bg-background/50",
         className
       )}
       {...props}
@@ -66,7 +66,7 @@ function ResizableHandle({
         // Cursor
         "cursor-col-resize data-[panel-group-direction=vertical]:cursor-row-resize",
         // Focus
-        "focus-visible:ring-2 focus-visible:ring-amber-400/30 focus-visible:ring-offset-1 focus-visible:outline-hidden",
+        "focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-1 focus-visible:outline-hidden",
         // Hover - highlight the fold
         "hover:bg-gradient-to-r hover:from-transparent hover:via-amber-400/70 hover:to-transparent",
         "data-[panel-group-direction=vertical]:hover:bg-gradient-to-b",
@@ -81,9 +81,9 @@ function ResizableHandle({
           className={cn(
             "z-10 flex h-5 w-4 items-center justify-center rounded-sm",
             // Paper handle styling
-            "bg-amber-100 border border-amber-300/60",
+            "bg-secondary border border-border/60",
             "[box-shadow:var(--paper-elevation-1)]",
-            "text-amber-600",
+            "text-primary",
             // Hover
             "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-2)]",
             // Active

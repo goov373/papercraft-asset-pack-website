@@ -59,17 +59,17 @@ function InputOTPSlot({
         "relative flex h-10 w-10 items-center justify-center text-sm font-medium",
         "rounded-md",
         // Paper background and border
-        "bg-amber-50 border border-amber-200/60",
-        "text-amber-900",
+        "bg-background border border-border/60",
+        "text-foreground",
         // Paper elevation
         "[box-shadow:var(--paper-elevation-1)]",
         // Hover state - subtle lift
-        "hover:bg-amber-100/50 hover:border-amber-300/60",
+        "hover:bg-secondary/50 hover:border-border",
         // Active state - paper lift
-        "data-[active=true]:border-amber-400",
+        "data-[active=true]:border-primary",
         "data-[active=true]:-translate-y-0.5",
         "data-[active=true]:[box-shadow:var(--paper-elevation-2)]",
-        "data-[active=true]:ring-2 data-[active=true]:ring-amber-400/30",
+        "data-[active=true]:ring-2 data-[active=true]:ring-primary/30",
         "data-[active=true]:z-10",
         // Invalid state
         "aria-invalid:border-red-400",
@@ -85,7 +85,7 @@ function InputOTPSlot({
       {hasFakeCaret && (
         <div
           className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink bg-amber-600 h-4 w-px duration-1000" />
+          <div className="animate-caret-blink bg-primary h-4 w-px duration-1000" />
         </div>
       )}
     </div>
@@ -99,7 +99,7 @@ function InputOTPSeparator({
     <div
       data-slot="input-otp-separator"
       role="separator"
-      className="text-amber-400"
+      className="text-primary"
       {...props}>
       <MinusIcon className="size-4" />
     </div>

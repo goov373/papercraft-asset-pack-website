@@ -17,9 +17,9 @@ function Skeleton({
       data-slot="skeleton"
       className={cn(
         // Paper cutout styling
-        "bg-amber-200/40 animate-pulse rounded-md",
+        "bg-border/40 animate-pulse rounded-md",
         // Subtle paper texture hint
-        "border border-amber-200/30",
+        "border border-border/30",
         className
       )}
       {...props}

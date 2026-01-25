@@ -32,10 +32,10 @@ function PricingCard({
       <Card className="relative overflow-hidden border-2 border-primary/80 bg-[var(--paper-cream)] shadow-xl">
         <ShineBorder duration={10} />
         <CardHeader className="text-center pb-4 pt-10">
-          <CardTitle className="text-2xl text-amber-900">{title}</CardTitle>
+          <CardTitle className="text-2xl text-foreground">{title}</CardTitle>
           <div className="mt-4">
-            <span className="text-5xl font-bold text-amber-900">{price}</span>
-            <span className="text-amber-700/70 ml-2">{suffix}</span>
+            <span className="text-5xl font-bold text-foreground">{price}</span>
+            <span className="text-muted-foreground/70 ml-2">{suffix}</span>
           </div>
         </CardHeader>
         <CardContent>
@@ -48,7 +48,7 @@ function PricingCard({
           </ButtonWrapper>
 
           {showTrustBadges && (
-            <TrustBadges className="mt-6 pt-6 border-t border-amber-200/60" />
+            <TrustBadges className="mt-6 pt-6 border-t border-border/60" />
           )}
         </CardContent>
       </Card>

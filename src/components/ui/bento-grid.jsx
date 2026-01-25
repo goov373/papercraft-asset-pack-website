@@ -61,7 +61,7 @@ function BentoCard({
       className={cn(
         "group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-xl",
         // Papercraft light styles
-        "bg-[var(--paper-cream)] border border-amber-200/60",
+        "bg-[var(--paper-cream)] border border-border/60",
         "[box-shadow:var(--paper-elevation-1)]",
         // Hover lift effect
         "transition-all duration-300 ease-out",
@@ -77,12 +77,12 @@ function BentoCard({
       <div className="p-4 flex-1 flex flex-col">
         <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
           {Icon && (
-            <Icon className="h-10 w-10 origin-left transform-gpu text-amber-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
+            <Icon className="h-10 w-10 origin-left transform-gpu text-muted-foreground transition-all duration-300 ease-in-out group-hover:scale-75" />
           )}
-          <h3 className="text-lg font-semibold text-amber-900">
+          <h3 className="text-lg font-semibold text-foreground">
             {name}
           </h3>
-          <p className="text-sm text-amber-700/80 line-clamp-2">{description}</p>
+          <p className="text-sm text-muted-foreground/80 line-clamp-2">{description}</p>
         </div>
 
         {/* Mobile CTA - always visible */}
@@ -92,7 +92,7 @@ function BentoCard({
               variant="link"
               asChild
               size="sm"
-              className="pointer-events-auto p-0 text-amber-600 hover:text-amber-800"
+              className="pointer-events-auto p-0 text-primary hover:text-foreground"
             >
               <a href={href}>
                 {cta}
@@ -110,7 +110,7 @@ function BentoCard({
             variant="link"
             asChild
             size="sm"
-            className="pointer-events-auto p-0 text-amber-600 hover:text-amber-800"
+            className="pointer-events-auto p-0 text-primary hover:text-foreground"
           >
             <a href={href}>
               {cta}
@@ -142,7 +142,7 @@ function BentoCardSimple({
     <div
       className={cn(
         "group relative col-span-1 flex flex-col overflow-hidden rounded-xl",
-        "bg-[var(--paper-cream)] border border-amber-200/60",
+        "bg-[var(--paper-cream)] border border-border/60",
         "[box-shadow:var(--paper-elevation-1)]",
         "transition-all duration-300 ease-out",
         "hover:-translate-y-1 hover:[box-shadow:var(--paper-elevation-2)]",
@@ -153,10 +153,10 @@ function BentoCardSimple({
       {/* Content area */}
       <div className="p-5 flex flex-col gap-2">
         {title && (
-          <h3 className="text-lg font-semibold text-amber-900">{title}</h3>
+          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
         )}
         {description && (
-          <p className="text-sm text-amber-700/80">{description}</p>
+          <p className="text-sm text-muted-foreground/80">{description}</p>
         )}
         {children}
       </div>
