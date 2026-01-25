@@ -69,7 +69,7 @@ function BreadcrumbLink({
         "hover:text-foreground hover:bg-background/50",
         "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-1)]",
         // Focus states
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
         className
       )}
       {...props} />

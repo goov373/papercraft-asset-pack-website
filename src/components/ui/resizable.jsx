@@ -66,7 +66,7 @@ function ResizableHandle({
         // Cursor
         "cursor-col-resize data-[panel-group-direction=vertical]:cursor-row-resize",
         // Focus
-        "focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-1 focus-visible:outline-hidden",
+        "focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:outline-hidden",
         // Hover - highlight the fold
         "hover:bg-gradient-to-r hover:from-transparent hover:via-amber-400/70 hover:to-transparent",
         "data-[panel-group-direction=vertical]:hover:bg-gradient-to-b",

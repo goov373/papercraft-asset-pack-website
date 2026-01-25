@@ -65,7 +65,7 @@ function CollapsibleTrigger({
         "active:translate-y-0 active:scale-[0.99]",
         "active:[box-shadow:var(--paper-elevation-0)]",
         // Focus states
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
         // Open state: Settled with subtle pressed feel
         "data-[state=open]:bg-background/70",
         "data-[state=open]:rounded-b-none",

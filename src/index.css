@@ -70,9 +70,7 @@
   --shadow-tooltip: var(--shadow-tooltip);
   --shadow-toast: var(--shadow-toast);
 
-  /* Focus & Glow */
-  --shadow-focus: var(--shadow-focus);
-  --shadow-focus-ring: var(--shadow-focus-ring);
+  /* Glow Effects */
   --shadow-glow-primary: var(--shadow-glow-primary);
   --shadow-glow-accent: var(--shadow-glow-accent);
   --shadow-glow-subtle: var(--shadow-glow-subtle);
@@ -185,11 +183,7 @@
   --shadow-tooltip: var(--paper-elevation-1);
   --shadow-toast: var(--paper-elevation-2);
 
-  /* Focus & Glow Effects */
-  --shadow-focus: 0 0 0 var(--paper-focus-ring-width) var(--paper-focus-ring-color);
-  --shadow-focus-ring:
-    0 0 0 var(--paper-focus-ring-offset) var(--background),
-    0 0 0 calc(var(--paper-focus-ring-offset) + var(--paper-focus-ring-width)) var(--paper-focus-ring-color);
+  /* Glow Effects */
   --shadow-glow-primary: 0 4px 16px oklch(0.666 0.179 58.318 / 0.25);
   --shadow-glow-accent: 0 4px 16px oklch(0.705 0.191 47.604 / 0.25);
   --shadow-glow-subtle: 0 2px 8px hsl(var(--shadow-color) / 0.15);
@@ -208,9 +202,9 @@
   --paper-duration-fast: 150ms;
   --paper-duration-normal: 250ms;
 
-  /* Focus */
+  /* Focus (matches --ring for consistency) */
   --paper-focus-ring-width: 3px;
-  --paper-focus-ring-color: oklch(0.6 0.15 250);
+  --paper-focus-ring-color: oklch(0.705 0.191 47.604);  /* orange-500, same as --ring */
   --paper-focus-ring-offset: 2px;
 
   /* Disabled States */
@@ -268,7 +262,7 @@
   --shadow-color: 40 5% 5%;
   --fold-color: oklch(0.35 0.03 55);
   --fold-color-dark: oklch(0.30 0.03 55);
-  --paper-focus-ring-color: oklch(0.75 0.15 75);
+  --paper-focus-ring-color: oklch(0.795 0.160 75.674);  /* amber-400, same as dark --ring */
 
   /* Dark mode glow effects (brighter to be visible) */
   --shadow-glow-primary: 0 4px 20px oklch(0.795 0.160 75.674 / 0.35);
