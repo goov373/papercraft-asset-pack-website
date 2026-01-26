@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { Badge } from "@/components/ui/badge"
 import { formatPrice, TOTAL_PRICE, assets, categories } from "@/data/assets"

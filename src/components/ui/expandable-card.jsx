@@ -1,4 +1,5 @@
 import { useState, useId } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import useMeasure from "react-use-measure"
 import { cn } from "@/lib/utils"
@@ -74,7 +75,7 @@ function ExpandableCard({
   const id = useId()
   const { expandedId, setExpandedId } = useContext(ExpandableCardsContext)
   const isExpanded = expandedId === id
-  const [ref, bounds] = useMeasure()
+  const [ref, _bounds] = useMeasure()
 
   const handleToggle = () => {
     setExpandedId(isExpanded ? null : id)
@@ -230,7 +231,7 @@ function ExpandableCardSimple({
   defaultExpanded = false,
 }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
-  const [ref, bounds] = useMeasure()
+  const [ref, _bounds] = useMeasure()
 
   return (
     <div

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import { ShoppingCart, X, Trash2, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"

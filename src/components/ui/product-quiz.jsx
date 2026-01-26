@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronRight, ChevronLeft, Sparkles, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -153,9 +154,10 @@ function QuizResult({ result, onClose, onRestart }) {
   const { trigger, ConfettiComponent } = useConfetti()
 
   // Trigger confetti on mount
-  useState(() => {
-    setTimeout(() => trigger(40), 300)
-  }, [])
+  useEffect(() => {
+    const timer = setTimeout(() => trigger(40), 300)
+    return () => clearTimeout(timer)
+  }, [trigger])
 
   return (
     <motion.div
@@ -241,7 +243,7 @@ function ProductQuiz({ isOpen, onClose }) {
       ...prev,
       [question.id]: option,
     }))
-  }, [question?.id])
+  }, [question])
 
   const handleNext = useCallback(() => {
     if (isLastQuestion) {

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Check, Shield, RefreshCw, Zap } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { SectionHeading } from "@/components/ui/section-heading"

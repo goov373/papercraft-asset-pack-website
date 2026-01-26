@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo } from "react"
 import { createNoise3D } from "simplex-noise"
 import { cn } from "@/lib/utils"
 
@@ -34,30 +34,28 @@ function WavyBackground({
   waveOpacity = 0.5,
   ...props
 }) {
-  const noise = createNoise3D()
+  // Memoize noise function to avoid recreating on every render
+  const noise = useMemo(() => createNoise3D(), [])
   const canvasRef = useRef(null)
-  const animationRef = useRef(null)
-  const [isSafari, setIsSafari] = useState(false)
 
-  const getSpeed = () => {
-    switch (speed) {
-      case "slow":
-        return 0.001
-      case "fast":
-        return 0.003
-      default:
-        return 0.001
+  // Check for Safari once on initial render
+  const [isSafari] = useState(() => {
+    if (typeof window === "undefined") return false
+    return navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")
+  })
+
+  const getSpeed = useMemo(() => {
+    return () => {
+      switch (speed) {
+        case "slow":
+          return 0.001
+        case "fast":
+          return 0.003
+        default:
+          return 0.001
+      }
     }
-  }
-
-  useEffect(() => {
-    // Check for Safari
-    setIsSafari(
-      typeof window !== "undefined" &&
-        navigator.userAgent.includes("Safari") &&
-        !navigator.userAgent.includes("Chrome")
-    )
-  }, [])
+  }, [speed])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -114,7 +112,7 @@ function WavyBackground({
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", handleResize)
     }
-  }, [blur, colors, backgroundFill, waveOpacity, waveWidth])
+  }, [blur, colors, backgroundFill, waveOpacity, waveWidth, getSpeed, noise])
 
   return (
     <div

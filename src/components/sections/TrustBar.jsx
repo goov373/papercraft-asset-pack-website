@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { Marquee, MarqueeContainer } from "@/components/ui/marquee"
 import { cn } from "@/lib/utils"

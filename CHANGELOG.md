@@ -4,14 +4,160 @@ All notable changes to the Papercraft Asset Pack Website.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-01-26
+
+### Added
+
+#### Testing Infrastructure
+
+Comprehensive test suite with 168 tests across 15 component files.
+
+**Test Setup:**
+
+- Vitest with jsdom environment
+- Custom test utilities (`src/test/test-utils.jsx`)
+- RouterWrapper for components needing React Router
+- Mocks for ResizeObserver, matchMedia, pointer capture, scrollIntoView
+
+**Test Coverage:**
+
+- `accordion.test.jsx` - 11 tests
+- `alert.test.jsx` - 14 tests
+- `badge.test.jsx` - 11 tests
+- `button.test.jsx` - 3 tests
+- `card.test.jsx` - 15 tests
+- `checkbox.test.jsx` - 9 tests
+- `dialog.test.jsx` - 14 tests
+- `dropdown-menu.test.jsx` - 13 tests
+- `input.test.jsx` - 9 tests
+- `progress.test.jsx` - 14 tests
+- `select.test.jsx` - 12 tests
+- `slider.test.jsx` - 15 tests
+- `switch.test.jsx` - 10 tests
+- `tabs.test.jsx` - 10 tests
+- `tooltip.test.jsx` - 8 tests
+
+**CI/CD:**
+
+- GitHub Actions workflow (`.github/workflows/ci.yml`)
+- Runs build, lint, and test on push/PR
+- Husky pre-commit hooks for quality gates
+
+#### Storybook Documentation
+
+Component documentation with Storybook 10.
+
+**Configuration:**
+
+- `.storybook/main.js` - Vite builder, path aliases
+- `.storybook/preview.jsx` - Global decorators, papercraft backgrounds
+
+**Stories Created:**
+
+- `button.stories.jsx` - Variants, sizes, states
+- `card.stories.jsx` - Card compositions
+- `dialog.stories.jsx` - Modal patterns
+- `select.stories.jsx` - Select with groups, sizes
+
+**Papercraft Backgrounds:**
+
+- paper-white (#FEFDFB)
+- paper-cream (#FAF8F5)
+- paper-kraft (#F5EEE6)
+- dark (#1a1a1a)
+
+#### Error Tracking (Sentry)
+
+Production error monitoring with Sentry React SDK.
+
+**New Module (`src/lib/sentry.js`):**
+
+- `initSentry()` - Initialize with environment-aware config
+- `captureError(error, context)` - Manual error capture
+- `setUser(user)` / `clearUser()` - User context management
+- `addBreadcrumb(message, category, data)` - Debug breadcrumbs
+
+**Features:**
+
+- Filters browser extension errors
+- Ignores common non-actionable errors
+- 10% trace sampling in production, 100% in development
+- Environment variables for configuration
+
+#### Navigation System Overhaul
+
+Enterprise-quality navigation with URL persistence.
+
+**New Routes:**
+
+- `/library` - Component Library (separate from homepage)
+- `*` - 404 NotFoundPage with navigation options
+
+**URL State Persistence:**
+
+- View toggle uses routes instead of useState
+- Component Library tabs synced to URL (`/library?tab=buttons`)
+- Survives browser refresh
+
+**Scroll Management:**
+
+- `useScrollToTop` hook resets scroll on route changes
+- `scroll-behavior: smooth` CSS with reduced motion support
+
+**New Components:**
+
+- `NotFoundPage.jsx` - Papercraft-styled 404 page
+- `use-scroll-to-top.js` - Scroll reset hook
+
+#### Error Boundary Component
+
+React Error Boundary with papercraft-styled fallback UI.
+
+**Features:**
+
+- `onError` callback for Sentry integration
+- `onReset` callback for recovery tracking
+- Custom fallback support (component or render function)
+- Development mode shows error details
+- "Try again" button to reset
+
+### Changed
+
+- Component Library now at dedicated `/library` route
+- ViewToggle hidden on non-main pages (pricing, preview)
+- ESLint config updated with proper ignores for build artifacts
+- All unused imports and variables cleaned up
+
+### Fixed
+
+- Refresh no longer loses view state (route-based)
+- Pages always start at top on navigation
+- Tab selection persists in URL
+- Invalid routes show 404 instead of blank page
+- HMR port mismatch resolved with explicit config
+- Suspense key prop prevents error flash on lazy load
+
+### Dependencies
+
+- Added `@sentry/react` for error tracking
+- Added `@storybook/react-vite` (v10) for documentation
+- Added `@storybook/addon-a11y` for accessibility checks
+- Added `@storybook/addon-docs` for MDX documentation
+- Added `husky` for git hooks
+- Added `lint-staged` for pre-commit linting
+
+---
+
 ## [0.3.0] - 2026-01-25
 
 ### Added
 
 #### Sticker Playground System
+
 Interactive sticker manipulation system for previewing assets before purchase.
 
 **New Components:**
+
 - `editable-sticker.jsx` - Transform wrapper with selection ring, corner scale handles, rotation handle
   - Supports mouse and touch gestures (pinch-to-zoom, two-finger rotate)
   - Min/max scale limits (0.5x to 2x)
@@ -30,14 +176,17 @@ Interactive sticker manipulation system for previewing assets before purchase.
   - Helper functions: `cloneStickerState`, `applyStickerTransform`, `deleteSticker`, `duplicateSticker`, `bringForward`, `sendBackward`
 
 **Integration:**
+
 - Updated `playground-canvas.jsx` with full sticker playground functionality
 - Selection state management
 - All toolbar actions wired up with confetti effect
 
 #### Notebook Paper Refinements
+
 High-end studio-quality notebook paper styling for FAQ section.
 
 **CSS Enhancements (`index.css`):**
+
 - Baseline grid alignment with 32px line-height (`--notebook-line-height`)
 - Subtle paper texture via SVG noise filter at 40% opacity
 - Realistic red margin line with ink bleed effect
@@ -45,15 +194,16 @@ High-end studio-quality notebook paper styling for FAQ section.
 - Dark mode support with adjusted colors
 
 **CSS Variables Added:**
+
 ```css
---notebook-line-height: 32px
---notebook-margin-left: 3.5rem
---notebook-paper-color: #FEFDFB
---notebook-line-color: oklch(0.82 0.015 240 / 0.35)
---notebook-margin-color: oklch(0.68 0.16 20 / 0.45)
+--notebook-line-height: 32px --notebook-margin-left: 3.5rem
+  --notebook-paper-color: #fefdfb
+  --notebook-line-color: oklch(0.82 0.015 240 / 0.35)
+  --notebook-margin-color: oklch(0.68 0.16 20 / 0.45);
 ```
 
 **New CSS Classes:**
+
 - `.notebook-paper` - Base ruled paper with texture
 - `.notebook-paper-holes` - 3-ring binder hole punches
 - `.notebook-accordion-item` - Grid-aligned accordion items
@@ -61,6 +211,7 @@ High-end studio-quality notebook paper styling for FAQ section.
 - `.notebook-content` - Answer text baseline alignment
 
 #### New UI Components (Magic UI Inspired)
+
 - `card-3d.jsx` - 3D perspective card effect
 - `card-stack.jsx` - Stacked card layout
 - `compare.jsx` - Before/after comparison slider
@@ -77,11 +228,13 @@ High-end studio-quality notebook paper styling for FAQ section.
 - `wavy-background.jsx` - Animated wavy background
 
 ### Changed
+
 - Updated FAQ component with React-based `NotebookHoles` component
 - Improved grid alignment for accordion items
 - Enhanced dark mode notebook paper styling
 
 ### Dependencies
+
 - Added `@use-gesture/react` (~12KB gzipped) for touch gesture support
 
 ---
@@ -89,6 +242,7 @@ High-end studio-quality notebook paper styling for FAQ section.
 ## [0.2.0] - 2026-01-24
 
 ### Added
+
 - Dedicated pricing page with React Router
 - Complete landing page with all section components
 - Component library page for design system documentation
@@ -97,6 +251,7 @@ High-end studio-quality notebook paper styling for FAQ section.
 - shadcn/ui customization guide
 
 ### Components Added
+
 - Hero section with animated stickers
 - Trust bar with logo marquee
 - Asset categories with bento grid
@@ -115,6 +270,7 @@ High-end studio-quality notebook paper styling for FAQ section.
 ## [0.1.0] - 2026-01-24
 
 ### Added
+
 - Initial project setup with React 19 + Vite 7
 - Tailwind CSS 4 with custom amber/orange theme
 - shadcn/ui component library integration
@@ -123,6 +279,7 @@ High-end studio-quality notebook paper styling for FAQ section.
 - AI-assisted development setup (CLAUDE.md)
 
 ### Design System
+
 - Warm papercraft aesthetic with amber/orange palette
 - Paper surface colors (white, cream, kraft)
 - Elevation shadow system (levels 0-3)

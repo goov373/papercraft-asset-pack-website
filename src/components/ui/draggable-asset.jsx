@@ -1,4 +1,5 @@
 import { useState, forwardRef } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, useMotionValue, useTransform, animate } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -32,13 +33,13 @@ const DraggableAsset = forwardRef(function DraggableAsset(
     () => (isDragging ? 1.08 : 1)
   )
 
-  const handleDragStart = (event, info) => {
+  const handleDragStart = () => {
     setIsDragging(true)
     setZIndex(9999)
     onDragStart?.(id, { x: x.get(), y: y.get() })
   }
 
-  const handleDragEnd = (event, info) => {
+  const handleDragEnd = () => {
     setIsDragging(false)
 
     // Settle animation - slight bounce when dropped

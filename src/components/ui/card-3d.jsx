@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -161,11 +162,12 @@ function Card3DItem({
   children,
   className,
   translateZ = 20,
-  as: Component = "div",
+  // eslint-disable-next-line no-unused-vars -- Tag is used as JSX element
+  as: Tag = "div",
   ...props
 }) {
   return (
-    <Component
+    <Tag
       className={cn(className)}
       style={{
         transform: `translateZ(${translateZ}px)`,
@@ -174,7 +176,7 @@ function Card3DItem({
       {...props}
     >
       {children}
-    </Component>
+    </Tag>
   )
 }
 

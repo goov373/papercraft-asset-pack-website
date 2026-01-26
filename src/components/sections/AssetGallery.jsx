@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { X } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { SectionHeading } from "@/components/ui/section-heading"

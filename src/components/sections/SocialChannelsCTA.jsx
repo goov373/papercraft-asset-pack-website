@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace (motion.div)
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
@@ -109,7 +110,7 @@ function PricingPage() {
                 transition={{ delay: 0.1 }}
               >
                 <div className="space-y-0">
-                  {faqItems.map((item, index) => (
+                  {faqItems.map((item) => (
                     <div
                       key={item.q}
                       className="border-t border-border/60 py-6 first:border-t-0 first:pt-0"

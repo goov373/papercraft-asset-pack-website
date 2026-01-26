@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from "react"
+import { useEffect, useId, useRef, useState, useMemo } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -28,8 +29,10 @@ import { cn } from "@/lib/utils"
 function DotPattern({
   width = 16,
   height = 16,
-  x = 0,
-  y = 0,
+  // eslint-disable-next-line no-unused-vars
+  x: _x = 0,
+  // eslint-disable-next-line no-unused-vars
+  y: _y = 0,
   cx = 1,
   cy = 1,
   cr = 1,
@@ -54,23 +57,34 @@ function DotPattern({
     return () => window.removeEventListener("resize", updateDimensions)
   }, [])
 
-  const dots = Array.from(
-    {
-      length:
-        Math.ceil(dimensions.width / width) *
-        Math.ceil(dimensions.height / height),
-    },
-    (_, i) => {
-      const col = i % Math.ceil(dimensions.width / width)
-      const row = Math.floor(i / Math.ceil(dimensions.width / width))
+  // Generate pseudo-random but stable values based on index using a simple hash
+  const getStableRandomValue = (index, seed) => {
+    const hash = ((index * 2654435761) ^ seed) >>> 0
+    return (hash % 1000) / 1000
+  }
+
+  // Memoize dots to avoid recalculating on every render
+  const dots = useMemo(() => {
+    const numCols = Math.ceil(dimensions.width / width) || 1
+    const numRows = Math.ceil(dimensions.height / height) || 1
+    const totalDots = numCols * numRows
+
+    return Array.from({ length: totalDots }, (_, i) => {
+      const col = i % numCols
+      const row = Math.floor(i / numCols)
+
+      // Use deterministic pseudo-random values based on index
+      const delay = getStableRandomValue(i, 12345) * 5
+      const duration = getStableRandomValue(i, 67890) * 3 + 2
+
       return {
         x: col * width + cx,
         y: row * height + cy,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        delay,
+        duration,
       }
-    }
-  )
+    })
+  }, [dimensions.width, dimensions.height, width, height, cx, cy])
 
   return (
     <svg

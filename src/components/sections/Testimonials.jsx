@@ -1,5 +1,4 @@
 import { useCallback } from "react"
-import { motion } from "framer-motion"
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 import { ChevronLeft, ChevronRight } from "lucide-react"

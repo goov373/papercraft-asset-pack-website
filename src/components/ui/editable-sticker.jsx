@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, forwardRef } from "react"
-import { motion, useMotionValue, useTransform, animate } from "framer-motion"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
+import { motion, useMotionValue, animate } from "framer-motion"
 import { useGesture } from "@use-gesture/react"
 import { cn } from "@/lib/utils"
 
@@ -52,7 +53,7 @@ const EditableSticker = forwardRef(function EditableSticker(
 ) {
   const containerRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [isTransforming, setIsTransforming] = useState(false)
+  const [_isTransforming, setIsTransforming] = useState(false)
   const [zIndex, setZIndex] = useState(1)
 
   // Motion values for transforms
@@ -299,7 +300,8 @@ const EditableSticker = forwardRef(function EditableSticker(
  */
 function RotationHandle({
   rotation,
-  initialRotation,
+  // eslint-disable-next-line no-unused-vars
+  initialRotation: _initialRotation,
   onRotationChange,
   onRotationEnd,
 }) {

@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 

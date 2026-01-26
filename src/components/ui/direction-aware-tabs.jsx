@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -33,9 +34,9 @@ function DirectionAwareTabsList({
   className,
   ...props
 }) {
-  const [activeTab, setActiveTab] = useState(null)
+  const [_activeTab, setActiveTab] = useState(null)
   const [indicatorStyle, setIndicatorStyle] = useState({})
-  const [direction, setDirection] = useState(0) // -1 left, 0 none, 1 right
+  const [_direction, setDirection] = useState(0) // -1 left, 0 none, 1 right
   const tabsRef = useRef(null)
   const previousIndex = useRef(-1)
 
@@ -70,9 +71,10 @@ function DirectionAwareTabsList({
       attributeFilter: ["data-state"],
     })
 
-    // Initial position
+    // Initial position - need to sync DOM measurements with React state
     const activeElement = tabsRef.current?.querySelector('[data-state="active"]')
     if (activeElement) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Initial DOM measurement sync is valid
       setIndicatorStyle({
         left: activeElement.offsetLeft,
         width: activeElement.offsetWidth,

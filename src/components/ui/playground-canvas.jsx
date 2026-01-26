@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, AnimatePresence } from "framer-motion"
 import { EditableSticker } from "@/components/ui/editable-sticker"
 import { StickerToolbar } from "@/components/ui/sticker-toolbar"

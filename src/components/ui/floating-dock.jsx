@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -65,7 +66,7 @@ function FloatingDockDesktop({ items, className }) {
         className
       )}
     >
-      {items.map((item, index) => (
+      {items.map((item) => (
         <DockIcon key={item.label} item={item} mouseX={mouseX} />
       ))}
     </motion.div>

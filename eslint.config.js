@@ -8,7 +8,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'storybook-static']),
   // Main app files
   {
     files: ['**/*.{js,jsx}'],
@@ -39,9 +39,9 @@ export default defineConfig([
       },
     },
   },
-  // UI component files that export both components and utilities (e.g., buttonVariants)
+  // Component files that export both components and utilities (e.g., buttonVariants, sectionVariants)
   {
-    files: ['src/components/ui/**/*.jsx'],
+    files: ['src/components/ui/**/*.jsx', 'src/components/pricing/**/*.jsx', 'src/components/sections/section.jsx'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },
