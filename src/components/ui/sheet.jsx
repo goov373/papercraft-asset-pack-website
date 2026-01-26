@@ -20,11 +20,19 @@ function Sheet({
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
 }
 
-function SheetTrigger({
-  ...props
-}) {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
-}
+const SheetTrigger = React.forwardRef(
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <SheetPrimitive.Trigger
+        ref={ref}
+        aria-label={ariaLabel}
+        data-slot="sheet-trigger"
+        {...props}
+      />
+    )
+  }
+)
+SheetTrigger.displayName = "SheetTrigger"
 
 function SheetClose({
   ...props
@@ -54,19 +62,16 @@ function SheetOverlay({
   );
 }
 
-function SheetContent({
-  className,
-  children,
-  side = "right",
-  showCloseButton = true,
-  ...props
-}) {
-  return (
-    <SheetPortal>
-      <SheetOverlay />
-      <SheetPrimitive.Content
-        data-slot="sheet-content"
-        className={cn(
+const SheetContent = React.forwardRef(
+  ({ className, children, side = "right", showCloseButton = true, "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <SheetPortal>
+        <SheetOverlay />
+        <SheetPrimitive.Content
+          ref={ref}
+          aria-label={ariaLabel}
+          data-slot="sheet-content"
+          className={cn(
           // Paper panel styling
           "bg-background/95 fixed z-50 flex flex-col gap-4 transition ease-in-out",
           "border-border/60",
@@ -104,8 +109,10 @@ function SheetContent({
         )}
       </SheetPrimitive.Content>
     </SheetPortal>
-  );
-}
+    )
+  }
+)
+SheetContent.displayName = "SheetContent"
 
 function SheetHeader({
   className,

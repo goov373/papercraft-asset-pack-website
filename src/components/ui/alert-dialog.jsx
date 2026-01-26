@@ -24,11 +24,19 @@ function AlertDialog({ ...props }) {
   return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />
 }
 
-function AlertDialogTrigger({
-  ...props
-}) {
-  return (<AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />);
-}
+const AlertDialogTrigger = React.forwardRef(
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <AlertDialogPrimitive.Trigger
+        ref={ref}
+        aria-label={ariaLabel}
+        data-slot="alert-dialog-trigger"
+        {...props}
+      />
+    )
+  }
+)
+AlertDialogTrigger.displayName = "AlertDialogTrigger"
 
 function AlertDialogPortal({
   ...props
@@ -54,14 +62,17 @@ function AlertDialogOverlay({ className, ...props }) {
   )
 }
 
-function AlertDialogContent({ className, size = "default", ...props }) {
-  return (
-    <AlertDialogPortal>
-      <AlertDialogOverlay />
-      <AlertDialogPrimitive.Content
-        data-slot="alert-dialog-content"
-        data-size={size}
-        className={cn(
+const AlertDialogContent = React.forwardRef(
+  ({ className, size = "default", "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <AlertDialogPortal>
+        <AlertDialogOverlay />
+        <AlertDialogPrimitive.Content
+          ref={ref}
+          aria-label={ariaLabel}
+          data-slot="alert-dialog-content"
+          data-size={size}
+          className={cn(
           // Positioning: Centered modal
           "fixed top-[50%] left-[50%] z-50 translate-x-[-50%] translate-y-[-50%]",
           // Layout
@@ -87,8 +98,10 @@ function AlertDialogContent({ className, size = "default", ...props }) {
         {...props}
       />
     </AlertDialogPortal>
-  )
-}
+    )
+  }
+)
+AlertDialogContent.displayName = "AlertDialogContent"
 
 function AlertDialogHeader({
   className,

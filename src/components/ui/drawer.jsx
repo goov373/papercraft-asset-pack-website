@@ -23,9 +23,19 @@ function Drawer({ ...props }) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />
 }
 
-function DrawerTrigger({ ...props }) {
-  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
-}
+const DrawerTrigger = React.forwardRef(
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <DrawerPrimitive.Trigger
+        ref={ref}
+        aria-label={ariaLabel}
+        data-slot="drawer-trigger"
+        {...props}
+      />
+    )
+  }
+)
+DrawerTrigger.displayName = "DrawerTrigger"
 
 function DrawerPortal({ ...props }) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
@@ -54,13 +64,16 @@ function DrawerOverlay({ className, ...props }) {
   )
 }
 
-function DrawerContent({ className, children, ...props }) {
-  return (
-    <DrawerPortal data-slot="drawer-portal">
-      <DrawerOverlay />
-      <DrawerPrimitive.Content
-        data-slot="drawer-content"
-        className={cn(
+const DrawerContent = React.forwardRef(
+  ({ className, children, "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <DrawerPortal data-slot="drawer-portal">
+        <DrawerOverlay />
+        <DrawerPrimitive.Content
+          ref={ref}
+          aria-label={ariaLabel}
+          data-slot="drawer-content"
+          className={cn(
           // Base: Sliding drawer panel
           "fixed z-50 flex h-auto flex-col",
           // Papercraft: Paper card background with elevation
@@ -115,8 +128,10 @@ function DrawerContent({ className, children, ...props }) {
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
-  )
-}
+    )
+  }
+)
+DrawerContent.displayName = "DrawerContent"
 
 function DrawerHeader({ className, ...props }) {
   return (

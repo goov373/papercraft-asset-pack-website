@@ -23,23 +23,31 @@ function Popover({ ...props }) {
   return <PopoverPrimitive.Root data-slot="popover" {...props} />
 }
 
-function PopoverTrigger({ ...props }) {
-  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />
-}
+const PopoverTrigger = React.forwardRef(
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <PopoverPrimitive.Trigger
+        ref={ref}
+        aria-label={ariaLabel}
+        data-slot="popover-trigger"
+        {...props}
+      />
+    )
+  }
+)
+PopoverTrigger.displayName = "PopoverTrigger"
 
-function PopoverContent({
-  className,
-  align = "center",
-  sideOffset = 8,
-  ...props
-}) {
-  return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
-        data-slot="popover-content"
-        align={align}
-        sideOffset={sideOffset}
-        className={cn(
+const PopoverContent = React.forwardRef(
+  ({ className, align = "center", sideOffset = 8, "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <PopoverPrimitive.Portal>
+        <PopoverPrimitive.Content
+          ref={ref}
+          aria-label={ariaLabel}
+          data-slot="popover-content"
+          align={align}
+          sideOffset={sideOffset}
+          className={cn(
           // Base: Floating paper card
           "z-50 w-72 p-4 rounded-lg outline-hidden",
           // Papercraft: Elevated paper with warm background
@@ -71,8 +79,10 @@ function PopoverContent({
         {...props}
       />
     </PopoverPrimitive.Portal>
-  )
-}
+    )
+  }
+)
+PopoverContent.displayName = "PopoverContent"
 
 function PopoverAnchor({ ...props }) {
   return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />

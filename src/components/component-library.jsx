@@ -1,29 +1,51 @@
-import { useState } from "react"
+import { lazy, Suspense } from "react"
+import { useSearchParams } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { FormControlsSection } from "@/components/component-library/form-controls-section"
-import { ActionsSection } from "@/components/component-library/actions-section"
-import { LayoutSection } from "@/components/component-library/layout-section"
-import { NavigationSection } from "@/components/component-library/navigation-section"
-import { OverlaysSection } from "@/components/component-library/overlays-section"
-import { DataDisplaySection } from "@/components/component-library/data-display-section"
-import { FeedbackSection } from "@/components/component-library/feedback-section"
-import { SpecializedInputsSection } from "@/components/component-library/specialized-inputs-section"
-import { UtilityLayoutSection } from "@/components/component-library/utility-layout-section"
+import { Skeleton } from "@/components/ui/skeleton"
+
+// Lazy load section components for better initial bundle size
+const LayoutSection = lazy(() => import("@/components/component-library/layout-section").then(m => ({ default: m.LayoutSection })))
+const NavigationSection = lazy(() => import("@/components/component-library/navigation-section").then(m => ({ default: m.NavigationSection })))
+const FormControlsSection = lazy(() => import("@/components/component-library/form-controls-section").then(m => ({ default: m.FormControlsSection })))
+const ButtonsSection = lazy(() => import("@/components/component-library/buttons-section").then(m => ({ default: m.ButtonsSection })))
+const DataDisplaySection = lazy(() => import("@/components/component-library/data-display-section").then(m => ({ default: m.DataDisplaySection })))
+const FeedbackSection = lazy(() => import("@/components/component-library/feedback-section").then(m => ({ default: m.FeedbackSection })))
+const OverlaysSection = lazy(() => import("@/components/component-library/overlays-section").then(m => ({ default: m.OverlaysSection })))
+const EffectsSection = lazy(() => import("@/components/component-library/effects-section").then(m => ({ default: m.EffectsSection })))
+
+function SectionLoader() {
+  return (
+    <div className="space-y-6">
+      <Skeleton className="h-8 w-48" />
+      <Skeleton className="h-4 w-96" />
+      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+        <div className="space-y-4">
+          <Skeleton className="h-32 w-full" />
+          <Skeleton className="h-32 w-full" />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const categories = [
-  { id: "form-controls", label: "Form Controls", component: FormControlsSection },
-  { id: "actions", label: "Actions & Feedback", component: ActionsSection },
-  { id: "feedback", label: "Feedback", component: FeedbackSection },
   { id: "layout", label: "Layout", component: LayoutSection },
   { id: "navigation", label: "Navigation", component: NavigationSection },
-  { id: "overlays", label: "Overlays", component: OverlaysSection },
+  { id: "forms", label: "Forms", component: FormControlsSection },
+  { id: "buttons", label: "Buttons", component: ButtonsSection },
   { id: "data-display", label: "Data Display", component: DataDisplaySection },
-  { id: "specialized-inputs", label: "Specialized Inputs", component: SpecializedInputsSection },
-  { id: "utility-layout", label: "Utility & Layout", component: UtilityLayoutSection },
+  { id: "feedback", label: "Feedback", component: FeedbackSection },
+  { id: "overlays", label: "Overlays", component: OverlaysSection },
+  { id: "effects", label: "Effects", component: EffectsSection },
 ]
 
 function ComponentLibrary() {
-  const [activeCategory, setActiveCategory] = useState("form-controls")
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeCategory = searchParams.get('tab') || 'layout'
+
+  const setActiveCategory = (id) => {
+    setSearchParams({ tab: id }, { replace: true })
+  }
 
   const ActiveSection = categories.find(c => c.id === activeCategory)?.component
 
@@ -53,7 +75,9 @@ function ComponentLibrary() {
         </nav>
 
         <main className="pb-24">
-          {ActiveSection && <ActiveSection />}
+          <Suspense fallback={<SectionLoader />} key={activeCategory}>
+            {ActiveSection && <ActiveSection />}
+          </Suspense>
         </main>
       </div>
     </div>

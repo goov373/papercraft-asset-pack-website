@@ -4,14 +4,14 @@ import { CheckIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-function Checkbox({
-  className,
-  ...props
-}) {
-  return (
-    <CheckboxPrimitive.Root
-      data-slot="checkbox"
-      className={cn(
+const Checkbox = React.forwardRef(
+  ({ className, "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <CheckboxPrimitive.Root
+        ref={ref}
+        data-slot="checkbox"
+        aria-label={ariaLabel}
+        className={cn(
         // Base styles
         "peer size-4 shrink-0 rounded-[4px] border",
         // Papercraft: Inset shadow like a punched hole in paper
@@ -42,7 +42,9 @@ function Checkbox({
         <CheckIcon className="size-3.5" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-  );
-}
+  )
+  }
+)
+Checkbox.displayName = "Checkbox"
 
 export { Checkbox }

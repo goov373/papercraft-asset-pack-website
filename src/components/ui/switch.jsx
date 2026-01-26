@@ -9,16 +9,15 @@ import { cn } from "@/lib/utils"
  * A paper slider that moves within a track, like a paper tab
  * sliding through a slot cut in cardstock.
  */
-function Switch({
-  className,
-  size = "default",
-  ...props
-}) {
-  return (
-    <SwitchPrimitive.Root
-      data-slot="switch"
-      data-size={size}
-      className={cn(
+const Switch = React.forwardRef(
+  ({ className, size = "default", "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <SwitchPrimitive.Root
+        ref={ref}
+        data-slot="switch"
+        data-size={size}
+        aria-label={ariaLabel}
+        className={cn(
         // Base: Paper track with inset groove
         "peer group/switch inline-flex shrink-0 items-center",
         "rounded-full border border-border",
@@ -74,6 +73,8 @@ function Switch({
       />
     </SwitchPrimitive.Root>
   )
-}
+  }
+)
+Switch.displayName = "Switch"
 
 export { Switch }

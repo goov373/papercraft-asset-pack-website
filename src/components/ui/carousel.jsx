@@ -26,16 +26,9 @@ function useCarousel() {
   return context
 }
 
-function Carousel({
-  orientation = "horizontal",
-  opts,
-  setApi,
-  plugins,
-  className,
-  children,
-  ...props
-}) {
-  const [carouselRef, api] = useEmblaCarousel({
+const Carousel = React.forwardRef(
+  ({ orientation = "horizontal", opts, setApi, plugins, className, children, "aria-label": ariaLabel, ...props }, ref) => {
+    const [carouselRef, api] = useEmblaCarousel({
     ...opts,
     axis: orientation === "horizontal" ? "x" : "y",
   }, plugins)
@@ -96,17 +89,21 @@ function Carousel({
         canScrollNext,
       }}>
       <div
+        ref={ref}
         onKeyDownCapture={handleKeyDown}
         className={cn("relative", className)}
         role="region"
         aria-roledescription="carousel"
+        aria-label={ariaLabel}
         data-slot="carousel"
         {...props}>
         {children}
       </div>
     </CarouselContext.Provider>
-  );
-}
+    )
+  }
+)
+Carousel.displayName = "Carousel"
 
 function CarouselContent({
   className,

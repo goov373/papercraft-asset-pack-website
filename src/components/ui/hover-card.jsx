@@ -21,23 +21,31 @@ function HoverCard({ ...props }) {
   return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />
 }
 
-function HoverCardTrigger({ ...props }) {
-  return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
-}
+const HoverCardTrigger = React.forwardRef(
+  ({ "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <HoverCardPrimitive.Trigger
+        ref={ref}
+        aria-label={ariaLabel}
+        data-slot="hover-card-trigger"
+        {...props}
+      />
+    )
+  }
+)
+HoverCardTrigger.displayName = "HoverCardTrigger"
 
-function HoverCardContent({
-  className,
-  align = "center",
-  sideOffset = 8,
-  ...props
-}) {
-  return (
-    <HoverCardPrimitive.Portal data-slot="hover-card-portal">
-      <HoverCardPrimitive.Content
-        data-slot="hover-card-content"
-        align={align}
-        sideOffset={sideOffset}
-        className={cn(
+const HoverCardContent = React.forwardRef(
+  ({ className, align = "center", sideOffset = 8, "aria-label": ariaLabel, ...props }, ref) => {
+    return (
+      <HoverCardPrimitive.Portal data-slot="hover-card-portal">
+        <HoverCardPrimitive.Content
+          ref={ref}
+          aria-label={ariaLabel}
+          data-slot="hover-card-content"
+          align={align}
+          sideOffset={sideOffset}
+          className={cn(
           // Base: Floating preview card
           "z-50 w-64 rounded-lg p-4 outline-hidden",
           // Papercraft: Elevated paper card
@@ -69,7 +77,9 @@ function HoverCardContent({
         {...props}
       />
     </HoverCardPrimitive.Portal>
-  )
-}
+    )
+  }
+)
+HoverCardContent.displayName = "HoverCardContent"
 
 export { HoverCard, HoverCardTrigger, HoverCardContent }
