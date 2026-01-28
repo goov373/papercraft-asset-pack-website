@@ -68,14 +68,13 @@ function StickyCart() {
             className={cn(
               "w-80 max-h-[70vh] flex flex-col",
               "rounded-xl overflow-hidden",
-              "bg-[var(--paper-kraft)] text-amber-950",
-              "border border-amber-300/40",
-              "[box-shadow:var(--paper-elevation-3)]",
-              "dark:bg-amber-900/90 dark:text-amber-100 dark:border-amber-700/40"
+              "bg-card text-card-foreground",
+              "border border-border",
+              "[box-shadow:var(--paper-elevation-3)]"
             )}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-amber-300/40">
+            <div className="flex items-center justify-between p-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <ShoppingCart className="size-5" />
                 <span className="font-semibold">Your Cart</span>
@@ -85,7 +84,7 @@ function StickyCart() {
               </div>
               <button
                 onClick={() => setExpanded(false)}
-                className="p-1.5 rounded-lg hover:bg-amber-200/50 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-accent/50 transition-colors"
                 aria-label="Close cart"
               >
                 <X className="size-5" />
@@ -96,7 +95,7 @@ function StickyCart() {
             {!meetsMinimum && (
               <div
                 role="alert"
-                className="flex items-center gap-2 px-4 py-2 bg-amber-200/60 text-amber-900 text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-accent/60 text-accent-foreground text-sm"
               >
                 <AlertCircle className="size-4 shrink-0" />
                 <span>Add {formatPrice(amountToMinimum)} more to checkout</span>
@@ -109,7 +108,7 @@ function StickyCart() {
                 {selectedItemsList.slice(0, 20).map((asset) => (
                   <div
                     key={asset.id}
-                    className="flex items-center gap-3 p-2 rounded-lg bg-amber-100/40"
+                    className="flex items-center gap-3 p-2 rounded-lg bg-muted/40"
                   >
                     <span className="text-xl" aria-hidden="true">
                       {asset.emoji}
@@ -117,7 +116,7 @@ function StickyCart() {
                     <span className="flex-1 text-sm truncate">{asset.name}</span>
                     <button
                       onClick={() => toggleItem(asset.id)}
-                      className="p-1 rounded hover:bg-amber-200/60 text-amber-700"
+                      className="p-1 rounded hover:bg-accent/60 text-muted-foreground"
                       aria-label={`Remove ${asset.name}`}
                     >
                       <Trash2 className="size-4" />
@@ -125,7 +124,7 @@ function StickyCart() {
                   </div>
                 ))}
                 {selectedItemsList.length > 20 && (
-                  <p className="text-sm text-center text-amber-700 py-2">
+                  <p className="text-sm text-center text-muted-foreground py-2">
                     +{selectedItemsList.length - 20} more items
                   </p>
                 )}
@@ -133,7 +132,7 @@ function StickyCart() {
             </ScrollArea>
 
             {/* Footer with totals */}
-            <div className="p-4 border-t border-amber-300/40 space-y-3">
+            <div className="p-4 border-t border-border space-y-3">
               {/* Price breakdown */}
               <div className="flex justify-between text-sm">
                 <span>Subtotal ({itemCount} items)</span>
@@ -144,7 +143,7 @@ function StickyCart() {
               {itemCount < 150 && (
                 <button
                   onClick={selectAll}
-                  className="w-full text-xs text-center text-amber-700 hover:text-amber-900 underline"
+                  className="w-full text-xs text-center text-muted-foreground hover:text-foreground underline"
                 >
                   Get all 150 for {formatPrice(TOTAL_PRICE)} (save {formatPrice(150 * 0.26 - TOTAL_PRICE)})
                 </button>
@@ -197,7 +196,7 @@ function StickyCart() {
               className={cn(
                 "absolute -top-1 -right-1 min-w-[1.5rem] h-6",
                 "flex items-center justify-center",
-                !meetsMinimum && "bg-amber-500"
+                !meetsMinimum && "bg-destructive"
               )}
             >
               {itemCount}
@@ -209,7 +208,7 @@ function StickyCart() {
                 "absolute -bottom-1 left-1/2 -translate-x-1/2",
                 "px-2 py-0.5 rounded-full",
                 "text-xs font-semibold",
-                "bg-white text-foreground",
+                "bg-card text-card-foreground",
                 "[box-shadow:var(--paper-elevation-1)]"
               )}
             >

@@ -84,10 +84,9 @@ const StickerToolbar = forwardRef(function StickerToolbar(
           className={cn(
             "absolute z-[200] flex items-center gap-1 p-1.5",
             "rounded-xl",
-            "bg-[var(--paper-cream,#FFFBF5)]",
-            "border border-amber-200/60",
+            "bg-card",
+            "border border-border",
             "[box-shadow:var(--paper-elevation-2)]",
-            "dark:bg-amber-950 dark:border-amber-800/40",
             className
           )}
           style={{
@@ -192,10 +191,8 @@ function ToolbarButton({
         // Default variant
         variant === "default" && [
           "text-muted-foreground hover:text-foreground",
-          "hover:bg-amber-100",
-          "active:bg-amber-200",
-          "dark:hover:text-foreground",
-          "dark:hover:bg-amber-800/50",
+          "hover:bg-accent",
+          "active:bg-accent",
         ],
         // Danger variant (delete)
         variant === "danger" && [
@@ -215,8 +212,7 @@ function ToolbarButton({
         ],
         // Active state (shadow toggle)
         active && [
-          "bg-amber-200 text-foreground",
-          "dark:bg-amber-700 dark:text-foreground",
+          "bg-accent text-accent-foreground",
         ],
         // Disabled state
         disabled && "opacity-50 pointer-events-none"
@@ -234,7 +230,7 @@ function ToolbarButton({
  */
 function ToolbarDivider() {
   return (
-    <div className="w-px h-6 bg-amber-200/60 dark:bg-amber-700/40 mx-0.5" />
+    <div className="w-px h-6 bg-border mx-0.5" />
   )
 }
 

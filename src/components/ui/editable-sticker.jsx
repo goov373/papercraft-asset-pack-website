@@ -196,8 +196,8 @@ const EditableSticker = forwardRef(function EditableSticker(
         <div
           className={cn(
             "absolute -inset-2 rounded-lg pointer-events-none",
-            "border-2 border-dashed border-amber-500/70",
-            "bg-amber-500/5"
+            "border-2 border-dashed border-primary/70",
+            "bg-primary/5"
           )}
         />
       )}
@@ -371,7 +371,7 @@ function RotationHandle({
       <div
         className={cn(
           "absolute left-1/2 -translate-x-1/2 w-px h-6 -top-8",
-          "bg-amber-500/50"
+          "bg-primary/50"
         )}
       />
 
@@ -382,13 +382,13 @@ function RotationHandle({
         className={cn(
           "absolute left-1/2 -translate-x-1/2 -top-12",
           "w-6 h-6 rounded-full",
-          "bg-white border-2 border-amber-500",
+          "bg-card border-2 border-primary",
           "cursor-grab touch-none",
           "[box-shadow:var(--paper-elevation-2)]",
           "flex items-center justify-center",
-          "hover:bg-amber-50 hover:scale-110",
+          "hover:bg-accent hover:scale-110",
           "transition-transform duration-150",
-          isRotating && "cursor-grabbing bg-amber-100 scale-110"
+          isRotating && "cursor-grabbing bg-accent scale-110"
         )}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -403,7 +403,7 @@ function RotationHandle({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-amber-600"
+          className="text-primary"
         >
           <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
           <path d="M21 3v5h-5" />
@@ -502,13 +502,13 @@ function ScaleHandle({
       {...bind()}
       className={cn(
         "absolute w-5 h-5 rounded-sm",
-        "bg-white border-2 border-amber-500",
+        "bg-card border-2 border-primary",
         "touch-none",
         "[box-shadow:var(--paper-elevation-1)]",
-        "hover:bg-amber-50 hover:scale-110",
+        "hover:bg-accent hover:scale-110",
         "transition-transform duration-150",
         positionClasses[position],
-        isScaling && "bg-amber-100 scale-110"
+        isScaling && "bg-accent scale-110"
       )}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}

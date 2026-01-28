@@ -304,7 +304,7 @@ function PlaygroundCanvas({
         onClick={handleCanvasClick}
         className={cn(
           "relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-xl overflow-hidden",
-          "border-4 border-amber-900/30",
+          "border-4 border-primary/30",
           "[box-shadow:var(--paper-elevation-2),inset_0_2px_8px_rgba(0,0,0,0.2)]",
           getCanvasBackground()
         )}
@@ -392,7 +392,7 @@ function PlaygroundCanvas({
 
         {/* Empty state hint */}
         {stickers.length === 0 && (
-          <div className="absolute inset-0 flex items-center justify-center text-amber-200/60 pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/60 pointer-events-none">
             <p className="text-sm font-medium">Drag assets here to create your collage</p>
           </div>
         )}
