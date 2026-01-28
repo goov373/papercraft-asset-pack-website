@@ -117,11 +117,13 @@ html {
 
   /* ========================================
      TYPOGRAPHY TOKENS
-     Font families, sizes, and line heights
+     Font families, sizes, weights, and line heights
      ======================================== */
   --font-family-heading:
     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-weight-heading: 600;
+  --font-weight-body: 400;
   --font-size-base: 16px;
   --type-scale-ratio: 1.2;
   --line-height-heading: 1.3;
@@ -350,7 +352,7 @@ html {
     line-height: var(--line-height-body);
   }
 
-  /* Headings use heading font family */
+  /* Headings use heading font family and weight */
   h1,
   h2,
   h3,
@@ -360,8 +362,25 @@ html {
     font-family: var(--font-family-heading);
     line-height: var(--line-height-heading);
   }
+}
 
-  /* Body elements use body font family */
+/*
+ * Theme-controlled heading weight
+ * Uses higher specificity to override Tailwind's font-weight utilities
+ * when theme-controlled heading weights are desired.
+ * Placed outside @layer base so it has higher specificity than utilities.
+ */
+:root h1,
+:root h2,
+:root h3,
+:root h4,
+:root h5,
+:root h6 {
+  font-weight: var(--font-weight-heading);
+}
+
+@layer base {
+  /* Body elements use body font family and weight */
   p,
   li,
   td,
@@ -369,6 +388,7 @@ html {
   label,
   blockquote {
     font-family: var(--font-family-body);
+    font-weight: var(--font-weight-body);
     line-height: var(--line-height-body);
   }
 }

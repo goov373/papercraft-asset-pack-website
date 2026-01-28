@@ -15,6 +15,8 @@ export const DEFAULT_THEME = {
   // Typography
   fontHeading: "system-ui",
   fontBody: "system-ui",
+  fontWeightHeading: 600,
+  fontWeightBody: 400,
   typeScale: "default",
   lineHeightPreset: "normal",
 }
@@ -25,6 +27,8 @@ export const DEFAULT_THEME = {
 export const DEFAULT_TYPOGRAPHY = {
   fontHeading: "system-ui",
   fontBody: "system-ui",
+  fontWeightHeading: 600,
+  fontWeightBody: 400,
   typeScale: "default",
   lineHeightPreset: "normal",
 }
@@ -122,6 +126,8 @@ export function applyTypographyToDOM(themeState) {
   const {
     fontHeading = "system-ui",
     fontBody = "system-ui",
+    fontWeightHeading = 600,
+    fontWeightBody = 400,
     typeScale = "default",
     lineHeightPreset = "normal",
   } = themeState
@@ -143,6 +149,8 @@ export function applyTypographyToDOM(themeState) {
   // Apply CSS custom properties
   setCSSVariable("--font-family-heading", headingFamily)
   setCSSVariable("--font-family-body", bodyFamily)
+  setCSSVariable("--font-weight-heading", fontWeightHeading)
+  setCSSVariable("--font-weight-body", fontWeightBody)
   setCSSVariable("--font-size-base", `${scale.baseFontSize}px`)
   setCSSVariable("--type-scale-ratio", scale.ratio)
   setCSSVariable("--line-height-heading", lineHeights.heading)
@@ -220,6 +228,8 @@ export function exportTypographyAsCSS(themeState) {
   const {
     fontHeading = "system-ui",
     fontBody = "system-ui",
+    fontWeightHeading = 600,
+    fontWeightBody = 400,
     typeScale = "default",
     lineHeightPreset = "normal",
   } = themeState
@@ -244,6 +254,8 @@ export function exportTypographyAsCSS(themeState) {
   /* Typography */
   --font-family-heading: ${headingFamily};
   --font-family-body: ${bodyFamily};
+  --font-weight-heading: ${fontWeightHeading};
+  --font-weight-body: ${fontWeightBody};
   --font-size-base: ${base}px;
   --type-scale-ratio: ${ratio};
   --line-height-heading: ${lineHeights.heading};

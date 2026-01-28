@@ -1,4 +1,5 @@
 export { FontSelector } from "./font-selector"
+export { FontWeightSelector } from "./font-weight-selector"
 export { TypeScaleSelector } from "./type-scale-selector"
 export { LineHeightControl } from "./line-height-control"
 export { TypographyPreview } from "./typography-preview"

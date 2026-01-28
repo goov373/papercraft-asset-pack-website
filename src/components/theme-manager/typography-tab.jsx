@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { RotateCcwIcon } from "lucide-react"
 import {
   FontSelector,
+  FontWeightSelector,
   TypeScaleSelector,
   LineHeightControl,
   TypographyPreview,
@@ -25,6 +26,8 @@ export function TypographyTab() {
   const {
     fontHeading = "system-ui",
     fontBody = "system-ui",
+    fontWeightHeading = 600,
+    fontWeightBody = 400,
     typeScale = "default",
     lineHeightPreset = "normal",
   } = themeState
@@ -32,6 +35,8 @@ export function TypographyTab() {
   const handleReset = () => {
     setToken("fontHeading", DEFAULT_TYPOGRAPHY.fontHeading)
     setToken("fontBody", DEFAULT_TYPOGRAPHY.fontBody)
+    setToken("fontWeightHeading", DEFAULT_TYPOGRAPHY.fontWeightHeading)
+    setToken("fontWeightBody", DEFAULT_TYPOGRAPHY.fontWeightBody)
     setToken("typeScale", DEFAULT_TYPOGRAPHY.typeScale)
     setToken("lineHeightPreset", DEFAULT_TYPOGRAPHY.lineHeightPreset)
   }
@@ -39,6 +44,8 @@ export function TypographyTab() {
   const hasChanges =
     fontHeading !== DEFAULT_TYPOGRAPHY.fontHeading ||
     fontBody !== DEFAULT_TYPOGRAPHY.fontBody ||
+    fontWeightHeading !== DEFAULT_TYPOGRAPHY.fontWeightHeading ||
+    fontWeightBody !== DEFAULT_TYPOGRAPHY.fontWeightBody ||
     typeScale !== DEFAULT_TYPOGRAPHY.typeScale ||
     lineHeightPreset !== DEFAULT_TYPOGRAPHY.lineHeightPreset
 
@@ -48,6 +55,8 @@ export function TypographyTab() {
       <TypographyPreview
         fontHeading={fontHeading}
         fontBody={fontBody}
+        fontWeightHeading={fontWeightHeading}
+        fontWeightBody={fontWeightBody}
         typeScale={typeScale}
         lineHeightPreset={lineHeightPreset}
       />
@@ -67,6 +76,25 @@ export function TypographyTab() {
             value={fontBody}
             onChange={(value) => setToken("fontBody", value)}
             recommendedFor="body"
+          />
+        </div>
+      </div>
+
+      {/* Font Weights */}
+      <div className="space-y-4">
+        <h3 className="text-sm font-semibold text-foreground">Font Weights</h3>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <FontWeightSelector
+            label="Heading Weight"
+            value={fontWeightHeading}
+            onChange={(value) => setToken("fontWeightHeading", value)}
+            fontId={fontHeading}
+          />
+          <FontWeightSelector
+            label="Body Weight"
+            value={fontWeightBody}
+            onChange={(value) => setToken("fontWeightBody", value)}
+            fontId={fontBody}
           />
         </div>
       </div>

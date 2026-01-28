@@ -2,6 +2,52 @@
 
 All notable changes to the Papercraft Asset Pack Website.
 
+## [Unreleased]
+
+### Added
+
+#### Font Weight Controls
+
+Added font weight selection to the Typography tab in Theme Manager.
+
+**New Files:**
+
+- `src/components/theme-manager/controls/font-weight-selector.jsx` - Weight selector component with font-aware available weights
+
+**Features:**
+
+- **Heading Weight**: Select weight for h1-h6 elements (shows only weights available in selected heading font)
+- **Body Weight**: Select weight for paragraphs, lists, and body text
+- **Smart Weight Fallback**: When switching fonts, automatically selects the closest available weight
+- **Weight Labels**: Human-readable weight names (Regular, Medium, Semi Bold, Bold, etc.)
+- **Live Preview**: Weight changes visible immediately in the typography preview
+
+**Updated Files:**
+
+- `src/lib/theme-utils.js` - Added `fontWeightHeading` and `fontWeightBody` to DEFAULT_THEME/DEFAULT_TYPOGRAPHY
+- `src/index.css` - Added `--font-weight-heading` and `--font-weight-body` CSS variables with base styles
+- `src/components/theme-manager/typography-tab.jsx` - Integrated FontWeightSelector controls
+- `src/components/theme-manager/controls/typography-preview.jsx` - Preview now shows font weights
+- `src/components/theme-manager/controls/index.js` - Added FontWeightSelector export
+
+**CSS Custom Properties:**
+
+```css
+--font-weight-heading: 600; /* Default heading weight */
+--font-weight-body: 400; /* Default body weight */
+```
+
+**Theme State Shape Update:**
+
+```javascript
+{
+  fontWeightHeading: 600,  // 100-900
+  fontWeightBody: 400,     // 100-900
+}
+```
+
+---
+
 ## [0.7.0] - 2026-01-28
 
 ### Added

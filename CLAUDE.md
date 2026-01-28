@@ -105,6 +105,7 @@ const { themeState, setDarkMode, setToken } = useTheme();
 setDarkMode(true); // Enable dark mode
 setToken("radius", 0.5); // Set border radius
 setToken("fontHeading", "playfair-display"); // Set heading font
+setToken("fontWeightHeading", 700); // Set heading weight
 setToken("typeScale", "spacious"); // Set type scale
 ```
 
@@ -113,6 +114,7 @@ setToken("typeScale", "spacious"); // Set type scale
 Font customization with 13 curated Google Fonts:
 
 - **Fonts**: System default + 4 handwritten + 4 serifs + 2 display + 2 sans-serif
+- **Font Weights**: Selectable per heading and body (only available weights shown)
 - **Type Scale**: Compact (1.125), Default (1.2), Spacious (1.25)
 - **Line Height**: Tight, Normal, Relaxed presets
 - **Live Preview**: Real-time preview in Theme Manager modal
@@ -124,6 +126,10 @@ import { loadGoogleFont, getFontFamily } from "@/lib/theme-utils";
 
 loadGoogleFont("playfair-display"); // Load font dynamically
 const family = getFontFamily("lora"); // Get CSS font-family string
+
+// Set font weights
+setToken("fontWeightHeading", 700); // Bold headings
+setToken("fontWeightBody", 400); // Regular body text
 ```
 
 ### Sticker Playground
@@ -265,6 +271,8 @@ Component documentation at `npm run storybook`:
 ```css
 --font-family-heading  /* Heading font stack */
 --font-family-body     /* Body font stack */
+--font-weight-heading  /* Heading weight (600 default) */
+--font-weight-body     /* Body weight (400 default) */
 --font-size-base       /* Base font size (16px default) */
 --type-scale-ratio     /* Scale ratio (1.2 default) */
 --font-size-xs/sm/lg/xl/2xl/3xl/4xl  /* Computed sizes */

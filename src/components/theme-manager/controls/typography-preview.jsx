@@ -5,11 +5,13 @@ import { getFontFamily } from "@/lib/theme-utils"
  * Typography Preview
  *
  * Live preview of typography settings showing heading and body text
- * with the selected fonts, scale, and line heights.
+ * with the selected fonts, weights, scale, and line heights.
  */
 export function TypographyPreview({
   fontHeading,
   fontBody,
+  fontWeightHeading = 600,
+  fontWeightBody = 400,
   typeScale,
   lineHeightPreset,
 }) {
@@ -49,9 +51,10 @@ export function TypographyPreview({
         style={{
           fontFamily: headingFamily,
           fontSize: `${h1Size}px`,
+          fontWeight: fontWeightHeading,
           lineHeight: lineHeights.heading,
         }}
-        className="font-bold text-foreground transition-all duration-200"
+        className="text-foreground transition-all duration-200"
       >
         Papercraft
       </div>
@@ -61,9 +64,10 @@ export function TypographyPreview({
         style={{
           fontFamily: headingFamily,
           fontSize: `${h2Size}px`,
+          fontWeight: fontWeightHeading,
           lineHeight: lineHeights.heading,
         }}
-        className="font-semibold text-foreground/90 transition-all duration-200"
+        className="text-foreground/90 transition-all duration-200"
       >
         Beautiful Asset Packs
       </div>
@@ -73,6 +77,7 @@ export function TypographyPreview({
         style={{
           fontFamily: bodyFamily,
           fontSize: `${bodySize}px`,
+          fontWeight: fontWeightBody,
           lineHeight: lineHeights.body,
         }}
         className="text-muted-foreground transition-all duration-200"
@@ -86,6 +91,7 @@ export function TypographyPreview({
         style={{
           fontFamily: bodyFamily,
           fontSize: `${smallSize}px`,
+          fontWeight: fontWeightBody,
           lineHeight: lineHeights.body,
         }}
         className="text-muted-foreground/80 transition-all duration-200"
@@ -96,10 +102,12 @@ export function TypographyPreview({
       {/* Font info */}
       <div className="pt-2 border-t flex justify-between text-[10px] text-muted-foreground">
         <span>
-          Headings: <strong>{headingFont.name}</strong>
+          Headings: <strong>{headingFont.name}</strong>{" "}
+          <span className="opacity-70">({fontWeightHeading})</span>
         </span>
         <span>
-          Body: <strong>{bodyFont.name}</strong>
+          Body: <strong>{bodyFont.name}</strong>{" "}
+          <span className="opacity-70">({fontWeightBody})</span>
         </span>
       </div>
     </div>
