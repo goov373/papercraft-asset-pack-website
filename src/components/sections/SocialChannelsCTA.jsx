@@ -1,4 +1,7 @@
 import { useState } from "react"
+ 
+// eslint-disable-next-line no-unused-vars -- motion is used as JSX namespace
+import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"

@@ -10,50 +10,42 @@
 
 ```css
 /* Primary Palette */
---primary: oklch(0.666 0.179 58.318)        /* amber-600 - buttons, links, accents */
---primary-foreground: oklch(1 0 0)          /* white - text on primary */
-
-/* Background & Foreground */
---background: oklch(0.987 0.022 95.277)     /* amber-50 - page background */
---foreground: oklch(0.414 0.112 45.904)     /* amber-900 - primary text */
-
-/* Secondary */
---secondary: oklch(0.962 0.059 95.617)      /* amber-100 - subtle backgrounds */
---secondary-foreground: oklch(0.476 0.114 52.304)  /* amber-800 */
-
-/* Muted */
---muted: oklch(0.943 0.051 95.386)          /* light amber - disabled states */
---muted-foreground: oklch(0.666 0.088 57.249)  /* amber-500 - secondary text */
-
-/* Accent */
---accent: oklch(0.705 0.191 47.604)         /* orange-500 - highlights, CTAs */
---accent-foreground: oklch(1 0 0)           /* white */
-
-/* Borders */
---border: oklch(0.905 0.093 95.136)         /* amber-200 - dividers, card borders */
+--primary: oklch(0.666 0.179 58.318) /* amber-600 - buttons, links, accents */
+  --primary-foreground: oklch(1 0 0) /* white - text on primary */
+  /* Background & Foreground */ --background: oklch(0.987 0.022 95.277)
+  /* amber-50 - page background */ --foreground: oklch(0.414 0.112 45.904)
+  /* amber-900 - primary text */ /* Secondary */
+  --secondary: oklch(0.962 0.059 95.617) /* amber-100 - subtle backgrounds */
+  --secondary-foreground: oklch(0.476 0.114 52.304) /* amber-800 */ /* Muted */
+  --muted: oklch(0.943 0.051 95.386) /* light amber - disabled states */
+  --muted-foreground: oklch(0.666 0.088 57.249) /* amber-500 - secondary text */
+  /* Accent */ --accent: oklch(0.705 0.191 47.604)
+  /* orange-500 - highlights, CTAs */ --accent-foreground: oklch(1 0 0)
+  /* white */ /* Borders */ --border: oklch(0.905 0.093 95.136)
+  /* amber-200 - dividers, card borders */;
 ```
 
 ### 1.2 Paper Surface Colors
 
 ```css
---paper-white: oklch(0.98 0.01 90)          /* off-white paper */
---paper-cream: oklch(0.96 0.02 85)          /* cream/ivory paper */
---paper-kraft: oklch(0.75 0.08 70)          /* brown kraft paper */
+--paper-white: oklch(0.98 0.01 90) /* off-white paper */
+  --paper-cream: oklch(0.96 0.02 85) /* cream/ivory paper */
+  --paper-kraft: oklch(0.75 0.08 70) /* brown kraft paper */;
 ```
 
 ### 1.3 Tailwind Color Usage Patterns
 
-| Purpose | Class Pattern | Example |
-|---------|---------------|---------|
-| Headings | `text-amber-900` | Main headings |
-| Body text | `text-amber-800/80` | Paragraph text |
-| Secondary text | `text-muted-foreground` | Descriptions, captions |
-| Micro-labels | `text-amber-700` | Section labels |
-| Subtle text | `text-amber-600/60` | Dividers, hints |
-| Backgrounds | `bg-background` | Page sections |
-| Cards | `bg-[var(--paper-cream)]` | Pricing cards |
-| Dark sections | `bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900` | CTA sections |
-| Borders | `border-amber-200/60` | Subtle dividers |
+| Purpose        | Class Pattern                                                 | Example                |
+| -------------- | ------------------------------------------------------------- | ---------------------- |
+| Headings       | `text-amber-900`                                              | Main headings          |
+| Body text      | `text-amber-800/80`                                           | Paragraph text         |
+| Secondary text | `text-muted-foreground`                                       | Descriptions, captions |
+| Micro-labels   | `text-amber-700`                                              | Section labels         |
+| Subtle text    | `text-amber-600/60`                                           | Dividers, hints        |
+| Backgrounds    | `bg-background`                                               | Page sections          |
+| Cards          | `bg-[var(--paper-cream)]`                                     | Pricing cards          |
+| Dark sections  | `bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900` | CTA sections           |
+| Borders        | `border-amber-200/60`                                         | Subtle dividers        |
 
 ---
 
@@ -62,32 +54,36 @@
 ### 2.1 Font Stack
 
 ```css
-font-family: system-ui, -apple-system, sans-serif  /* Default */
+font-family:
+  system-ui,
+  -apple-system,
+  sans-serif; /* Default */
 ```
 
 ### 2.2 Heading Scale
 
-| Level | Classes | Usage |
-|-------|---------|-------|
+| Level   | Classes                                      | Usage                              |
+| ------- | -------------------------------------------- | ---------------------------------- |
 | Display | `text-7xl sm:text-8xl lg:text-9xl font-bold` | Large price displays, hero numbers |
-| H1 | `text-4xl sm:text-5xl lg:text-6xl font-bold` | Page titles, hero headlines |
-| H2 | `text-3xl sm:text-4xl font-bold` | Section titles |
-| H3 | `text-2xl sm:text-3xl font-bold` | Subsection titles |
-| H4 | `text-xl font-semibold` | Card titles, list headers |
-| H5 | `text-lg font-medium` | Minor headings |
+| H1      | `text-4xl sm:text-5xl lg:text-6xl font-bold` | Page titles, hero headlines        |
+| H2      | `text-3xl sm:text-4xl font-bold`             | Section titles                     |
+| H3      | `text-2xl sm:text-3xl font-bold`             | Subsection titles                  |
+| H4      | `text-xl font-semibold`                      | Card titles, list headers          |
+| H5      | `text-lg font-medium`                        | Minor headings                     |
 
 ### 2.3 Body Text Scale
 
-| Type | Classes | Usage |
-|------|---------|-------|
-| Large body | `text-lg text-muted-foreground` | Hero descriptions |
-| Body | `text-base text-amber-800/80` | Paragraph text |
-| Small | `text-sm text-muted-foreground` | Captions, metadata |
-| Micro | `text-xs text-muted-foreground` | Trust badges, fine print |
+| Type       | Classes                         | Usage                    |
+| ---------- | ------------------------------- | ------------------------ |
+| Large body | `text-lg text-muted-foreground` | Hero descriptions        |
+| Body       | `text-base text-amber-800/80`   | Paragraph text           |
+| Small      | `text-sm text-muted-foreground` | Captions, metadata       |
+| Micro      | `text-xs text-muted-foreground` | Trust badges, fine print |
 
 ### 2.4 Special Typography Patterns
 
 **Micro-labels (Section markers)**:
+
 ```jsx
 <h3 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4">
   Section Label
@@ -95,6 +91,7 @@ font-family: system-ui, -apple-system, sans-serif  /* Default */
 ```
 
 **Large decorative text (Visual anchors)**:
+
 ```jsx
 <span className="text-6xl sm:text-7xl lg:text-8xl font-bold text-amber-200/50 select-none leading-none">
   Create
@@ -102,6 +99,7 @@ font-family: system-ui, -apple-system, sans-serif  /* Default */
 ```
 
 **Price display**:
+
 ```jsx
 <span className="text-7xl sm:text-8xl lg:text-9xl font-bold text-amber-900 leading-none">
   $39
@@ -114,29 +112,31 @@ font-family: system-ui, -apple-system, sans-serif  /* Default */
 
 ### 3.1 Section Padding
 
-| Type | Classes | Usage |
-|------|---------|-------|
+| Type             | Classes          | Usage                 |
+| ---------------- | ---------------- | --------------------- |
 | Standard section | `py-16 md:py-24` | Most content sections |
-| Large section | `py-20 md:py-32` | Hero, major CTAs |
-| Compact section | `py-12 md:py-20` | Secondary sections |
+| Large section    | `py-20 md:py-32` | Hero, major CTAs      |
+| Compact section  | `py-12 md:py-20` | Secondary sections    |
 
 ### 3.2 Container
 
 ```jsx
-<Container>  {/* Wraps all section content */}
+<Container>
+  {" "}
+  {/* Wraps all section content */}
   {/* className="container mx-auto px-4 sm:px-6 lg:px-8" */}
 </Container>
 ```
 
 ### 3.3 Component Spacing
 
-| Element | Classes | Usage |
-|---------|---------|-------|
-| Card padding | `p-6` or `p-8 md:p-12` | Card content |
-| Section gap | `gap-12 lg:gap-16` or `gap-12 lg:gap-20` | Grid columns |
-| List items | `space-y-3` | Feature lists |
-| Button groups | `gap-4` | Button rows |
-| Text block margin | `mb-4` to `mb-8` | Between text elements |
+| Element           | Classes                                  | Usage                 |
+| ----------------- | ---------------------------------------- | --------------------- |
+| Card padding      | `p-6` or `p-8 md:p-12`                   | Card content          |
+| Section gap       | `gap-12 lg:gap-16` or `gap-12 lg:gap-20` | Grid columns          |
+| List items        | `space-y-3`                              | Feature lists         |
+| Button groups     | `gap-4`                                  | Button rows           |
+| Text block margin | `mb-4` to `mb-8`                         | Between text elements |
 
 ### 3.4 Margin Patterns
 
@@ -156,6 +156,7 @@ Section heading to grid: mb-8 to mb-12
 The editorial layout uses a **12-column grid** with **asymmetric splits**:
 
 **5/7 Split** (narrow left, wide right):
+
 ```jsx
 <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
   <div className="lg:col-span-5">  {/* ~42% - Text/anchor content */}
@@ -164,6 +165,7 @@ The editorial layout uses a **12-column grid** with **asymmetric splits**:
 ```
 
 **4/8 Split** (narrow left, wider right):
+
 ```jsx
 <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
   <div className="lg:col-span-4">  {/* ~33% - Labels/headings */}
@@ -172,6 +174,7 @@ The editorial layout uses a **12-column grid** with **asymmetric splits**:
 ```
 
 **7/5 Split** (wide left, narrow right):
+
 ```jsx
 <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
   <div className="lg:col-span-7">  {/* ~58% - Main content */}
@@ -182,11 +185,13 @@ The editorial layout uses a **12-column grid** with **asymmetric splits**:
 ### 4.2 Equal Grid (Secondary Pattern)
 
 **2-Column Equal**:
+
 ```jsx
 <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
 ```
 
 **3-Column Equal**:
+
 ```jsx
 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 ```
@@ -194,6 +199,7 @@ The editorial layout uses a **12-column grid** with **asymmetric splits**:
 ### 4.3 Sticky Positioning
 
 Left columns often use sticky positioning for scroll effect:
+
 ```jsx
 <div className="lg:col-span-5 lg:sticky lg:top-24">
 ```
@@ -201,11 +207,13 @@ Left columns often use sticky positioning for scroll effect:
 ### 4.4 Centering Patterns
 
 **Centered content block**:
+
 ```jsx
 <div className="max-w-3xl mx-auto text-center">
 ```
 
 **Centered with wider max**:
+
 ```jsx
 <div className="max-w-4xl mx-auto">
 ```
@@ -322,7 +330,9 @@ Left columns often use sticky positioning for scroll effect:
 <div className="space-y-0">
   {items.map((item, index) => (
     <div className="border-t border-amber-200/60 py-6 first:border-t-0 first:pt-0">
-      <h4 className="text-xl font-semibold text-amber-900 mb-1">{item.title}</h4>
+      <h4 className="text-xl font-semibold text-amber-900 mb-1">
+        {item.title}
+      </h4>
       <p className="text-sm text-muted-foreground">{item.description}</p>
     </div>
   ))}
@@ -341,20 +351,17 @@ Left columns often use sticky positioning for scroll effect:
 
 /* Level 1 - Default resting (cards) */
 --paper-elevation-1:
-  0 1px 1px hsl(40 10% 20% / 0.07),
-  0 2px 2px hsl(40 10% 20% / 0.06),
+  0 1px 1px hsl(40 10% 20% / 0.07), 0 2px 2px hsl(40 10% 20% / 0.06),
   0 4px 4px hsl(40 10% 20% / 0.05);
 
 /* Level 2 - Hover/lifted */
 --paper-elevation-2:
-  0 1px 1px hsl(40 10% 20% / 0.06),
-  0 2px 2px hsl(40 10% 20% / 0.06),
-  0 4px 4px hsl(40 10% 20% / 0.06),
-  0 8px 8px hsl(40 10% 20% / 0.05),
+  0 1px 1px hsl(40 10% 20% / 0.06), 0 2px 2px hsl(40 10% 20% / 0.06),
+  0 4px 4px hsl(40 10% 20% / 0.06), 0 8px 8px hsl(40 10% 20% / 0.05),
   0 16px 16px hsl(40 10% 20% / 0.04);
 
 /* Level 3 - Modal/floating */
---paper-elevation-3: /* larger shadow stack */
+--paper-elevation-3: /* larger shadow stack */;
 ```
 
 ### 6.2 Usage Patterns
@@ -377,6 +384,7 @@ Left columns often use sticky positioning for scroll effect:
 ### 7.1 Framer Motion Patterns
 
 **Fade in from bottom**:
+
 ```jsx
 <motion.div
   initial={{ opacity: 0, y: 20 }}
@@ -386,6 +394,7 @@ Left columns often use sticky positioning for scroll effect:
 ```
 
 **Fade in from side (left)**:
+
 ```jsx
 <motion.div
   initial={{ opacity: 0, x: -20 }}
@@ -395,6 +404,7 @@ Left columns often use sticky positioning for scroll effect:
 ```
 
 **Fade in from side (right)**:
+
 ```jsx
 <motion.div
   initial={{ opacity: 0, x: 20 }}
@@ -405,6 +415,7 @@ Left columns often use sticky positioning for scroll effect:
 ```
 
 **Scale in**:
+
 ```jsx
 <motion.div
   initial={{ opacity: 0, scale: 0.95 }}
@@ -414,6 +425,7 @@ Left columns often use sticky positioning for scroll effect:
 ```
 
 **Staggered children**:
+
 ```jsx
 {items.map((item, index) => (
   <motion.div
@@ -428,19 +440,19 @@ Left columns often use sticky positioning for scroll effect:
 ### 7.2 CSS Transition Tokens
 
 ```css
---paper-transition-lift: 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);   /* Bouncy lift */
---paper-transition-press: 0.1s cubic-bezier(0.4, 0, 0.2, 1);      /* Quick press */
---paper-transition-settle: 0.3s cubic-bezier(0.22, 1, 0.36, 1);   /* Smooth settle */
+--paper-transition-lift: 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy lift */
+--paper-transition-press: 0.1s cubic-bezier(0.4, 0, 0.2, 1); /* Quick press */
+--paper-transition-settle: 0.3s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth settle */
 ```
 
 ### 7.3 Duration Scale
 
 ```css
---paper-duration-instant: 100ms   /* Immediate feedback */
---paper-duration-fast: 150ms      /* Quick interactions */
---paper-duration-normal: 250ms    /* Standard transitions */
---paper-duration-slow: 400ms      /* Emphasized motion */
---paper-duration-deliberate: 600ms /* Dramatic reveals */
+--paper-duration-instant: 100ms /* Immediate feedback */
+  --paper-duration-fast: 150ms /* Quick interactions */
+  --paper-duration-normal: 250ms /* Standard transitions */
+  --paper-duration-slow: 400ms /* Emphasized motion */
+  --paper-duration-deliberate: 600ms /* Dramatic reveals */;
 ```
 
 ---
@@ -502,15 +514,11 @@ Applied via `.paper-texture-overlay` class on root element. Creates subtle noise
         <h2 className="text-2xl sm:text-3xl font-bold text-amber-900 mb-4">
           Section Title
         </h2>
-        <p className="text-muted-foreground">
-          Description text
-        </p>
+        <p className="text-muted-foreground">Description text</p>
       </motion.div>
 
       {/* Right column */}
-      <motion.div className="lg:col-span-7">
-        {/* Main content */}
-      </motion.div>
+      <motion.div className="lg:col-span-7">{/* Main content */}</motion.div>
     </div>
   </Container>
 </section>
@@ -538,15 +546,11 @@ Applied via `.paper-texture-overlay` class on root element. Creates subtle noise
       <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
         Headline
       </h2>
-      <p className="text-lg text-amber-100/70 mb-10">
-        Subheading
-      </p>
+      <p className="text-lg text-amber-100/70 mb-10">Subheading</p>
       <Button className="bg-white text-amber-900 hover:bg-amber-50">
         CTA Text
       </Button>
-      <p className="mt-8 text-sm text-amber-200/50">
-        Trust line
-      </p>
+      <p className="mt-8 text-sm text-amber-200/50">Trust line</p>
     </div>
   </Container>
 </section>
@@ -557,9 +561,7 @@ Applied via `.paper-texture-overlay` class on root element. Creates subtle noise
 ```jsx
 <section className="py-16 md:py-24">
   <Container>
-    <div className="max-w-4xl mx-auto">
-      {/* Centered content */}
-    </div>
+    <div className="max-w-4xl mx-auto">{/* Centered content */}</div>
   </Container>
 </section>
 ```
@@ -632,15 +634,16 @@ import { Check, ArrowRight, Shield, RefreshCw, Zap, Menu, X } from "lucide-react
 Using Tailwind CSS 4 default breakpoints:
 
 | Breakpoint | Prefix | Min Width |
-|------------|--------|-----------|
-| Mobile | (none) | 0px |
-| Small | `sm:` | 640px |
-| Medium | `md:` | 768px |
-| Large | `lg:` | 1024px |
-| XL | `xl:` | 1280px |
-| 2XL | `2xl:` | 1536px |
+| ---------- | ------ | --------- |
+| Mobile     | (none) | 0px       |
+| Small      | `sm:`  | 640px     |
+| Medium     | `md:`  | 768px     |
+| Large      | `lg:`  | 1024px    |
+| XL         | `xl:`  | 1280px    |
+| 2XL        | `2xl:` | 1536px    |
 
 **Common patterns**:
+
 - Grid columns: `grid lg:grid-cols-12` (stacks on mobile)
 - Text scaling: `text-4xl sm:text-5xl lg:text-6xl`
 - Padding scaling: `py-16 md:py-24`
@@ -669,8 +672,8 @@ src/
 ### Creating a New Section
 
 ```jsx
-import { motion } from "framer-motion"
-import { Container } from "@/components/ui/container"
+import { motion } from "framer-motion";
+import { Container } from "@/components/ui/container";
 
 function NewSection() {
   return (
@@ -703,26 +706,26 @@ function NewSection() {
         </div>
       </Container>
     </section>
-  )
+  );
 }
 
-export default NewSection
+export default NewSection;
 ```
 
 ### Color Cheat Sheet
 
-| Need | Use |
-|------|-----|
-| Primary button | `bg-primary text-primary-foreground` |
-| White button on dark | `bg-white text-amber-900 hover:bg-amber-50` |
-| Section background | `bg-background` |
-| Card background | `bg-[var(--paper-cream)]` |
-| Dark section | `bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900` |
-| Border | `border-amber-200/60` |
-| Heading | `text-amber-900` |
-| Body | `text-amber-800/80` |
-| Muted | `text-muted-foreground` |
-| Decorative text | `text-amber-200/50` |
+| Need                 | Use                                                           |
+| -------------------- | ------------------------------------------------------------- |
+| Primary button       | `bg-primary text-primary-foreground`                          |
+| White button on dark | `bg-white text-amber-900 hover:bg-amber-50`                   |
+| Section background   | `bg-background`                                               |
+| Card background      | `bg-[var(--paper-cream)]`                                     |
+| Dark section         | `bg-gradient-to-br from-amber-900 via-amber-800 to-amber-900` |
+| Border               | `border-amber-200/60`                                         |
+| Heading              | `text-amber-900`                                              |
+| Body                 | `text-amber-800/80`                                           |
+| Muted                | `text-muted-foreground`                                       |
+| Decorative text      | `text-amber-200/50`                                           |
 
 ---
 
@@ -737,7 +740,7 @@ Interactive sticker manipulation system for previewing assets.
 Transform wrapper with selection handles:
 
 ```jsx
-import { EditableSticker } from "@/components/ui/editable-sticker"
+import { EditableSticker } from "@/components/ui/editable-sticker";
 
 <EditableSticker
   id={sticker.id}
@@ -748,7 +751,7 @@ import { EditableSticker } from "@/components/ui/editable-sticker"
   }}
   onTransformEnd={(finalState) => {
     // Push to history when drag ends
-    pushState(newStickers)
+    pushState(newStickers);
   }}
   initialScale={1}
   initialRotation={0}
@@ -759,10 +762,11 @@ import { EditableSticker } from "@/components/ui/editable-sticker"
   constraintsRef={canvasRef}
 >
   <img src={stickerSrc} alt={name} />
-</EditableSticker>
+</EditableSticker>;
 ```
 
 **Features:**
+
 - Selection ring (dashed amber border)
 - 4 corner scale handles (drag to resize, maintains aspect ratio)
 - 1 rotation handle (circular, above sticker)
@@ -775,7 +779,7 @@ import { EditableSticker } from "@/components/ui/editable-sticker"
 Floating action toolbar:
 
 ```jsx
-import { StickerToolbar } from "@/components/ui/sticker-toolbar"
+import { StickerToolbar } from "@/components/ui/sticker-toolbar";
 
 <StickerToolbar
   visible={!!selectedSticker}
@@ -791,7 +795,7 @@ import { StickerToolbar } from "@/components/ui/sticker-toolbar"
   onToggleShadow={handleToggleShadow}
   onConfetti={handleConfetti}
   isPopped={sticker.isPopped}
-/>
+/>;
 ```
 
 **Actions (8 buttons):**
@@ -811,23 +815,24 @@ import { StickerToolbar } from "@/components/ui/sticker-toolbar"
 Undo/redo state management:
 
 ```jsx
-import { useCanvasHistory } from "@/hooks/use-canvas-history"
+import { useCanvasHistory } from "@/hooks/use-canvas-history";
 
 const {
-  canvasState,        // Current stickers array
-  setCanvasState,     // Update without history
-  pushState,          // Push to history stack
-  undo,               // Go back one state
-  redo,               // Go forward one state
-  canUndo,            // Boolean
-  canRedo,            // Boolean
-  clearHistory,       // Reset to initial
-  historyLength,      // Debug info
-  currentIndex,       // Debug info
-} = useCanvasHistory(initialStickers, maxHistory = 30)
+  canvasState, // Current stickers array
+  setCanvasState, // Update without history
+  pushState, // Push to history stack
+  undo, // Go back one state
+  redo, // Go forward one state
+  canUndo, // Boolean
+  canRedo, // Boolean
+  clearHistory, // Reset to initial
+  historyLength, // Debug info
+  currentIndex, // Debug info
+} = useCanvasHistory(initialStickers, (maxHistory = 30));
 ```
 
 **Keyboard Shortcuts:**
+
 - `Cmd/Ctrl + Z` - Undo
 - `Cmd/Ctrl + Shift + Z` - Redo
 - `Cmd/Ctrl + Y` - Redo (Windows)
@@ -836,13 +841,13 @@ const {
 
 ```jsx
 import {
-  cloneStickerState,      // Deep clone for immutability
-  applyStickerTransform,  // Update single sticker
-  deleteSticker,          // Remove by ID
-  duplicateSticker,       // Clone with offset
-  bringForward,           // Move up in array
-  sendBackward,           // Move down in array
-} from "@/hooks/use-canvas-history"
+  cloneStickerState, // Deep clone for immutability
+  applyStickerTransform, // Update single sticker
+  deleteSticker, // Remove by ID
+  duplicateSticker, // Clone with offset
+  bringForward, // Move up in array
+  sendBackward, // Move down in array
+} from "@/hooks/use-canvas-history";
 ```
 
 ---
@@ -855,29 +860,33 @@ High-fidelity ruled paper styling.
 
 ```css
 :root {
-  --notebook-line-height: 32px;      /* Ruling spacing */
-  --notebook-margin-left: 3.5rem;    /* Red margin position */
-  --notebook-paper-color: #FEFDFB;   /* Paper background */
-  --notebook-line-color: oklch(0.82 0.015 240 / 0.35);   /* Blue rules */
-  --notebook-margin-color: oklch(0.68 0.16 20 / 0.45);   /* Red margin */
+  --notebook-line-height: 32px; /* Ruling spacing */
+  --notebook-margin-left: 3.5rem; /* Red margin position */
+  --notebook-paper-color: #fefdfb; /* Paper background */
+  --notebook-line-color: oklch(0.82 0.015 240 / 0.35); /* Blue rules */
+  --notebook-margin-color: oklch(0.68 0.16 20 / 0.45); /* Red margin */
 }
 ```
 
 ### 16.2 Usage
 
 ```jsx
-{/* Basic notebook paper */}
-<div className="notebook-paper">
-  Content here
-</div>
+{
+  /* Basic notebook paper */
+}
+<div className="notebook-paper">Content here</div>;
 
-{/* With hole punches */}
+{
+  /* With hole punches */
+}
 <div className="notebook-paper notebook-paper-holes">
-  <NotebookHoles />  {/* React component for holes */}
+  <NotebookHoles /> {/* React component for holes */}
   Content here
-</div>
+</div>;
 
-{/* FAQ accordion on notebook paper */}
+{
+  /* FAQ accordion on notebook paper */
+}
 <div className="notebook-paper notebook-paper-holes relative">
   <NotebookHoles />
   <div style={{ paddingTop: "var(--notebook-line-height)" }}>
@@ -892,32 +901,35 @@ High-fidelity ruled paper styling.
       </AccordionItem>
     </Accordion>
   </div>
-</div>
+</div>;
 ```
 
 ### 16.3 CSS Classes
 
-| Class | Purpose |
-|-------|---------|
-| `.notebook-paper` | Base ruled paper with texture |
-| `.notebook-paper-holes` | Adds hole punch styling |
-| `.notebook-accordion-item` | Grid-aligned accordion item |
-| `.notebook-trigger` | Question text on baseline |
-| `.notebook-content` | Answer text with proper spacing |
+| Class                      | Purpose                         |
+| -------------------------- | ------------------------------- |
+| `.notebook-paper`          | Base ruled paper with texture   |
+| `.notebook-paper-holes`    | Adds hole punch styling         |
+| `.notebook-accordion-item` | Grid-aligned accordion item     |
+| `.notebook-trigger`        | Question text on baseline       |
+| `.notebook-content`        | Answer text with proper spacing |
 
 ### 16.4 Visual Features
 
 **Paper Texture:**
+
 - SVG noise filter at 40% opacity
 - `mix-blend-mode: multiply` for paper feel
 - 150px tile size for seamless pattern
 
 **Red Margin Line:**
+
 - Positioned at `--notebook-margin-left`
 - Gradient with opacity variation for ink bleed effect
 - Subtle box-shadow for bleeding appearance
 
 **Hole Punches (React Component):**
+
 ```jsx
 function NotebookHoles() {
   return (
@@ -938,7 +950,7 @@ function NotebookHoles() {
       {/* Middle hole at 50% */}
       {/* Bottom hole at 85% */}
     </div>
-  )
+  );
 }
 ```
 
@@ -951,7 +963,7 @@ Text sits ON the ruled lines through careful positioning:
   height: var(--notebook-line-height);
   display: flex;
   align-items: flex-end;
-  padding-bottom: 6px;  /* Fine-tune baseline */
+  padding-bottom: 6px; /* Fine-tune baseline */
 }
 
 .notebook-content {
@@ -971,6 +983,197 @@ Text sits ON the ruled lines through careful positioning:
 
 .dark .notebook-paper::after {
   opacity: 0.15;
-  mix-blend-mode: overlay;  /* Inverted blend for dark */
+  mix-blend-mode: overlay; /* Inverted blend for dark */
 }
 ```
+
+---
+
+## 17. THEME MANAGER
+
+Complete theme customization system for real-time styling adjustments.
+
+### 17.1 Overview
+
+The Theme Manager provides a unified interface for customizing:
+
+- **Colors**: shadcn/ui color tokens via Tinte integration
+- **Papercraft Tokens**: Paper surfaces, radius, texture opacity
+- **Presets**: Built-in themes and custom saved configurations
+- **Light/Dark Mode**: Instant toggle between color modes
+
+### 17.2 Architecture
+
+```
+ThemeProvider (Context)
+├── themeState (persisted to localStorage)
+│   ├── darkMode: boolean
+│   ├── paperWhite: oklch string
+│   ├── paperCream: oklch string
+│   ├── paperKraft: oklch string
+│   ├── radius: number (rem)
+│   └── textureOpacityFaint: number
+├── presets[] (user-saved configurations)
+└── actions
+    ├── setToken(name, value)
+    ├── setDarkMode(enabled)
+    ├── resetToDefaults()
+    ├── savePreset(name)
+    ├── loadPreset(id)
+    └── deletePreset(id)
+```
+
+### 17.3 Usage
+
+**Access Theme Context:**
+
+```jsx
+import { useTheme } from "@/context/ThemeContext";
+
+function MyComponent() {
+  const { themeState, setToken, setDarkMode } = useTheme();
+
+  return (
+    <button onClick={() => setDarkMode(!themeState.darkMode)}>
+      Toggle Dark Mode
+    </button>
+  );
+}
+```
+
+**Open Theme Manager:**
+
+The Theme Manager button is located in the Component Library header. Click to open the modal.
+
+### 17.4 Built-in Presets
+
+| Preset          | Primary   | Accent    | Background | Description           |
+| --------------- | --------- | --------- | ---------- | --------------------- |
+| Default (Amber) | `#d97706` | `#f59e0b` | `#fffbeb`  | Warm papercraft theme |
+| Rose Garden     | `#be185d` | `#ec4899` | `#fdf2f8`  | Soft pink and rose    |
+| Burnt Sienna    | `#c2410c` | `#ea580c` | `#fff7ed`  | Earthy orange tones   |
+| Ocean Teal      | `#0d9488` | `#14b8a6` | `#f0fdfa`  | Cool teal and cyan    |
+
+### 17.5 Tinte Integration
+
+The Colors tab integrates with [Tinte](https://tinte.dev) for advanced color editing:
+
+**Features:**
+
+- **Editor Tab**: Modify individual color tokens (background, foreground, primary, etc.)
+- **Browse Tab**: Search 670+ community-created themes
+- **Raw CSS Tab**: Paste or edit CSS variables directly
+- **Agent Tab**: AI-powered theme generation from text descriptions
+
+**Example AI Prompts:**
+
+- "Create a purple theme with high contrast"
+- "Generate a warm autumn theme with orange and brown"
+- "Design a soft pastel wellness theme"
+
+### 17.6 Papercraft Controls
+
+| Control         | Token                     | Range    | Default               |
+| --------------- | ------------------------- | -------- | --------------------- |
+| Dark Mode       | `darkMode`                | boolean  | `false`               |
+| Paper White     | `--paper-white`           | oklch    | `oklch(0.98 0.01 90)` |
+| Paper Cream     | `--paper-cream`           | oklch    | `oklch(0.96 0.02 85)` |
+| Paper Kraft     | `--paper-kraft`           | oklch    | `oklch(0.75 0.08 70)` |
+| Border Radius   | `--radius`                | 0-1.5rem | `0.625rem`            |
+| Texture Opacity | `--texture-opacity-faint` | 0-0.15   | `0.04`                |
+
+### 17.7 Preset Management
+
+**Save Custom Preset:**
+
+```jsx
+const { savePreset } = useTheme();
+const presetId = savePreset("My Custom Theme");
+```
+
+**Load Preset:**
+
+```jsx
+const { loadPreset } = useTheme();
+loadPreset(presetId);
+```
+
+**Apply Built-in Preset:**
+
+```jsx
+import { applyBuiltInPreset, setActivePresetId } from "@/lib/theme-utils";
+
+function handlePresetSelect(presetId) {
+  applyBuiltInPreset(presetId); // Injects CSS
+  setActivePresetId(presetId); // Persists selection
+}
+```
+
+### 17.8 CSS Variable Utilities
+
+```jsx
+import {
+  setCSSVariable, // Update single CSS variable
+  applyThemeToDOM, // Apply full theme state
+  hexToOklch, // Convert hex to oklch
+  oklchToHex, // Convert oklch to hex
+  loadThemeFromStorage, // Load from localStorage
+  saveThemeToStorage, // Save to localStorage
+} from "@/lib/theme-utils";
+
+// Update a single variable
+setCSSVariable("--paper-white", "oklch(0.99 0.005 90)");
+
+// Convert colors
+const oklch = hexToOklch("#d97706"); // "oklch(0.65 0.17 55)"
+const hex = oklchToHex("oklch(0.65 0.17 55)"); // "#d97706"
+```
+
+### 17.9 Light/Dark Mode
+
+**Toggle Button Location:**
+
+The light/dark mode toggle is prominently placed in the Theme Manager modal header (top-right, next to close button). Shows:
+
+- **Moon icon** when in light mode (click to switch to dark)
+- **Sun icon** when in dark mode (click to switch to light)
+
+**Programmatic Control:**
+
+```jsx
+const { themeState, setDarkMode } = useTheme();
+
+// Toggle
+setDarkMode(!themeState.darkMode);
+
+// Check current mode
+if (themeState.darkMode) {
+  console.log("Dark mode is active");
+}
+```
+
+**CSS Class:**
+
+Dark mode adds `.dark` class to `document.documentElement`:
+
+```css
+:root {
+  --background: oklch(0.987 0.022 95.277); /* Light */
+}
+
+.dark {
+  --background: oklch(0.145 0.015 60); /* Dark */
+}
+```
+
+### 17.10 Persistence
+
+All theme settings persist to localStorage:
+
+| Key                        | Contents                                              |
+| -------------------------- | ----------------------------------------------------- |
+| `papercraft-theme`         | Theme state (darkMode, paper colors, radius, texture) |
+| `papercraft-presets`       | Array of user-saved presets                           |
+| `papercraft-active-preset` | ID of currently active built-in preset                |
+
+Theme is automatically restored on page load via `ThemeProvider`.

@@ -26,16 +26,25 @@ src/
 │   │   ├── editable-sticker.jsx   # Transform wrapper
 │   │   ├── sticker-toolbar.jsx    # Floating action toolbar
 │   │   └── playground-canvas.jsx  # Interactive sticker canvas
+│   ├── theme-manager/   # Theme customization system
+│   │   ├── index.jsx              # Main modal component
+│   │   ├── colors-tab.jsx         # Tinte integration
+│   │   ├── papercraft-tab.jsx     # Papercraft controls
+│   │   ├── presets-tab.jsx        # Preset management
+│   │   └── controls/              # Reusable control components
 │   ├── sections/        # Landing page sections
 │   │   ├── Hero.jsx, FAQ.jsx, Pricing.jsx, etc.
 │   ├── pricing/         # Pricing-specific components
 │   └── pages/           # Full page components
+├── context/
+│   └── ThemeContext.jsx # Theme state management + persistence
 ├── hooks/
 │   ├── use-canvas-history.js  # Undo/redo state management
 │   └── use-scroll-to-top.js   # Scroll reset on route changes
 ├── lib/
 │   ├── utils.js         # cn() utility for class merging
-│   └── sentry.js        # Error tracking utilities
+│   ├── sentry.js        # Error tracking utilities
+│   └── theme-utils.js   # CSS variable utilities + presets
 ├── test/
 │   ├── setup.js         # Vitest setup with mocks
 │   └── test-utils.jsx   # Custom render with providers
@@ -51,6 +60,27 @@ src/
 - See `/Docs/DESIGN_SYSTEM.md` for full spec
 
 ## Key Features
+
+### Theme Manager
+
+Real-time theme customization system accessible via Component Library:
+
+- **Location**: "Theme Manager" button in Component Library header
+- **Light/Dark Toggle**: Sun/moon button in modal header for instant mode switching
+- **Built-in Presets**: Default (Amber), Rose Garden, Burnt Sienna, Ocean Teal
+- **Tinte Integration**: AI-powered color palette generation, 670+ community themes
+- **Papercraft Controls**: Paper surfaces, border radius, texture opacity
+- **Custom Presets**: Save/load your own theme configurations
+- **Persistence**: All settings saved to localStorage
+
+```jsx
+// Access theme state programmatically
+import { useTheme } from "@/context/ThemeContext";
+
+const { themeState, setDarkMode, setToken } = useTheme();
+setDarkMode(true); // Enable dark mode
+setToken("radius", 0.5); // Set border radius
+```
 
 ### Sticker Playground
 
@@ -98,10 +128,49 @@ React Error Boundary with papercraft fallback:
 
 ## Testing
 
-- **168 tests** across 15 component files
+- **353 tests** across 22 test files
 - Run with `npm test` (Vitest + jsdom)
-- Custom render in `src/test/test-utils.jsx` includes RouterWrapper
-- Mocks: ResizeObserver, matchMedia, pointer capture, scrollIntoView
+- Coverage threshold: 75% (statements, branches, functions, lines)
+- Custom render in `src/test/test-utils.jsx` includes CartWrapper, PreviewWrapper
+- Mocks: ResizeObserver, matchMedia, IntersectionObserver, pointer capture, scrollIntoView
+
+### Key Test Files
+
+- `CartContext.test.jsx` - 36 tests (100% coverage)
+- `use-canvas-history.test.js` - 66 tests (100% coverage)
+- `PreviewPage.test.jsx` - 10 integration tests
+- `PreviewGrid.test.jsx` - 18 tests
+- `sticky-cart.test.jsx` - 19 tests
+
+### Test Fixtures
+
+```
+src/test/fixtures/
+├── cart-fixtures.js    # Mock assets, categories, cart states
+└── canvas-fixtures.js  # Mock stickers, transforms, helpers
+```
+
+## Build & Bundle
+
+### Lazy Loading
+
+All routes use `React.lazy()` for code splitting:
+
+- Pages load on-demand when navigated to
+- Suspense fallback shows spinner during load
+- TinteEditor loads only when opened
+
+### Bundle Analysis
+
+Run `npm run build` to generate `dist/stats.html` visualization.
+
+**Key Chunks:**
+
+- `react-vendor` - React runtime (193 KB)
+- `radix-vendor` - UI primitives (197 KB)
+- `animation-vendor` - Framer Motion (135 KB)
+- `router-vendor` - React Router (35 KB)
+- Page chunks - Load on navigation (24-78 KB each)
 
 ## Storybook
 
@@ -145,6 +214,22 @@ Component documentation at `npm run storybook`:
 --paper-elevation-1  /* Default resting */
 --paper-elevation-2  /* Hover/lifted */
 --paper-elevation-3  /* Modal/floating */
+```
+
+### Theme Utilities (theme-utils.js)
+
+```javascript
+// CSS variable manipulation
+setCSSVariable("--paper-white", "oklch(0.99 0.01 90)");
+applyThemeToDOM(themeState);
+
+// Color conversion
+hexToOklch("#d97706"); // → "oklch(0.65 0.17 55)"
+oklchToHex("oklch(0.65 0.17 55)"); // → "#d97706"
+
+// Built-in presets
+import { BUILT_IN_PRESETS, applyBuiltInPreset } from "@/lib/theme-utils";
+applyBuiltInPreset("rose-garden"); // Apply preset by ID
 ```
 
 ## Documentation

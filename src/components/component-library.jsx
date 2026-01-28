@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
+import { ThemeManager } from "@/components/theme-manager"
 
 // Lazy load section components for better initial bundle size
 const LayoutSection = lazy(() => import("@/components/component-library/layout-section").then(m => ({ default: m.LayoutSection })))
@@ -42,6 +43,7 @@ const categories = [
 function ComponentLibrary() {
   const [searchParams, setSearchParams] = useSearchParams()
   const activeCategory = searchParams.get('tab') || 'layout'
+  const [isThemeManagerOpen, setIsThemeManagerOpen] = useState(false)
 
   const setActiveCategory = (id) => {
     setSearchParams({ tab: id }, { replace: true })
@@ -52,13 +54,20 @@ function ComponentLibrary() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
       <header className="border-b border-amber-200 bg-white/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-6 py-4">
-          <h1 className="text-2xl font-bold text-amber-900">Component Library</h1>
-          <p className="text-amber-700 text-sm mt-1">
-            Papercraft-styled UI components
-          </p>
+        <div className="container mx-auto px-6 py-4 flex items-start justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-amber-900">Component Library</h1>
+            <p className="text-amber-700 text-sm mt-1">
+              Papercraft-styled UI components
+            </p>
+          </div>
+          <Button onClick={() => setIsThemeManagerOpen(true)}>
+            Theme Manager
+          </Button>
         </div>
       </header>
+
+      <ThemeManager open={isThemeManagerOpen} onOpenChange={setIsThemeManagerOpen} />
 
       <div className="container mx-auto px-6 py-6">
         <nav className="flex gap-2 mb-8 flex-wrap">
