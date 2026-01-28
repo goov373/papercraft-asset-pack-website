@@ -4,20 +4,20 @@ import { HomeIcon, ArrowLeftIcon } from 'lucide-react'
 
 function NotFoundPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted">
       <div className="text-center px-6">
         {/* Paper-style 404 card */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-lg p-12 shadow-paper-2 border border-amber-200 max-w-md mx-auto">
+        <div className="bg-card/80 backdrop-blur-sm rounded-lg p-12 shadow-paper-2 border border-border max-w-md mx-auto">
           {/* Large 404 number with papercraft styling */}
-          <h1 className="text-8xl font-bold text-amber-900/20 select-none">
+          <h1 className="text-8xl font-bold text-foreground/20 select-none">
             404
           </h1>
 
-          <h2 className="text-2xl font-semibold text-amber-900 mt-4">
+          <h2 className="text-2xl font-semibold text-foreground mt-4">
             Page Not Found
           </h2>
 
-          <p className="text-amber-700 mt-3 text-base">
+          <p className="text-muted-foreground mt-3 text-base">
             The page you're looking for doesn't exist or has been moved.
           </p>
 

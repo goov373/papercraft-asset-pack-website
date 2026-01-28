@@ -36,14 +36,14 @@ function FinalCTA() {
             Ready to craft<br />something beautiful?
           </h2>
 
-          <p className="text-lg text-amber-100/70 mb-10 max-w-xl mx-auto">
+          <p className="text-lg text-primary-foreground/70 mb-10 max-w-xl mx-auto">
             150+ hand-crafted assets. Commercial license. Lifetime access. One simple price.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="text-lg px-10 bg-white text-amber-900 hover:bg-amber-50"
+              className="text-lg px-10 bg-card text-card-foreground hover:bg-accent"
               asChild
             >
               <Link to="/pricing">
@@ -53,7 +53,7 @@ function FinalCTA() {
           </div>
 
           {/* Trust line */}
-          <p className="mt-8 text-sm text-amber-200/50">
+          <p className="mt-8 text-sm text-muted-foreground/50">
             Instant download • Works with Figma, Illustrator, Canva & more
           </p>
         </motion.div>

@@ -141,12 +141,12 @@ function PricingPage() {
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                 Ready to get started?
               </h2>
-              <p className="text-amber-100/70 mb-8">
+              <p className="text-primary-foreground/70 mb-8">
                 Join thousands of creators using Papercraft Pack in their projects.
               </p>
               <Button
                 size="lg"
-                className="text-lg px-10 bg-white text-amber-900 hover:bg-amber-50"
+                className="text-lg px-10 bg-card text-card-foreground hover:bg-accent"
               >
                 Get the Pack — $39
               </Button>
