@@ -4,6 +4,28 @@ All notable changes to the Papercraft Asset Pack Website.
 
 ## [Unreleased]
 
+### Added
+
+#### Theme Presets Expansion
+
+Added 11 new built-in theme presets to the Theme Manager, bringing the total to 15 presets.
+
+**New Presets:**
+
+- Forest Meadow - Green/emerald nature theme
+- Ocean Deep - Blue/cyan deep sea theme
+- Monochrome - Neutral grayscale
+- Slate Minimal - Clean slate tones
+- Olive Grove - Olive/lime organic theme
+- Violet Mist - Purple/lavender theme
+- Golden Sunset - Warm amber/orange
+- Tropical Lagoon - Teal/cyan paradise theme
+- Cherry Blossom - Pink/rose Japanese theme
+- Matrix - Hacker green on black
+- Terracotta - Warm earth tones
+
+Each preset includes full CSS variable definitions for both light and dark modes using oklch color format.
+
 ## [0.6.0] - 2026-01-28
 
 ### Added

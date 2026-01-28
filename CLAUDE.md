@@ -67,7 +67,7 @@ Real-time theme customization system accessible via Component Library:
 
 - **Location**: "Theme Manager" button in Component Library header
 - **Light/Dark Toggle**: Sun/moon button in modal header for instant mode switching
-- **Built-in Presets**: Default (Amber), Rose Garden, Burnt Sienna, Ocean Teal
+- **Built-in Presets**: 15 presets including Default, Rose Garden, Forest Meadow, Ocean Deep, Matrix, Cherry Blossom, and more
 - **Tinte Integration**: AI-powered color palette generation, 670+ community themes
 - **Papercraft Controls**: Paper surfaces, border radius, texture opacity
 - **Custom Presets**: Save/load your own theme configurations
