@@ -2,7 +2,7 @@
 
 All notable changes to the Papercraft Asset Pack Website.
 
-## [Unreleased]
+## [0.7.0] - 2026-01-28
 
 ### Added
 
@@ -131,6 +131,34 @@ Refactored ~250+ hardcoded color classes across ~40 files to use semantic theme-
 **Test Updates:**
 
 - Updated `progress.test.jsx` to expect new semantic class `bg-accent/50`
+
+#### Global Typography Application
+
+Applied typography CSS variables site-wide so font selections in Theme Manager visually affect all text.
+
+**Changes to `src/index.css`:**
+
+- Added `--text-*` overrides in `@theme inline` to map Tailwind utilities (`text-xs`, `text-sm`, `text-lg`, etc.) to our typography system
+- Added `--font-heading` and `--font-body` utilities for explicit font family control
+- Added `--leading-heading` and `--leading-body` line height utilities
+- Added base typography rules in `@layer base`:
+  - `html` element uses body font family and base size
+  - `h1-h6` elements use heading font family and line height
+  - `p`, `li`, `td`, `th`, `label`, `blockquote` use body font family
+
+**Changes to `src/lib/theme-utils.js`:**
+
+- `applyTypographyToDOM()` now also sets Tailwind's `--text-*` variables for dynamic updates
+- Added `--leading-heading` and `--leading-body` updates for line height utilities
+
+**Result:**
+
+- Changing heading font in Theme Manager → all h1-h6 update immediately
+- Changing body font → all paragraphs and body text update immediately
+- Changing type scale → all Tailwind text utilities scale proportionally
+- Changing line height preset → vertical spacing adjusts across the site
+
+---
 
 ## [0.6.0] - 2026-01-28
 

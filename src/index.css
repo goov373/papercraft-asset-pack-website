@@ -87,19 +87,28 @@ html {
   --shadow-glow-accent: var(--shadow-glow-accent);
   --shadow-glow-subtle: var(--shadow-glow-subtle);
 
-  /* Typography */
-  --font-family-heading: var(--font-family-heading);
-  --font-family-body: var(--font-family-body);
-  --font-size-base: var(--font-size-base);
-  --font-size-xs: var(--font-size-xs);
-  --font-size-sm: var(--font-size-sm);
-  --font-size-lg: var(--font-size-lg);
-  --font-size-xl: var(--font-size-xl);
-  --font-size-2xl: var(--font-size-2xl);
-  --font-size-3xl: var(--font-size-3xl);
-  --font-size-4xl: var(--font-size-4xl);
-  --line-height-heading: var(--line-height-heading);
-  --line-height-body: var(--line-height-body);
+  /* ========================================
+     TYPOGRAPHY THEME TOKENS
+     Override Tailwind's text-* utilities
+     ======================================== */
+
+  /* Font size utilities (text-xs, text-sm, text-lg, etc.) */
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+
+  /* Font family utilities (font-heading, font-body) */
+  --font-heading: var(--font-family-heading);
+  --font-body: var(--font-family-body);
+
+  /* Line height utilities */
+  --leading-heading: var(--line-height-heading);
+  --leading-body: var(--line-height-body);
 }
 
 /* Papercraft Amber/Orange Theme */
@@ -327,6 +336,40 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* ========================================
+     GLOBAL TYPOGRAPHY
+     Apply font families and line heights
+     ======================================== */
+
+  /* Base document typography */
+  html {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+  }
+
+  /* Headings use heading font family */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-heading);
+    line-height: var(--line-height-heading);
+  }
+
+  /* Body elements use body font family */
+  p,
+  li,
+  td,
+  th,
+  label,
+  blockquote {
+    font-family: var(--font-family-body);
+    line-height: var(--line-height-body);
   }
 }
 

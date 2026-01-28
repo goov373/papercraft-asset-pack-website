@@ -152,13 +152,38 @@ export function applyTypographyToDOM(themeState) {
   const ratio = scale.ratio
   const base = scale.baseFontSize
 
-  setCSSVariable("--font-size-xs", `${(base / ratio / ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-sm", `${(base / ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-lg", `${(base * ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-xl", `${(base * ratio * ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-2xl", `${(base * ratio * ratio * ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-3xl", `${(base * ratio * ratio * ratio * ratio).toFixed(2)}px`)
-  setCSSVariable("--font-size-4xl", `${(base * ratio * ratio * ratio * ratio * ratio).toFixed(2)}px`)
+  // Font size variables (used by our CSS)
+  const sizeXs = `${(base / ratio / ratio).toFixed(2)}px`
+  const sizeSm = `${(base / ratio).toFixed(2)}px`
+  const sizeBase = `${base}px`
+  const sizeLg = `${(base * ratio).toFixed(2)}px`
+  const sizeXl = `${(base * ratio * ratio).toFixed(2)}px`
+  const size2xl = `${(base * ratio * ratio * ratio).toFixed(2)}px`
+  const size3xl = `${(base * ratio * ratio * ratio * ratio).toFixed(2)}px`
+  const size4xl = `${(base * ratio * ratio * ratio * ratio * ratio).toFixed(2)}px`
+
+  // Set --font-size-* variables (our naming)
+  setCSSVariable("--font-size-xs", sizeXs)
+  setCSSVariable("--font-size-sm", sizeSm)
+  setCSSVariable("--font-size-lg", sizeLg)
+  setCSSVariable("--font-size-xl", sizeXl)
+  setCSSVariable("--font-size-2xl", size2xl)
+  setCSSVariable("--font-size-3xl", size3xl)
+  setCSSVariable("--font-size-4xl", size4xl)
+
+  // Set --text-* variables (Tailwind's naming for text-xs, text-sm, etc.)
+  setCSSVariable("--text-xs", sizeXs)
+  setCSSVariable("--text-sm", sizeSm)
+  setCSSVariable("--text-base", sizeBase)
+  setCSSVariable("--text-lg", sizeLg)
+  setCSSVariable("--text-xl", sizeXl)
+  setCSSVariable("--text-2xl", size2xl)
+  setCSSVariable("--text-3xl", size3xl)
+  setCSSVariable("--text-4xl", size4xl)
+
+  // Set line height utilities
+  setCSSVariable("--leading-heading", lineHeights.heading)
+  setCSSVariable("--leading-body", lineHeights.body)
 }
 
 /**
