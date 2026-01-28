@@ -6,6 +6,74 @@ All notable changes to the Papercraft Asset Pack Website.
 
 ### Added
 
+#### Typography Control System
+
+Complete typography customization system integrated into Theme Manager.
+
+**New Files:**
+
+- `src/lib/typography-config.js` - Font catalog, type scale presets, line height presets
+- `src/components/theme-manager/typography-tab.jsx` - Main typography tab component
+- `src/components/theme-manager/controls/font-selector.jsx` - Categorized font dropdown with live preview
+- `src/components/theme-manager/controls/type-scale-selector.jsx` - Scale preset radio group
+- `src/components/theme-manager/controls/line-height-control.jsx` - Line height preset selector
+- `src/components/theme-manager/controls/typography-preview.jsx` - Live typography preview panel
+- `src/components/theme-manager/controls/index.js` - Barrel export for controls
+
+**Typography Features:**
+
+- **13 Curated Fonts**: System default + 12 Google Fonts selected for papercraft aesthetic
+  - Handwritten (4): Shadows Into Light, Patrick Hand, Caveat, Kalam
+  - Warm Serifs (4): Lora, Merriweather, Crimson Text, Alegreya
+  - Display (2): Playfair Display, Young Serif
+  - Sans-Serif (2): Source Sans 3, Nunito
+- **Type Scale Presets**: Compact (1.125), Default (1.2), Spacious (1.25)
+- **Line Height Presets**: Tight, Normal, Relaxed
+- **Live Preview**: Real-time typography preview in Theme Manager modal
+- **Lazy Font Loading**: Google Fonts loaded on hover/selection for performance
+- **CSS Export**: Typography settings exported with Google Fonts @import statements
+- **Persistence**: All typography settings saved to localStorage
+
+**Updated Files:**
+
+- `src/lib/theme-utils.js` - Added typography functions:
+  - `loadGoogleFont(fontId)` - Dynamic Google Font loading
+  - `getFontFamily(fontId)` - Get CSS font-family string
+  - `applyTypographyToDOM(state)` - Apply typography CSS variables
+  - `generateGoogleFontsImport(state)` - Generate @import URL
+  - `exportTypographyAsCSS(state)` - Export typography as CSS
+- `src/context/ThemeContext.jsx` - Typography state persistence and export
+- `src/index.css` - Typography CSS custom properties added
+- `src/components/theme-manager/index.jsx` - Added Typography tab (4 tabs total)
+
+**CSS Custom Properties:**
+
+```css
+--font-family-heading: system-ui, sans-serif;
+--font-family-body: system-ui, sans-serif;
+--font-size-base: 16px;
+--type-scale-ratio: 1.2;
+--line-height-heading: 1.3;
+--line-height-body: 1.5;
+--font-size-xs through --font-size-4xl (computed sizes);
+```
+
+**Theme State Shape:**
+
+```javascript
+{
+  // Existing tokens
+  darkMode, paperWhite, paperCream, paperKraft, radius, textureOpacityFaint,
+  // New typography tokens
+  fontHeading: "system-ui",     // Font ID
+  fontBody: "system-ui",        // Font ID
+  typeScale: "default",         // compact | default | spacious
+  lineHeightPreset: "normal",   // tight | normal | relaxed
+}
+```
+
+---
+
 #### Theme Presets Expansion
 
 Added 11 new built-in theme presets to the Theme Manager, bringing the total to 15 presets.
@@ -25,6 +93,44 @@ Added 11 new built-in theme presets to the Theme Manager, bringing the total to 
 - Terracotta - Warm earth tones
 
 Each preset includes full CSS variable definitions for both light and dark modes using oklch color format.
+
+---
+
+### Changed
+
+#### Theme-Aware Color Refactoring
+
+Refactored ~250+ hardcoded color classes across ~40 files to use semantic theme-aware CSS variables, enabling the 15 built-in theme presets to fully apply background, accent, and border colors throughout the entire application.
+
+**Color Mapping Applied:**
+
+| Before                    | After                   |
+| ------------------------- | ----------------------- |
+| `bg-white`, `bg-amber-50` | `bg-card`, `bg-muted`   |
+| `bg-amber-100/200`        | `bg-accent`             |
+| `text-amber-900`          | `text-foreground`       |
+| `text-amber-700`          | `text-muted-foreground` |
+| `border-amber-200/300`    | `border-border`         |
+| `dark:bg-amber-950`       | `dark:bg-card`          |
+
+**Files Modified (by category):**
+
+- **Section Components**: section.jsx
+- **Core UI**: sticky-cart, sticker-toolbar, editable-sticker, playground-canvas
+- **Pages**: NotFoundPage, PricingPage, FinalCTA
+- **Decorative UI**: timeline, kbd, neumorph-badge, floating-dock, expandable-card, texture-button, confetti, card-3d
+- **Component Library**: All 8 section files + main header
+- **Other UI**: category-pack-header, asset-card, aspect-ratio, bento-grid, dot-pattern, scroll-area, separator, direction-aware-tabs, card, progress, card-stack, parallax-scroll, spotlight, squiggle-arrow
+
+**Intentionally Preserved Amber Colors:**
+
+- Alert/Sonner warning variants (amber = warning is universal UX)
+- Star ratings (stars are traditionally amber/yellow)
+- Badge secondary variant (design choice)
+
+**Test Updates:**
+
+- Updated `progress.test.jsx` to expect new semantic class `bg-accent/50`
 
 ## [0.6.0] - 2026-01-28
 

@@ -14,7 +14,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>
@@ -32,7 +32,7 @@ function LayoutSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Default Container</h4>
             <p className="text-sm text-muted-foreground mb-3">Max-width: 1280px with responsive padding.</p>
-            <div className="bg-secondary/50 border border-dashed border-amber-300 rounded-lg p-2">
+            <div className="bg-secondary/50 border border-dashed border-border rounded-lg p-2">
               <Container>
                 <div className="bg-primary/10 p-4 rounded text-center">
                   <p className="text-sm text-foreground">Content inside Container</p>
@@ -144,17 +144,17 @@ function LayoutSection() {
             <p className="text-sm text-muted-foreground mb-3">For display-only cards without CTAs.</p>
             <BentoGrid>
               <BentoCardSimple title="Icons" description="200+ unique icons">
-                <div className="mt-2 text-amber-500">
+                <div className="mt-2 text-primary">
                   <Palette className="h-8 w-8" />
                 </div>
               </BentoCardSimple>
               <BentoCardSimple title="Illustrations" description="150+ scenes">
-                <div className="mt-2 text-amber-500">
+                <div className="mt-2 text-primary">
                   <Layers className="h-8 w-8" />
                 </div>
               </BentoCardSimple>
               <BentoCardSimple title="Patterns" description="50+ backgrounds">
-                <div className="mt-2 text-amber-500">
+                <div className="mt-2 text-primary">
                   <Sparkles className="h-8 w-8" />
                 </div>
               </BentoCardSimple>
@@ -170,7 +170,7 @@ function LayoutSection() {
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">16:9</p>
-            <AspectRatio ratio={16 / 9} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
+            <AspectRatio ratio={16 / 9} className="bg-accent rounded-md border border-border/60 overflow-hidden">
               <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                 16:9
               </div>
@@ -178,7 +178,7 @@ function LayoutSection() {
           </div>
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">1:1 (Square)</p>
-            <AspectRatio ratio={1} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
+            <AspectRatio ratio={1} className="bg-accent rounded-md border border-border/60 overflow-hidden">
               <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                 1:1
               </div>
@@ -186,7 +186,7 @@ function LayoutSection() {
           </div>
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">4:3</p>
-            <AspectRatio ratio={4 / 3} className="bg-amber-100 rounded-md border border-amber-200/60 overflow-hidden">
+            <AspectRatio ratio={4 / 3} className="bg-accent rounded-md border border-border/60 overflow-hidden">
               <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                 4:3
               </div>
@@ -202,7 +202,7 @@ function LayoutSection() {
         <div className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">Horizontal Panels</p>
-            <div className="h-48 rounded-md border border-amber-200/60 overflow-hidden">
+            <div className="h-48 rounded-md border border-border/60 overflow-hidden">
               <ResizablePanelGroup direction="horizontal">
                 <ResizablePanel defaultSize={50} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">
@@ -221,7 +221,7 @@ function LayoutSection() {
 
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">Vertical Panels</p>
-            <div className="h-64 rounded-md border border-amber-200/60 overflow-hidden">
+            <div className="h-64 rounded-md border border-border/60 overflow-hidden">
               <ResizablePanelGroup direction="vertical">
                 <ResizablePanel defaultSize={40} minSize={20}>
                   <div className="flex h-full items-center justify-center p-4">

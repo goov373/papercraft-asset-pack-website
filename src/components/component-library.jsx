@@ -19,7 +19,7 @@ function SectionLoader() {
     <div className="space-y-6">
       <Skeleton className="h-8 w-48" />
       <Skeleton className="h-4 w-96" />
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         <div className="space-y-4">
           <Skeleton className="h-32 w-full" />
           <Skeleton className="h-32 w-full" />
@@ -52,12 +52,12 @@ function ComponentLibrary() {
   const ActiveSection = categories.find(c => c.id === activeCategory)?.component
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
-      <header className="border-b border-amber-200 bg-white/50 backdrop-blur-sm sticky top-0 z-40">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-6 py-4 flex items-start justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-amber-900">Component Library</h1>
-            <p className="text-amber-700 text-sm mt-1">
+            <h1 className="text-2xl font-bold text-foreground">Component Library</h1>
+            <p className="text-muted-foreground text-sm mt-1">
               Papercraft-styled UI components
             </p>
           </div>

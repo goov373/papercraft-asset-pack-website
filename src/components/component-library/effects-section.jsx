@@ -24,7 +24,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>
@@ -135,17 +135,17 @@ function EffectsSection() {
             <h4 className="text-sm font-medium text-foreground mb-3">Basic Blur Fade</h4>
             <div className="flex gap-4">
               <BlurFade delay={0}>
-                <div className="p-4 bg-amber-100 rounded-lg border border-amber-200">
+                <div className="p-4 bg-accent rounded-lg border border-border">
                   <p className="text-foreground">Item 1</p>
                 </div>
               </BlurFade>
               <BlurFade delay={0.2}>
-                <div className="p-4 bg-amber-100 rounded-lg border border-amber-200">
+                <div className="p-4 bg-accent rounded-lg border border-border">
                   <p className="text-foreground">Item 2</p>
                 </div>
               </BlurFade>
               <BlurFade delay={0.4}>
-                <div className="p-4 bg-amber-100 rounded-lg border border-amber-200">
+                <div className="p-4 bg-accent rounded-lg border border-border">
                   <p className="text-foreground">Item 3</p>
                 </div>
               </BlurFade>
@@ -156,22 +156,22 @@ function EffectsSection() {
             <h4 className="text-sm font-medium text-foreground mb-3">Different Directions</h4>
             <div className="grid grid-cols-2 gap-4 max-w-md">
               <BlurFade direction="up" delay={0}>
-                <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
+                <div className="p-4 bg-muted rounded-lg border border-border text-center">
                   <p className="text-foreground text-sm">Up</p>
                 </div>
               </BlurFade>
               <BlurFade direction="down" delay={0.1}>
-                <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
+                <div className="p-4 bg-muted rounded-lg border border-border text-center">
                   <p className="text-foreground text-sm">Down</p>
                 </div>
               </BlurFade>
               <BlurFade direction="left" delay={0.2}>
-                <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
+                <div className="p-4 bg-muted rounded-lg border border-border text-center">
                   <p className="text-foreground text-sm">Left</p>
                 </div>
               </BlurFade>
               <BlurFade direction="right" delay={0.3}>
-                <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-center">
+                <div className="p-4 bg-muted rounded-lg border border-border text-center">
                   <p className="text-foreground text-sm">Right</p>
                 </div>
               </BlurFade>
@@ -183,7 +183,7 @@ function EffectsSection() {
             <div className="space-y-2 max-w-sm">
               {["First item", "Second item", "Third item", "Fourth item"].map((item, i) => (
                 <BlurFade key={item} delay={0.1 * i}>
-                  <div className="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                  <div className="p-3 bg-muted rounded-lg border border-border">
                     <p className="text-foreground text-sm">{item}</p>
                   </div>
                 </BlurFade>
@@ -366,7 +366,7 @@ function EffectsSection() {
             />
           </div>
 
-          <div className="bg-amber-50 rounded-lg p-4">
+          <div className="bg-muted rounded-lg p-4">
             <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full scroll-animated Timeline component works best in
               full-page layouts. Use TimelineSimple for component library demos and smaller sections.
@@ -386,7 +386,7 @@ function EffectsSection() {
             <p className="text-sm text-muted-foreground mb-3">Warm animated glow perfect for hero sections.</p>
             <Spotlight
               className="h-64 flex items-center justify-center"
-              containerClassName="rounded-lg border border-amber-200"
+              containerClassName="rounded-lg border border-border"
               size={300}
               duration={5}
             >
@@ -402,7 +402,7 @@ function EffectsSection() {
             <p className="text-sm text-muted-foreground mb-3">Multiple spotlights for dramatic effect.</p>
             <MultiSpotlight
               className="h-64 flex items-center justify-center"
-              containerClassName="rounded-lg border border-amber-200"
+              containerClassName="rounded-lg border border-border"
               spotlights={[
                 { fill: "#fcd34d", size: 300, position: "top-left", delay: 0 },
                 { fill: "#fdba74", size: 250, position: "top-right", delay: 1.5 },
@@ -450,7 +450,7 @@ function EffectsSection() {
         <div className="space-y-8">
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Basic Dot Pattern</h4>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-muted border border-border">
               <DotPattern className="opacity-50" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Content over dot pattern</p>
@@ -461,7 +461,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Glowing Dots</h4>
             <p className="text-sm text-muted-foreground mb-3">Dots animate with a subtle glow effect.</p>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-muted border border-border">
               <DotPattern glow className="opacity-60" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Animated glow effect</p>
@@ -472,7 +472,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Dense Dots</h4>
             <p className="text-sm text-muted-foreground mb-3">Smaller spacing for denser pattern.</p>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-amber-50 border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-muted border border-border">
               <DotPattern width={10} height={10} className="opacity-40" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Dense dot pattern</p>
@@ -490,7 +490,7 @@ function EffectsSection() {
         <div className="space-y-8">
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Basic Grid Pattern</h4>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-card border border-border">
               <GridPattern className="opacity-60" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Content over grid pattern</p>
@@ -501,7 +501,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Dense Grid</h4>
             <p className="text-sm text-muted-foreground mb-3">Smaller grid cells.</p>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-card border border-border">
               <GridPattern width={20} height={20} className="opacity-50" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Dense grid pattern</p>
@@ -512,7 +512,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Large Grid</h4>
             <p className="text-sm text-muted-foreground mb-3">Larger grid cells for subtle effect.</p>
-            <div className="relative h-48 rounded-lg overflow-hidden bg-white border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden bg-card border border-border">
               <GridPattern width={60} height={60} strokeWidth={2} className="opacity-40" />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Large grid pattern</p>
@@ -530,7 +530,7 @@ function EffectsSection() {
         <div className="space-y-8">
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Paper Grain (Default)</h4>
-            <div className="relative h-48 rounded-lg overflow-hidden border border-amber-200">
+            <div className="relative h-48 rounded-lg overflow-hidden border border-border">
               <div className="absolute inset-0 bg-[var(--paper-cream)]" />
               <TextureOverlay texture="paperGrain" opacity={0.8} />
               <div className="relative z-10 flex items-center justify-center h-full">
@@ -542,57 +542,57 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Texture Types</h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="dots" opacity={0.6} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Dots</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="grid" opacity={0.5} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Grid</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="crosshatch" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Crosshatch</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="linen" opacity={0.6} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Linen</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="canvas" opacity={0.5} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Canvas</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="noise" opacity={0.3} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Noise</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="diagonalLines" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Diagonal</p>
                 </div>
               </div>
-              <div className="relative h-32 rounded-lg overflow-hidden border border-amber-200">
-                <div className="absolute inset-0 bg-amber-50" />
+              <div className="relative h-32 rounded-lg overflow-hidden border border-border">
+                <div className="absolute inset-0 bg-muted" />
                 <TextureOverlay texture="horizontalLines" opacity={0.4} />
                 <div className="relative z-10 flex items-end justify-center h-full pb-2">
                   <p className="text-xs text-muted-foreground">Horizontal</p>
@@ -603,8 +603,8 @@ function EffectsSection() {
 
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Kraft Paper Effect</h4>
-            <div className="relative h-48 rounded-lg overflow-hidden border border-amber-300">
-              <div className="absolute inset-0 bg-amber-100" />
+            <div className="relative h-48 rounded-lg overflow-hidden border border-border">
+              <div className="absolute inset-0 bg-accent" />
               <TextureOverlay texture="paperGrain" opacity={1} />
               <div className="relative z-10 flex items-center justify-center h-full">
                 <p className="text-foreground font-medium">Brown kraft paper style</p>
@@ -623,7 +623,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Animated Waves</h4>
             <p className="text-sm text-muted-foreground mb-3">Canvas-based smooth wave animation.</p>
-            <div className="relative h-64 rounded-lg overflow-hidden border border-amber-200">
+            <div className="relative h-64 rounded-lg overflow-hidden border border-border">
               <WavyBackground
                 className="flex items-center justify-center h-full"
                 containerClassName="h-full"
@@ -640,7 +640,7 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Simple Wave (Static SVG)</h4>
             <p className="text-sm text-muted-foreground mb-3">Non-animated version for lighter weight.</p>
-            <div className="rounded-lg overflow-hidden border border-amber-200">
+            <div className="rounded-lg overflow-hidden border border-border">
               <WavyBackgroundSimple className="py-16">
                 <div className="text-center">
                   <h3 className="text-xl font-semibold text-foreground">Static Waves</h3>
@@ -652,7 +652,7 @@ function EffectsSection() {
 
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Custom Wave Color</h4>
-            <div className="rounded-lg overflow-hidden border border-amber-200">
+            <div className="rounded-lg overflow-hidden border border-border">
               <WavyBackgroundSimple
                 className="py-12"
                 waveColor="#fdba74"
@@ -719,10 +719,10 @@ function EffectsSection() {
             <p className="text-sm text-muted-foreground mb-3">Quick one-liner API for simple use cases.</p>
             <div className="flex justify-center gap-4">
               <Card3DSimple className="w-48 h-32 flex items-center justify-center">
-                <Palette className="w-8 h-8 text-amber-600" />
+                <Palette className="w-8 h-8 text-primary" />
               </Card3DSimple>
               <Card3DSimple className="w-48 h-32 flex items-center justify-center" glare={false}>
-                <Layers className="w-8 h-8 text-amber-600" />
+                <Layers className="w-8 h-8 text-primary" />
               </Card3DSimple>
             </div>
           </div>
@@ -824,10 +824,10 @@ function EffectsSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Simple Parallax</h4>
             <p className="text-sm text-muted-foreground mb-3">Content moves at a different rate than scroll.</p>
-            <div className="h-48 rounded-lg overflow-hidden border border-amber-200 bg-gradient-to-b from-amber-50 to-amber-100">
+            <div className="h-48 rounded-lg overflow-hidden border border-border bg-gradient-to-b from-muted to-accent">
               <ParallaxScrollSimple className="h-full" speed={0.3}>
                 <div className="flex flex-col items-center justify-center h-64 gap-4">
-                  <Package className="w-12 h-12 text-amber-600" />
+                  <Package className="w-12 h-12 text-primary" />
                   <h4 className="text-xl font-semibold text-foreground">Scroll to see effect</h4>
                   <p className="text-muted-foreground">This content moves slower than the scroll</p>
                 </div>
@@ -846,13 +846,13 @@ function EffectsSection() {
               <div className="absolute inset-0 flex items-end p-6">
                 <div>
                   <h4 className="text-xl font-bold text-white">Featured Collection</h4>
-                  <p className="text-amber-100 mt-1">Scroll to see the parallax background effect</p>
+                  <p className="text-primary-foreground/70 mt-1">Scroll to see the parallax background effect</p>
                 </div>
               </div>
             </ParallaxCard>
           </div>
 
-          <div className="bg-amber-50 rounded-lg p-4">
+          <div className="bg-muted rounded-lg p-4">
             <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full multi-column ParallaxScroll component requires
               more vertical space (200vh+). Use ParallaxScrollSimple or ParallaxCard for
@@ -930,7 +930,7 @@ function EffectsSection() {
             <h4 className="text-sm font-medium text-foreground mb-3">In Context</h4>
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground">Check this out</span>
-              <SquiggleArrow variant="bouncy" className="text-amber-500" />
+              <SquiggleArrow variant="bouncy" className="text-primary" />
               <Button>Click Me</Button>
             </div>
           </div>
@@ -939,7 +939,7 @@ function EffectsSection() {
             <h4 className="text-sm font-medium text-foreground mb-3">Squiggle Underline</h4>
             <div className="flex flex-wrap gap-6">
               <SquiggleUnderline>Important Text</SquiggleUnderline>
-              <SquiggleUnderline variant="double" className="text-amber-700">Double Line</SquiggleUnderline>
+              <SquiggleUnderline variant="double" className="text-primary">Double Line</SquiggleUnderline>
             </div>
           </div>
 
@@ -1018,19 +1018,19 @@ function AnimatedBeamShowcase() {
           <h4 className="text-sm font-medium text-foreground mb-3">Connection Beam</h4>
           <div
             ref={containerRef}
-            className="relative flex items-center justify-between p-8 bg-amber-50 rounded-lg border border-amber-200 h-32"
+            className="relative flex items-center justify-between p-8 bg-muted rounded-lg border border-border h-32"
           >
             <div
               ref={fromRef}
-              className="z-10 flex items-center justify-center w-16 h-16 bg-white rounded-lg border-2 border-amber-300 shadow-md"
+              className="z-10 flex items-center justify-center w-16 h-16 bg-white rounded-lg border-2 border-border shadow-md"
             >
-              <CircleDot className="w-8 h-8 text-amber-600" />
+              <CircleDot className="w-8 h-8 text-primary" />
             </div>
             <div
               ref={toRef}
-              className="z-10 flex items-center justify-center w-16 h-16 bg-white rounded-lg border-2 border-amber-300 shadow-md"
+              className="z-10 flex items-center justify-center w-16 h-16 bg-white rounded-lg border-2 border-border shadow-md"
             >
-              <CircleDot className="w-8 h-8 text-amber-600" />
+              <CircleDot className="w-8 h-8 text-primary" />
             </div>
             <AnimatedBeam
               containerRef={containerRef}

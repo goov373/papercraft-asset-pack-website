@@ -9,7 +9,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>

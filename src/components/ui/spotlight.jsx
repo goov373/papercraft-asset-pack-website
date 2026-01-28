@@ -216,7 +216,7 @@ function SpotlightCard({
         "[box-shadow:var(--paper-elevation-1,0_1px_2px_rgba(180,83,9,0.05),0_2px_4px_rgba(180,83,9,0.05))]",
         "transition-shadow duration-300",
         "hover:[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
-        "dark:bg-amber-950/50 dark:border-border/40",
+        "dark:bg-card/50 dark:border-border/40",
         className
       )}
       onMouseMove={handleMouseMove}

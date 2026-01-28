@@ -31,7 +31,7 @@ const separatorVariants = cva(
           "data-[orientation=vertical]:[box-shadow:1px_0_0_0_rgba(255,255,255,0.5),inset_1px_0_0_0_rgba(0,0,0,0.05)]",
         ],
         torn: [
-          "bg-amber-200/60",
+          "bg-border/60",
           "h-[3px]",
           "[mask-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 100 3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1.5 Q 5 0, 10 1.5 T 20 1.5 T 30 1.5 T 40 1.5 T 50 1.5 T 60 1.5 T 70 1.5 T 80 1.5 T 90 1.5 T 100 1.5 V 3 H 0 Z' fill='black'/%3E%3C/svg%3E\")]",
           "[mask-size:50px_3px]",
@@ -43,12 +43,12 @@ const separatorVariants = cva(
         ],
         dashed: [
           "bg-transparent",
-          "border-t border-dashed border-amber-400/60",
+          "border-t border-dashed border-border/60",
           "data-[orientation=vertical]:border-t-0 data-[orientation=vertical]:border-l",
         ],
         dotted: [
           "bg-transparent",
-          "border-t border-dotted border-amber-400/60",
+          "border-t border-dotted border-border/60",
           "data-[orientation=vertical]:border-t-0 data-[orientation=vertical]:border-l",
         ],
       },

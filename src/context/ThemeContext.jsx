@@ -6,6 +6,7 @@ import {
   saveThemeToStorage,
   loadPresetsFromStorage,
   savePresetsToStorage,
+  exportTypographyAsCSS,
 } from "@/lib/theme-utils"
 
 const ThemeContext = createContext(null)
@@ -83,11 +84,20 @@ export function ThemeProvider({ children }) {
 
   // Export current theme as CSS
   const exportThemeAsCSS = useCallback(() => {
-    return `:root {
+    const typographyCSS = exportTypographyAsCSS(themeState)
+
+    return `${typographyCSS}
+
+:root {
+  /* Paper Surfaces */
   --paper-white: ${themeState.paperWhite};
   --paper-cream: ${themeState.paperCream};
   --paper-kraft: ${themeState.paperKraft};
+
+  /* Shape */
   --radius: ${themeState.radius}rem;
+
+  /* Texture */
   --texture-opacity-faint: ${themeState.textureOpacityFaint};
 }`
   }, [themeState])

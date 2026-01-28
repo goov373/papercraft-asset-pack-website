@@ -318,10 +318,10 @@ function PlaygroundCanvas({
         {/* Pin holes for corkboard */}
         {variant === "corkboard" && (
           <div className="absolute inset-4 pointer-events-none">
-            <div className="absolute top-0 left-0 w-2 h-2 rounded-full bg-amber-950/30" />
-            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-amber-950/30" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 rounded-full bg-amber-950/30" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-amber-950/30" />
+            <div className="absolute top-0 left-0 w-2 h-2 rounded-full bg-foreground/30" />
+            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-foreground/30" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 rounded-full bg-foreground/30" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-foreground/30" />
           </div>
         )}
 

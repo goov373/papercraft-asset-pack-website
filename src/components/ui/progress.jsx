@@ -27,7 +27,7 @@ const progressVariants = cva(
         // Craft: Kraft paper style
         kraft: [
           "h-3 rounded-sm",
-          "bg-amber-100/50 border-amber-200/50",
+          "bg-accent/50 border-border/50",
         ].join(" "),
       },
       size: {
@@ -56,7 +56,7 @@ const indicatorVariants = cva(
         default: "bg-primary rounded-full",
         thick: "bg-primary rounded-full",
         paper: "bg-primary rounded-sm",
-        kraft: "bg-amber-600 rounded-sm",
+        kraft: "bg-primary rounded-sm",
       },
     },
     defaultVariants: {

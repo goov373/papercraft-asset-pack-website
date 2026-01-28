@@ -61,12 +61,12 @@ function Timeline({ data, className }) {
               <div
                 className={cn(
                   "h-10 w-10 absolute left-3 md:left-3 rounded-full flex items-center justify-center",
-                  "bg-gradient-to-b from-amber-100 to-amber-200",
-                  "border-2 border-amber-300",
+                  "bg-gradient-to-b from-muted to-accent",
+                  "border-2 border-border",
                   "[box-shadow:0_2px_8px_rgba(180,83,9,0.15)]"
                 )}
               >
-                <div className="h-4 w-4 rounded-full bg-amber-500" />
+                <div className="h-4 w-4 rounded-full bg-primary" />
               </div>
               {/* Title */}
               <h3
@@ -97,7 +97,7 @@ function Timeline({ data, className }) {
                   "bg-[var(--paper-cream,#FFFBF5)]",
                   "border border-border/60",
                   "[box-shadow:var(--paper-elevation-1,0_1px_2px_rgba(180,83,9,0.05),0_2px_4px_rgba(180,83,9,0.05))]",
-                  "dark:bg-amber-950/30 dark:border-border/40"
+                  "dark:bg-muted/30 dark:border-border/40"
                 )}
               >
                 {item.content}
@@ -111,8 +111,8 @@ function Timeline({ data, className }) {
           style={{ height: height + "px" }}
           className={cn(
             "absolute md:left-8 left-8 top-0 overflow-hidden w-[2px]",
-            "bg-gradient-to-b from-transparent via-amber-200 to-transparent",
-            "dark:via-amber-800"
+            "bg-gradient-to-b from-transparent via-border to-transparent",
+            "dark:via-border"
           )}
         >
           {/* Animated progress line */}
@@ -123,7 +123,7 @@ function Timeline({ data, className }) {
             }}
             className={cn(
               "absolute inset-x-0 top-0 w-[2px]",
-              "bg-gradient-to-t from-amber-500 via-amber-400 to-transparent",
+              "bg-gradient-to-t from-primary via-primary/80 to-transparent",
               "rounded-full"
             )}
           />
@@ -142,7 +142,7 @@ function TimelineSimple({ data, className }) {
   return (
     <div className={cn("relative", className)}>
       {/* Vertical line */}
-      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-amber-200 dark:bg-amber-800" />
+      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border" />
 
       {/* Timeline items */}
       <div className="space-y-8">
@@ -152,13 +152,13 @@ function TimelineSimple({ data, className }) {
             <div
               className={cn(
                 "absolute left-0 top-1 w-8 h-8 rounded-full",
-                "bg-gradient-to-b from-amber-100 to-amber-200",
-                "border-2 border-amber-300",
+                "bg-gradient-to-b from-muted to-accent",
+                "border-2 border-border",
                 "flex items-center justify-center",
                 "[box-shadow:0_2px_4px_rgba(180,83,9,0.1)]"
               )}
             >
-              <div className="w-3 h-3 rounded-full bg-amber-500" />
+              <div className="w-3 h-3 rounded-full bg-primary" />
             </div>
 
             {/* Content */}
@@ -171,7 +171,7 @@ function TimelineSimple({ data, className }) {
                   "p-4 rounded-lg",
                   "bg-[var(--paper-cream,#FFFBF5)]",
                   "border border-border/60",
-                  "dark:bg-amber-950/30 dark:border-border/40"
+                  "dark:bg-muted/30 dark:border-border/40"
                 )}
               >
                 {item.content}
@@ -193,7 +193,7 @@ function TimelineHorizontal({ data, className }) {
   return (
     <div className={cn("relative", className)}>
       {/* Horizontal line */}
-      <div className="absolute left-0 right-0 top-4 h-0.5 bg-amber-200 dark:bg-amber-800" />
+      <div className="absolute left-0 right-0 top-4 h-0.5 bg-border" />
 
       {/* Timeline items */}
       <div className="flex gap-8 overflow-x-auto pb-4">
@@ -203,13 +203,13 @@ function TimelineHorizontal({ data, className }) {
             <div
               className={cn(
                 "absolute left-1/2 -translate-x-1/2 top-0 w-8 h-8 rounded-full",
-                "bg-gradient-to-b from-amber-100 to-amber-200",
-                "border-2 border-amber-300",
+                "bg-gradient-to-b from-muted to-accent",
+                "border-2 border-border",
                 "flex items-center justify-center",
                 "[box-shadow:0_2px_4px_rgba(180,83,9,0.1)]"
               )}
             >
-              <div className="w-3 h-3 rounded-full bg-amber-500" />
+              <div className="w-3 h-3 rounded-full bg-primary" />
             </div>
 
             {/* Content */}
@@ -218,7 +218,7 @@ function TimelineHorizontal({ data, className }) {
                 "p-4 rounded-lg text-center",
                 "bg-[var(--paper-cream,#FFFBF5)]",
                 "border border-border/60",
-                "dark:bg-amber-950/30 dark:border-border/40"
+                "dark:bg-muted/30 dark:border-border/40"
               )}
             >
               <h4 className="text-lg font-semibold text-foreground mb-2">

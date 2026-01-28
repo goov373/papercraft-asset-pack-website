@@ -115,7 +115,7 @@ function SquiggleUnderline({
       viewBox="0 0 150 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("text-amber-500", className)}
+      className={cn("text-primary", className)}
       aria-hidden="true"
       {...props}
     >
@@ -148,7 +148,7 @@ function SquiggleCircle({
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("text-amber-500", className)}
+      className={cn("text-primary", className)}
       aria-hidden="true"
       {...props}
     >

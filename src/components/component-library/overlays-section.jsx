@@ -69,7 +69,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>
@@ -255,7 +255,7 @@ function OverlaysSection() {
                 </HoverCardTrigger>
                 <HoverCardContent>
                   <div className="flex justify-between space-x-4">
-                    <div className="size-12 rounded-full bg-gradient-to-br from-amber-200 to-orange-300 flex items-center justify-center text-2xl">
+                    <div className="size-12 rounded-full bg-gradient-to-br from-accent to-primary/40 flex items-center justify-center text-2xl">
                       ✂️
                     </div>
                     <div className="space-y-1 flex-1">
@@ -340,8 +340,8 @@ function OverlaysSection() {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogMedia className="bg-amber-100">
-                    <AlertTriangleIcon className="text-amber-600" />
+                  <AlertDialogMedia className="bg-accent">
+                    <AlertTriangleIcon className="text-primary" />
                   </AlertDialogMedia>
                   <AlertDialogTitle>Discard unsaved changes?</AlertDialogTitle>
                   <AlertDialogDescription>

@@ -29,9 +29,10 @@ src/
 │   ├── theme-manager/   # Theme customization system
 │   │   ├── index.jsx              # Main modal component
 │   │   ├── colors-tab.jsx         # Tinte integration
+│   │   ├── typography-tab.jsx     # Typography controls
 │   │   ├── papercraft-tab.jsx     # Papercraft controls
 │   │   ├── presets-tab.jsx        # Preset management
-│   │   └── controls/              # Reusable control components
+│   │   └── controls/              # Font selector, type scale, line height
 │   ├── sections/        # Landing page sections
 │   │   ├── Hero.jsx, FAQ.jsx, Pricing.jsx, etc.
 │   ├── pricing/         # Pricing-specific components
@@ -44,7 +45,8 @@ src/
 ├── lib/
 │   ├── utils.js         # cn() utility for class merging
 │   ├── sentry.js        # Error tracking utilities
-│   └── theme-utils.js   # CSS variable utilities + presets
+│   ├── theme-utils.js   # CSS variable utilities + presets + typography
+│   └── typography-config.js  # Font catalog, type scales, line heights
 ├── test/
 │   ├── setup.js         # Vitest setup with mocks
 │   └── test-utils.jsx   # Custom render with providers
@@ -53,11 +55,32 @@ src/
 
 ## Design System
 
-- **Primary**: Amber-600 (`--primary`)
-- **Accent**: Orange-500 (`--accent`)
-- **Theme**: Warm, handcrafted papercraft aesthetic
+- **Theme**: Warm, handcrafted papercraft aesthetic (fully theme-aware)
+- **Primary**: Theme-defined via `--primary` (default: Amber-600)
+- **Accent**: Theme-defined via `--accent` (default: Orange-500)
 - **Paper surfaces**: `--paper-white`, `--paper-cream`, `--paper-kraft`
 - See `/Docs/DESIGN_SYSTEM.md` for full spec
+
+### Semantic Color Classes
+
+Always use semantic Tailwind classes instead of hardcoded colors to ensure theme compatibility:
+
+| Use This                   | Not This                               |
+| -------------------------- | -------------------------------------- |
+| `bg-background`, `bg-card` | `bg-white`                             |
+| `bg-muted`                 | `bg-amber-50`                          |
+| `bg-accent`                | `bg-amber-100`, `bg-amber-200`         |
+| `text-foreground`          | `text-amber-900`                       |
+| `text-muted-foreground`    | `text-amber-700`, `text-amber-600`     |
+| `border-border`            | `border-amber-200`, `border-amber-300` |
+| `text-primary`             | `text-amber-600`, `text-amber-500`     |
+| `dark:bg-card`             | `dark:bg-amber-950`                    |
+
+**Exceptions** (intentionally hardcoded):
+
+- Warning alerts/toasts - amber represents warning state
+- Star ratings - stars are traditionally amber/yellow
+- Specific decorative elements where amber is the design intent
 
 ## Key Features
 
@@ -69,6 +92,7 @@ Real-time theme customization system accessible via Component Library:
 - **Light/Dark Toggle**: Sun/moon button in modal header for instant mode switching
 - **Built-in Presets**: 15 presets including Default, Rose Garden, Forest Meadow, Ocean Deep, Matrix, Cherry Blossom, and more
 - **Tinte Integration**: AI-powered color palette generation, 670+ community themes
+- **Typography Controls**: 13 curated Google Fonts, type scale presets, line height control
 - **Papercraft Controls**: Paper surfaces, border radius, texture opacity
 - **Custom Presets**: Save/load your own theme configurations
 - **Persistence**: All settings saved to localStorage
@@ -80,6 +104,26 @@ import { useTheme } from "@/context/ThemeContext";
 const { themeState, setDarkMode, setToken } = useTheme();
 setDarkMode(true); // Enable dark mode
 setToken("radius", 0.5); // Set border radius
+setToken("fontHeading", "playfair-display"); // Set heading font
+setToken("typeScale", "spacious"); // Set type scale
+```
+
+### Typography System
+
+Font customization with 13 curated Google Fonts:
+
+- **Fonts**: System default + 4 handwritten + 4 serifs + 2 display + 2 sans-serif
+- **Type Scale**: Compact (1.125), Default (1.2), Spacious (1.25)
+- **Line Height**: Tight, Normal, Relaxed presets
+- **Live Preview**: Real-time preview in Theme Manager modal
+- **CSS Export**: Includes Google Fonts @import statements
+
+```jsx
+// Typography utilities
+import { loadGoogleFont, getFontFamily } from "@/lib/theme-utils";
+
+loadGoogleFont("playfair-display"); // Load font dynamically
+const family = getFontFamily("lora"); // Get CSS font-family string
 ```
 
 ### Sticker Playground
@@ -216,6 +260,18 @@ Component documentation at `npm run storybook`:
 --paper-elevation-3  /* Modal/floating */
 ```
 
+### Typography
+
+```css
+--font-family-heading  /* Heading font stack */
+--font-family-body     /* Body font stack */
+--font-size-base       /* Base font size (16px default) */
+--type-scale-ratio     /* Scale ratio (1.2 default) */
+--font-size-xs/sm/lg/xl/2xl/3xl/4xl  /* Computed sizes */
+--line-height-heading  /* Heading line height (1.3 default) */
+--line-height-body     /* Body line height (1.5 default) */
+```
+
 ### Theme Utilities (theme-utils.js)
 
 ```javascript
@@ -230,6 +286,34 @@ oklchToHex("oklch(0.65 0.17 55)"); // → "#d97706"
 // Built-in presets
 import { BUILT_IN_PRESETS, applyBuiltInPreset } from "@/lib/theme-utils";
 applyBuiltInPreset("rose-garden"); // Apply preset by ID
+
+// Typography
+loadGoogleFont("playfair-display"); // Load font dynamically
+getFontFamily("lora"); // → '"Lora", Georgia, serif'
+applyTypographyToDOM(themeState); // Apply typography CSS vars
+exportTypographyAsCSS(themeState); // Export with @import
+```
+
+### Typography Config (typography-config.js)
+
+```javascript
+import {
+  FONT_CATALOG,
+  TYPE_SCALES,
+  LINE_HEIGHTS,
+} from "@/lib/typography-config";
+
+// Font catalog with 13 fonts (system + 12 Google Fonts)
+FONT_CATALOG["playfair-display"].name; // "Playfair Display"
+FONT_CATALOG["playfair-display"].weights; // [400, 500, 600, 700, 800, 900]
+
+// Type scale presets
+TYPE_SCALES.default.ratio; // 1.2
+TYPE_SCALES.default.baseFontSize; // 16
+
+// Line height presets
+LINE_HEIGHTS.normal.heading; // 1.3
+LINE_HEIGHTS.normal.body; // 1.5
 ```
 
 ## Documentation
@@ -261,4 +345,4 @@ applyBuiltInPreset("rose-garden"); // Apply preset by ID
 - **GitHub Actions**: Runs on push/PR to main
   - Build verification
   - ESLint checks
-  - Full test suite (168 tests)
+  - Full test suite (353 tests)

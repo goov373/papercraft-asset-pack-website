@@ -90,10 +90,10 @@ function DirectionAwareTabsList({
       className={cn(
         "relative inline-flex items-center gap-1 p-1 rounded-lg",
         // Papercraft styling
-        "bg-amber-100/50",
+        "bg-accent/50",
         "border border-border/60",
         "[box-shadow:inset_0_1px_2px_rgba(180,83,9,0.05)]",
-        "dark:bg-amber-900/20 dark:border-border/40",
+        "dark:bg-muted/20 dark:border-border/40",
         className
       )}
       {...props}
@@ -105,7 +105,7 @@ function DirectionAwareTabsList({
           "bg-white",
           "border border-border/60",
           "[box-shadow:0_1px_3px_rgba(180,83,9,0.08)]",
-          "dark:bg-amber-800/40 dark:border-border/40"
+          "dark:bg-accent/40 dark:border-border/40"
         )}
         initial={false}
         animate={{
@@ -170,7 +170,7 @@ function DirectionAwareTabsContent({
         "p-4",
         // Animation
         "data-[state=inactive]:hidden",
-        "dark:bg-amber-950/30 dark:border-border/40",
+        "dark:bg-card/30 dark:border-border/40",
         className
       )}
       {...props}

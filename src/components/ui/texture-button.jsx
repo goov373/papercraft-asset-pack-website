@@ -26,20 +26,20 @@ const buttonOuterVariants = cva(
   {
     variants: {
       variant: {
-        // Primary - warm amber gradient
+        // Primary - theme primary color
         primary:
-          "border-amber-700/20 bg-gradient-to-b from-amber-600/90 to-amber-700 p-[1px]",
+          "border-primary/20 bg-gradient-to-b from-primary/90 to-primary p-[1px]",
         // Craft - paper-like appearance (default papercraft style)
         craft:
-          "border-amber-300/60 bg-gradient-to-b from-amber-100 to-amber-200/80 p-[1px]",
-        // Secondary - subtle warm gray
+          "border-border bg-gradient-to-b from-accent to-accent/80 p-[1px]",
+        // Secondary - subtle muted
         secondary:
-          "border-amber-200/40 bg-gradient-to-b from-amber-50 to-amber-100/50 p-[1px]",
-        // Accent - vibrant orange
+          "border-border/40 bg-gradient-to-b from-muted to-accent/50 p-[1px]",
+        // Accent - vibrant accent color
         accent:
-          "border-orange-600/20 bg-gradient-to-b from-orange-500/90 to-orange-600 p-[1px]",
+          "border-primary/20 bg-gradient-to-b from-primary/90 to-primary p-[1px]",
         // Ghost - minimal outline
-        ghost: "border-amber-300/50 bg-transparent p-[1px]",
+        ghost: "border-border bg-transparent p-[1px]",
       },
       size: {
         sm: "rounded-md",
@@ -61,15 +61,15 @@ const buttonInnerVariants = cva(
     variants: {
       variant: {
         primary:
-          "gap-2 bg-gradient-to-b from-amber-500 to-amber-600 text-white hover:from-amber-500/90 hover:to-amber-600/90",
+          "gap-2 bg-gradient-to-b from-primary to-primary text-primary-foreground hover:from-primary/90 hover:to-primary/90",
         craft:
-          "gap-2 bg-gradient-to-b from-[var(--paper-cream)] to-amber-50 text-foreground hover:from-amber-50 hover:to-amber-100/80",
+          "gap-2 bg-gradient-to-b from-[var(--paper-cream)] to-muted text-foreground hover:from-muted hover:to-accent/80",
         secondary:
-          "gap-2 bg-gradient-to-b from-white to-amber-50/50 text-muted-foreground hover:from-amber-50/50 hover:to-amber-100/50",
+          "gap-2 bg-gradient-to-b from-card to-muted/50 text-muted-foreground hover:from-muted/50 hover:to-accent/50",
         accent:
-          "gap-2 bg-gradient-to-b from-orange-400 to-orange-500 text-white hover:from-orange-400/90 hover:to-orange-500/90",
+          "gap-2 bg-gradient-to-b from-primary to-primary text-primary-foreground hover:from-primary/90 hover:to-primary/90",
         ghost:
-          "gap-2 bg-transparent text-muted-foreground hover:bg-amber-50/50",
+          "gap-2 bg-transparent text-muted-foreground hover:bg-accent/50",
       },
       size: {
         sm: "text-xs rounded-[5px] px-3 py-1.5",

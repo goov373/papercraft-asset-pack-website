@@ -82,20 +82,20 @@ function ScrollBar({
         className={cn(
           "relative flex-1 rounded-full",
           // Papercraft: Thumb as paper tab/edge
-          "bg-amber-300/70",
-          "border border-amber-400/30",
+          "bg-border",
+          "border border-border/30",
           "[box-shadow:var(--paper-elevation-1)]",
           // Cursor: Grabbable paper tab
           "cursor-grab",
           // Transitions for paper physics
           "transition-[background-color,transform,box-shadow] duration-150",
           // Hover: Tab lifts toward user
-          "hover:bg-amber-400/80",
+          "hover:bg-accent",
           "hover:-translate-y-0.5 hover:scale-105",
           "hover:[box-shadow:var(--paper-elevation-2)]",
           // Active: Grabbing the paper tab
           "active:cursor-grabbing",
-          "active:bg-amber-500/80",
+          "active:bg-primary/80",
           "active:translate-y-0 active:scale-100",
           "active:[box-shadow:var(--paper-elevation-1)]",
         )}

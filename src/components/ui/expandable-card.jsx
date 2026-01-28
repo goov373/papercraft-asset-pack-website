@@ -48,7 +48,7 @@ function ExpandableCards({ children, className }) {
               className={cn(
                 "fixed inset-0 z-40",
                 // Tissue paper overlay effect
-                "bg-amber-950/20 backdrop-blur-sm"
+                "bg-background/60 backdrop-blur-sm"
               )}
             />
           )}
@@ -96,7 +96,7 @@ function ExpandableCard({
           "[box-shadow:var(--paper-elevation-1,0_1px_2px_rgba(180,83,9,0.05),0_2px_4px_rgba(180,83,9,0.05))]",
           "transition-shadow duration-300",
           "hover:[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
-          "dark:bg-amber-950/50 dark:border-border/40",
+          "dark:bg-card/50 dark:border-border/40",
           isExpanded && "invisible",
           className
         )}
@@ -142,7 +142,7 @@ function ExpandableCard({
               "bg-[var(--paper-cream,#FFFBF5)]",
               "border border-border/60",
               "[box-shadow:0_8px_32px_rgba(180,83,9,0.15),0_16px_48px_rgba(180,83,9,0.1)]",
-              "dark:bg-amber-950 dark:border-border/40",
+              "dark:bg-card dark:border-border/40",
               // Positioning
               "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
               "w-[90vw] max-w-2xl max-h-[85vh] overflow-y-auto"
@@ -154,10 +154,10 @@ function ExpandableCard({
               className={cn(
                 "absolute top-4 right-4 z-10",
                 "w-8 h-8 rounded-full flex items-center justify-center",
-                "bg-amber-100 hover:bg-amber-200",
+                "bg-accent hover:bg-accent",
                 "text-muted-foreground",
                 "transition-colors duration-200",
-                "dark:bg-amber-800 dark:hover:bg-amber-700"
+                "dark:bg-accent dark:hover:bg-accent"
               )}
             >
               <svg
@@ -240,7 +240,7 @@ function ExpandableCardSimple({
         "bg-[var(--paper-cream,#FFFBF5)]",
         "border border-border/60",
         "[box-shadow:var(--paper-elevation-1,0_1px_2px_rgba(180,83,9,0.05),0_2px_4px_rgba(180,83,9,0.05))]",
-        "dark:bg-amber-950/50 dark:border-border/40",
+        "dark:bg-card/50 dark:border-border/40",
         className
       )}
     >
@@ -250,7 +250,7 @@ function ExpandableCardSimple({
         className={cn(
           "w-full p-4 flex items-center justify-between",
           "text-left",
-          "hover:bg-amber-50/50 dark:hover:bg-amber-900/30",
+          "hover:bg-accent/50 dark:hover:bg-accent/30",
           "transition-colors duration-200"
         )}
       >

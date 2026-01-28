@@ -121,7 +121,7 @@ function BentoCard({
       )}
 
       {/* Hover overlay */}
-      <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-amber-900/[.02]" />
+      <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-foreground/[.02]" />
     </div>
   )
 }

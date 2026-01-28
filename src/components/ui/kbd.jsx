@@ -23,45 +23,45 @@ const kbdVariants = cva(
       variant: {
         default: [
           // Typewriter key style - elevated paper key
-          "bg-amber-100 text-foreground",
-          "border border-amber-300/60",
-          "border-b-2 border-b-amber-400/50",
+          "bg-accent text-foreground",
+          "border border-border",
+          "border-b-2 border-b-border",
           "[box-shadow:var(--paper-elevation-1)]",
           "px-1.5 py-0.5",
           // Subtle hover lift like pressing a key
           "hover:-translate-y-px hover:[box-shadow:var(--paper-elevation-2)]",
           // Active/pressed state - key goes down
           "active:translate-y-0 active:[box-shadow:var(--paper-elevation-0)]",
-          "active:border-b active:border-b-amber-300/60",
+          "active:border-b active:border-b-border",
         ],
         outline: [
           // Label maker style
           "bg-transparent text-muted-foreground",
-          "border border-amber-400/60",
+          "border border-border",
           "border-dashed",
           "px-1.5 py-0.5",
           // Hover fills in slightly
-          "hover:bg-amber-50/50",
+          "hover:bg-accent/50",
         ],
         ghost: [
           // Subtle inline style
-          "bg-amber-100/50 text-muted-foreground",
+          "bg-accent/50 text-muted-foreground",
           "px-1 py-0.5",
           // Hover brightens
-          "hover:bg-amber-100",
+          "hover:bg-accent",
         ],
         raised: [
           // More prominent raised key style
-          "bg-amber-50 text-foreground",
-          "border border-amber-200/60",
-          "border-b-[3px] border-b-amber-300/70",
+          "bg-muted text-foreground",
+          "border border-border",
+          "border-b-[3px] border-b-border",
           "[box-shadow:var(--paper-elevation-2)]",
           "px-1.5 py-0.5",
           // Hover lifts more
           "hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-3)]",
           // Press sinks fully
           "active:translate-y-0.5 active:[box-shadow:var(--paper-elevation-0)]",
-          "active:border-b active:border-b-amber-200/60",
+          "active:border-b active:border-b-border",
         ],
       },
       size: {

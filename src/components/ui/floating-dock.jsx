@@ -62,7 +62,7 @@ function FloatingDockDesktop({ items, className }) {
         "backdrop-blur-md",
         "border border-border/60",
         "[box-shadow:0_4px_24px_rgba(180,83,9,0.12),0_8px_32px_rgba(180,83,9,0.08)]",
-        "dark:bg-amber-950/90 dark:border-border/40",
+        "dark:bg-card/90 dark:border-border/40",
         className
       )}
     >
@@ -118,12 +118,12 @@ function DockIcon({ item, mouseX }) {
       className={cn(
         "relative flex items-center justify-center rounded-xl",
         // Papercraft styling
-        "bg-gradient-to-b from-amber-50 to-amber-100",
+        "bg-gradient-to-b from-muted to-accent",
         "border border-border/60",
         "[box-shadow:0_2px_4px_rgba(180,83,9,0.08)]",
         "transition-colors duration-200",
-        "hover:from-amber-100 hover:to-amber-200",
-        "dark:from-amber-900/50 dark:to-amber-800/50 dark:border-border/40"
+        "hover:from-accent hover:to-accent",
+        "dark:from-muted/50 dark:to-accent/50 dark:border-border/40"
       )}
     >
       {/* Icon */}
@@ -143,8 +143,8 @@ function DockIcon({ item, mouseX }) {
           className={cn(
             "absolute -top-10 left-1/2 -translate-x-1/2",
             "px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap",
-            "bg-amber-900 text-amber-50",
-            "dark:bg-amber-100 dark:text-amber-900"
+            "bg-foreground text-background",
+            "dark:bg-background dark:text-foreground"
           )}
         >
           {item.label}
@@ -153,7 +153,7 @@ function DockIcon({ item, mouseX }) {
             className={cn(
               "absolute -bottom-1 left-1/2 -translate-x-1/2",
               "w-2 h-2 rotate-45",
-              "bg-amber-900 dark:bg-amber-100"
+              "bg-foreground dark:bg-background"
             )}
           />
         </motion.div>
@@ -195,7 +195,7 @@ function FloatingDockMobile({ items, className }) {
                 "border border-border/60",
                 "[box-shadow:0_2px_8px_rgba(180,83,9,0.12)]",
                 "text-foreground",
-                "dark:bg-amber-900/90 dark:border-border/40"
+                "dark:bg-card/90 dark:border-border/40"
               )}
             >
               <span className="w-5 h-5">{item.icon}</span>
@@ -211,11 +211,11 @@ function FloatingDockMobile({ items, className }) {
         whileTap={{ scale: 0.95 }}
         className={cn(
           "w-14 h-14 rounded-full flex items-center justify-center",
-          "bg-gradient-to-b from-amber-400 to-amber-500",
-          "border border-amber-500",
+          "bg-gradient-to-b from-primary to-primary",
+          "border border-primary",
           "[box-shadow:0_4px_12px_rgba(180,83,9,0.2)]",
-          "text-white",
-          "dark:from-amber-600 dark:to-amber-700"
+          "text-primary-foreground",
+          "dark:from-primary dark:to-primary"
         )}
       >
         <motion.svg
@@ -253,7 +253,7 @@ function FloatingDockStatic({ items, className }) {
         "bg-[var(--paper-cream,#FFFBF5)]",
         "border border-border/60",
         "[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
-        "dark:bg-amber-950/50 dark:border-border/40",
+        "dark:bg-card/50 dark:border-border/40",
         className
       )}
     >

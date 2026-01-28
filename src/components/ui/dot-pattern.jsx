@@ -92,8 +92,8 @@ function DotPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full",
-        // Warm amber color for papercraft aesthetic
-        "text-amber-400/60",
+        // Theme-aware primary color for papercraft aesthetic
+        "text-primary/60",
         className
       )}
       {...props}

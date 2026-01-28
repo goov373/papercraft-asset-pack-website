@@ -93,7 +93,7 @@ function ParallaxItem({ children, className }) {
         "bg-[var(--paper-cream,#FFFBF5)]",
         "border border-border/60",
         "[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
-        "dark:bg-amber-950/50 dark:border-border/40",
+        "dark:bg-card/50 dark:border-border/40",
         className
       )}
     >

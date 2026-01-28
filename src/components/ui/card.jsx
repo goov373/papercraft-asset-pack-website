@@ -34,16 +34,16 @@ const cardVariants = cva(
         ].join(" "),
         // Sticky: Post-it note style
         sticky: [
-          "bg-amber-100 dark:bg-amber-900/40",
+          "bg-accent dark:bg-accent/40",
           "[box-shadow:var(--paper-shadow-sticky)]",
           "[transform:perspective(1000px)_rotateX(-1deg)]",
           "[transform-origin:top_center]",
         ].join(" "),
         // Kraft: Brown kraft paper
         kraft: [
-          "bg-paper-kraft text-amber-950",
+          "bg-paper-kraft text-foreground",
           "[box-shadow:var(--paper-shadow-kraft)]",
-          "dark:bg-amber-900/60 dark:text-amber-100",
+          "dark:bg-muted/60 dark:text-foreground",
         ].join(" "),
       },
     },

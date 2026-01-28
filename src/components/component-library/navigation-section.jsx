@@ -123,7 +123,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>
@@ -272,7 +272,7 @@ function NavigationSection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Right-click the area below</h4>
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-36 w-64 items-center justify-center rounded-lg border-2 border-dashed border-amber-300 bg-background/50 text-muted-foreground">
+              <ContextMenuTrigger className="flex h-36 w-64 items-center justify-center rounded-lg border-2 border-dashed border-border bg-background/50 text-muted-foreground">
                 Right-click here
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64">
@@ -361,7 +361,7 @@ function NavigationSection() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="#" className="inline-flex h-9 w-max items-center justify-center rounded-md bg-card px-4 py-2 text-sm font-medium [box-shadow:var(--paper-elevation-1)] transition-all duration-150 hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-2)] hover:bg-amber-50 hover:text-amber-900">
+                  <NavigationMenuLink href="#" className="inline-flex h-9 w-max items-center justify-center rounded-md bg-card px-4 py-2 text-sm font-medium [box-shadow:var(--paper-elevation-1)] transition-all duration-150 hover:-translate-y-0.5 hover:[box-shadow:var(--paper-elevation-2)] hover:bg-accent hover:text-foreground">
                     Documentation
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -825,7 +825,7 @@ function NavigationSection() {
             </div>
           </div>
 
-          <div className="bg-amber-50 rounded-lg p-4">
+          <div className="bg-muted rounded-lg p-4">
             <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> The full FloatingDock component is fixed-positioned for
               actual navigation. Use FloatingDockStatic for inline demos like this. The dock

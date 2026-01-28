@@ -50,7 +50,7 @@ function AssetCard({ asset, isSelected, onToggle }) {
         // Selected state
         isSelected && [
           "ring-2 ring-primary/60",
-          "bg-amber-100/40 dark:bg-amber-900/20",
+          "bg-accent/40 dark:bg-accent/20",
         ]
       )}
     >

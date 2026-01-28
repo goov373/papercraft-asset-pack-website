@@ -3,19 +3,19 @@ import { useCallback, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-// Paper-themed confetti pieces
+// Paper-themed confetti pieces (uses semantic colors for theme adaptability)
 const CONFETTI_SHAPES = [
   // Paper scraps (rectangles)
-  { type: "scrap", color: "bg-amber-200", width: "w-3", height: "h-2" },
-  { type: "scrap", color: "bg-orange-200", width: "w-2", height: "h-3" },
-  { type: "scrap", color: "bg-yellow-200", width: "w-4", height: "h-1" },
+  { type: "scrap", color: "bg-accent", width: "w-3", height: "h-2" },
+  { type: "scrap", color: "bg-primary/40", width: "w-2", height: "h-3" },
+  { type: "scrap", color: "bg-muted", width: "w-4", height: "h-1" },
   // Paper dots (circles)
-  { type: "dot", color: "bg-amber-300", size: "w-2 h-2" },
-  { type: "dot", color: "bg-orange-300", size: "w-3 h-3" },
+  { type: "dot", color: "bg-accent", size: "w-2 h-2" },
+  { type: "dot", color: "bg-primary/50", size: "w-3 h-3" },
   { type: "dot", color: "bg-primary/60", size: "w-2 h-2" },
   // Paper triangles
-  { type: "triangle", color: "border-amber-300", size: "border-l-[6px] border-r-[6px] border-b-[10px]" },
-  { type: "triangle", color: "border-orange-200", size: "border-l-[8px] border-r-[8px] border-b-[12px]" },
+  { type: "triangle", color: "border-accent", size: "border-l-[6px] border-r-[6px] border-b-[10px]" },
+  { type: "triangle", color: "border-primary/40", size: "border-l-[8px] border-r-[8px] border-b-[12px]" },
 ]
 
 // Generate a single confetti piece with random properties

@@ -44,7 +44,7 @@ describe('Progress', () => {
 
   it('applies kraft variant', () => {
     render(<Progress value={50} variant="kraft" data-testid="progress" />)
-    expect(screen.getByTestId('progress')).toHaveClass('bg-amber-100/50')
+    expect(screen.getByTestId('progress')).toHaveClass('bg-accent/50')
   })
 
   it('applies small size', () => {

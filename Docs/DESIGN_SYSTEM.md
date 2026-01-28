@@ -1170,10 +1170,190 @@ Dark mode adds `.dark` class to `document.documentElement`:
 
 All theme settings persist to localStorage:
 
-| Key                        | Contents                                              |
-| -------------------------- | ----------------------------------------------------- |
-| `papercraft-theme`         | Theme state (darkMode, paper colors, radius, texture) |
-| `papercraft-presets`       | Array of user-saved presets                           |
-| `papercraft-active-preset` | ID of currently active built-in preset                |
+| Key                        | Contents                                                          |
+| -------------------------- | ----------------------------------------------------------------- |
+| `papercraft-theme`         | Theme state (darkMode, paper colors, radius, texture, typography) |
+| `papercraft-presets`       | Array of user-saved presets                                       |
+| `papercraft-active-preset` | ID of currently active built-in preset                            |
 
 Theme is automatically restored on page load via `ThemeProvider`.
+
+---
+
+## 18. TYPOGRAPHY SYSTEM
+
+Complete typography customization system for font selection, scaling, and rhythm control.
+
+### 18.1 Overview
+
+The Typography tab in Theme Manager provides controls for:
+
+- **Heading Font**: Select from 13 curated fonts optimized for headlines
+- **Body Font**: Select from 13 curated fonts optimized for readability
+- **Type Scale**: Choose scaling ratio (Compact, Default, Spacious)
+- **Line Height**: Set vertical rhythm (Tight, Normal, Relaxed)
+
+### 18.2 Font Catalog
+
+13 curated fonts appropriate for papercraft themes:
+
+| Font               | Category    | Weights       | Best For              |
+| ------------------ | ----------- | ------------- | --------------------- |
+| System Default     | System      | 400-700       | Universal fallback    |
+| Shadows Into Light | Handwritten | 400           | Headlines, accents    |
+| Patrick Hand       | Handwritten | 400           | Both headings & body  |
+| Caveat             | Handwritten | 400-700       | Headlines, signatures |
+| Kalam              | Handwritten | 400, 700      | Body text, notes      |
+| Lora               | Serif       | 400-700       | Both headings & body  |
+| Merriweather       | Serif       | 400, 700, 900 | Body text primary     |
+| Crimson Text       | Serif       | 400, 600, 700 | Long-form body text   |
+| Alegreya           | Serif       | 400-800       | Both headings & body  |
+| Playfair Display   | Display     | 400-900       | Headlines only        |
+| Young Serif        | Display     | 400           | Headlines, titles     |
+| Source Sans 3      | Sans        | 400-700       | Body text, UI         |
+| Nunito             | Sans        | 400-800       | Both headings & body  |
+
+### 18.3 Type Scale Presets
+
+Based on musical intervals for harmonious scaling:
+
+| Preset   | Ratio | Base Size | Description                             |
+| -------- | ----- | --------- | --------------------------------------- |
+| Compact  | 1.125 | 15px      | Major Second - dense, technical content |
+| Default  | 1.200 | 16px      | Minor Third - balanced, comfortable     |
+| Spacious | 1.250 | 17px      | Major Third - airy, editorial feel      |
+
+### 18.4 Line Height Presets
+
+| Preset  | Heading | Body | Description                  |
+| ------- | ------- | ---- | ---------------------------- |
+| Tight   | 1.2     | 1.4  | Condensed vertical rhythm    |
+| Normal  | 1.3     | 1.5  | Standard comfortable reading |
+| Relaxed | 1.4     | 1.7  | Airy and spacious            |
+
+### 18.5 CSS Custom Properties
+
+```css
+:root {
+  /* Font Families */
+  --font-family-heading:
+    system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Type Scale */
+  --font-size-base: 16px;
+  --type-scale-ratio: 1.2;
+
+  /* Computed Sizes */
+  --font-size-xs: 11.11px;
+  --font-size-sm: 13.33px;
+  --font-size-lg: 19.2px;
+  --font-size-xl: 23.04px;
+  --font-size-2xl: 27.65px;
+  --font-size-3xl: 33.18px;
+  --font-size-4xl: 39.81px;
+
+  /* Line Heights */
+  --line-height-heading: 1.3;
+  --line-height-body: 1.5;
+}
+```
+
+### 18.6 Usage
+
+**Access typography from Theme Context:**
+
+```jsx
+import { useTheme } from "@/context/ThemeContext";
+
+function MyComponent() {
+  const { themeState, setToken } = useTheme();
+
+  return (
+    <div>
+      <p>Current heading font: {themeState.fontHeading}</p>
+      <button onClick={() => setToken("fontHeading", "playfair-display")}>
+        Use Playfair Display
+      </button>
+    </div>
+  );
+}
+```
+
+**Apply typography via CSS variables:**
+
+```css
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-heading);
+}
+
+body,
+p {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+```
+
+### 18.7 Font Loading
+
+Google Fonts are loaded dynamically on hover/selection:
+
+```jsx
+import { loadGoogleFont, getFontFamily } from "@/lib/theme-utils";
+
+// Load font when needed
+loadGoogleFont("playfair-display");
+
+// Get CSS font-family string
+const family = getFontFamily("playfair-display");
+// Returns: '"Playfair Display", Georgia, serif'
+```
+
+### 18.8 CSS Export
+
+Typography settings export with Google Fonts @import:
+
+```css
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Lora:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Typography */
+  --font-family-heading: "Playfair Display", Georgia, serif;
+  --font-family-body: "Lora", Georgia, serif;
+  --font-size-base: 16px;
+  --type-scale-ratio: 1.2;
+  --line-height-heading: 1.3;
+  --line-height-body: 1.5;
+
+  /* Computed Sizes */
+  --font-size-xs: 11.11px;
+  /* ... */
+}
+```
+
+### 18.9 Theme State
+
+Typography adds these properties to theme state:
+
+```javascript
+{
+  fontHeading: "system-ui",      // Font ID from catalog
+  fontBody: "system-ui",         // Font ID from catalog
+  typeScale: "default",          // "compact" | "default" | "spacious"
+  lineHeightPreset: "normal",    // "tight" | "normal" | "relaxed"
+}
+```
+
+All settings persist to localStorage and restore on page load.

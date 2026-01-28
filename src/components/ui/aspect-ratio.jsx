@@ -44,7 +44,7 @@ const aspectRatioVariants = cva(
         ],
         outline: [
           // Dashed outline like a cut guide
-          "border border-dashed border-amber-300/60",
+          "border border-dashed border-border/60",
           "rounded-sm",
         ],
       },

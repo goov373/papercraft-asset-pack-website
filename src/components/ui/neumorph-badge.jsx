@@ -30,16 +30,16 @@ const badgeVariants = cva(
       variant: {
         // Default - subtle paper appearance
         default: [
-          "bg-gradient-to-b from-amber-50 to-amber-100/80",
+          "bg-gradient-to-b from-muted to-accent/80",
           "text-muted-foreground",
-          "border border-amber-200/50",
+          "border border-border",
           "[box-shadow:inset_0_1px_0_rgba(255,255,255,0.8),0_1px_3px_rgba(180,83,9,0.08),0_1px_2px_rgba(180,83,9,0.06)]",
         ],
         // Highlight - more prominent
         highlight: [
-          "bg-gradient-to-b from-amber-200/80 to-amber-300/60",
+          "bg-gradient-to-b from-accent/80 to-accent",
           "text-foreground",
-          "border border-amber-300/60",
+          "border border-border",
           "[box-shadow:inset_0_1px_0_rgba(255,255,255,0.6),0_2px_4px_rgba(180,83,9,0.1),0_1px_2px_rgba(180,83,9,0.08)]",
         ],
         // Accent - orange tint
@@ -65,9 +65,9 @@ const badgeVariants = cva(
         ],
         // Kraft - brown paper style
         kraft: [
-          "bg-gradient-to-b from-amber-100/90 to-amber-200/70",
+          "bg-gradient-to-b from-accent/90 to-accent/70",
           "text-foreground",
-          "border border-amber-400/30",
+          "border border-border",
           "[box-shadow:inset_0_1px_0_rgba(255,255,255,0.5),0_2px_4px_rgba(180,83,9,0.12)]",
         ],
       },
@@ -125,7 +125,7 @@ function NeumorphTag({
       {onRemove && (
         <button
           onClick={onRemove}
-          className="ml-1 p-0.5 rounded hover:bg-amber-200/50 transition-colors"
+          className="ml-1 p-0.5 rounded hover:bg-accent/50 transition-colors"
           aria-label="Remove tag"
         >
           <svg

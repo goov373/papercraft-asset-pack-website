@@ -28,7 +28,7 @@ function CategoryPackHeader({
     <div
       className={cn(
         "flex items-center justify-between py-4",
-        "border-b border-amber-200/60",
+        "border-b border-border/60",
         sticky && "sticky top-16 z-10 bg-background/95 backdrop-blur-sm"
       )}
     >

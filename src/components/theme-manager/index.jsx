@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { SunIcon, MoonIcon } from "lucide-react"
 import { useTheme } from "@/context/ThemeContext"
 import { ColorsTab } from "./colors-tab"
+import { TypographyTab } from "./typography-tab"
 import { PapercraftTab } from "./papercraft-tab"
 import { PresetsTab } from "./presets-tab"
 
@@ -52,14 +53,19 @@ export function ThemeManager({ open, onOpenChange }) {
         </DialogHeader>
 
         <Tabs defaultValue="papercraft" className="flex-1 flex flex-col min-h-0">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="colors">Colors</TabsTrigger>
+            <TabsTrigger value="typography">Typography</TabsTrigger>
             <TabsTrigger value="papercraft">Papercraft</TabsTrigger>
             <TabsTrigger value="presets">Presets</TabsTrigger>
           </TabsList>
 
           <TabsContent value="colors" className="flex-1 overflow-auto">
             <ColorsTab />
+          </TabsContent>
+
+          <TabsContent value="typography" className="flex-1 overflow-auto">
+            <TypographyTab />
           </TabsContent>
 
           <TabsContent value="papercraft" className="flex-1 overflow-auto">

@@ -2,6 +2,8 @@
  * Theme utilities for CSS variable management and color conversion
  */
 
+import { FONT_CATALOG, TYPE_SCALES, LINE_HEIGHTS } from "./typography-config"
+
 // Default theme values extracted from index.css
 export const DEFAULT_THEME = {
   darkMode: false,
@@ -10,6 +12,21 @@ export const DEFAULT_THEME = {
   paperKraft: "oklch(0.75 0.08 70)",
   radius: 0.625,
   textureOpacityFaint: 0.04,
+  // Typography
+  fontHeading: "system-ui",
+  fontBody: "system-ui",
+  typeScale: "default",
+  lineHeightPreset: "normal",
+}
+
+/**
+ * Default typography values
+ */
+export const DEFAULT_TYPOGRAPHY = {
+  fontHeading: "system-ui",
+  fontBody: "system-ui",
+  typeScale: "default",
+  lineHeightPreset: "normal",
 }
 
 // Storage keys
@@ -51,6 +68,173 @@ export function applyThemeToDOM(themeState) {
 
   // Texture opacity
   setCSSVariable("--texture-opacity-faint", themeState.textureOpacityFaint)
+
+  // Typography
+  applyTypographyToDOM(themeState)
+}
+
+// Track which fonts have been loaded to avoid duplicate requests
+const loadedFonts = new Set()
+
+/**
+ * Load a Google Font dynamically
+ * @param {string} fontId - The font ID from FONT_CATALOG
+ * @returns {boolean} Whether the font was loaded (or already loaded)
+ */
+export function loadGoogleFont(fontId) {
+  const font = FONT_CATALOG[fontId]
+  if (!font?.googleFont) return false
+
+  // Already loaded
+  if (loadedFonts.has(fontId)) return true
+
+  // Create and append the link element
+  const link = document.createElement("link")
+  link.rel = "stylesheet"
+  link.href = `https://fonts.googleapis.com/css2?family=${font.googleFont}&display=swap`
+  document.head.appendChild(link)
+
+  loadedFonts.add(fontId)
+  return true
+}
+
+/**
+ * Get the CSS font-family value for a font ID
+ * @param {string} fontId - The font ID from FONT_CATALOG
+ * @returns {string} CSS font-family value
+ */
+export function getFontFamily(fontId) {
+  const font = FONT_CATALOG[fontId]
+  if (!font) return "system-ui, sans-serif"
+
+  if (fontId === "system-ui") {
+    return font.fallback
+  }
+
+  return `"${font.name}", ${font.fallback}`
+}
+
+/**
+ * Apply typography state to DOM via CSS custom properties
+ * @param {Object} themeState - The theme state containing typography settings
+ */
+export function applyTypographyToDOM(themeState) {
+  const {
+    fontHeading = "system-ui",
+    fontBody = "system-ui",
+    typeScale = "default",
+    lineHeightPreset = "normal",
+  } = themeState
+
+  // Load fonts if needed
+  loadGoogleFont(fontHeading)
+  loadGoogleFont(fontBody)
+
+  // Get font families
+  const headingFamily = getFontFamily(fontHeading)
+  const bodyFamily = getFontFamily(fontBody)
+
+  // Get type scale values
+  const scale = TYPE_SCALES[typeScale] || TYPE_SCALES.default
+
+  // Get line height values
+  const lineHeights = LINE_HEIGHTS[lineHeightPreset] || LINE_HEIGHTS.normal
+
+  // Apply CSS custom properties
+  setCSSVariable("--font-family-heading", headingFamily)
+  setCSSVariable("--font-family-body", bodyFamily)
+  setCSSVariable("--font-size-base", `${scale.baseFontSize}px`)
+  setCSSVariable("--type-scale-ratio", scale.ratio)
+  setCSSVariable("--line-height-heading", lineHeights.heading)
+  setCSSVariable("--line-height-body", lineHeights.body)
+
+  // Compute and set derived font sizes
+  const ratio = scale.ratio
+  const base = scale.baseFontSize
+
+  setCSSVariable("--font-size-xs", `${(base / ratio / ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-sm", `${(base / ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-lg", `${(base * ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-xl", `${(base * ratio * ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-2xl", `${(base * ratio * ratio * ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-3xl", `${(base * ratio * ratio * ratio * ratio).toFixed(2)}px`)
+  setCSSVariable("--font-size-4xl", `${(base * ratio * ratio * ratio * ratio * ratio).toFixed(2)}px`)
+}
+
+/**
+ * Generate Google Fonts import URL for typography state
+ * @param {Object} themeState - The theme state
+ * @returns {string|null} Google Fonts import URL or null if using system fonts
+ */
+export function generateGoogleFontsImport(themeState) {
+  const { fontHeading = "system-ui", fontBody = "system-ui" } = themeState
+  const fonts = []
+
+  const headingFont = FONT_CATALOG[fontHeading]
+  const bodyFont = FONT_CATALOG[fontBody]
+
+  if (headingFont?.googleFont) {
+    fonts.push(headingFont.googleFont)
+  }
+
+  if (bodyFont?.googleFont && bodyFont.googleFont !== headingFont?.googleFont) {
+    fonts.push(bodyFont.googleFont)
+  }
+
+  if (fonts.length === 0) return null
+
+  return `@import url('https://fonts.googleapis.com/css2?${fonts.map((f) => `family=${f}`).join("&")}&display=swap');`
+}
+
+/**
+ * Export typography as CSS
+ * @param {Object} themeState - The theme state
+ * @returns {string} CSS string with typography variables
+ */
+export function exportTypographyAsCSS(themeState) {
+  const {
+    fontHeading = "system-ui",
+    fontBody = "system-ui",
+    typeScale = "default",
+    lineHeightPreset = "normal",
+  } = themeState
+
+  const headingFamily = getFontFamily(fontHeading)
+  const bodyFamily = getFontFamily(fontBody)
+  const scale = TYPE_SCALES[typeScale] || TYPE_SCALES.default
+  const lineHeights = LINE_HEIGHTS[lineHeightPreset] || LINE_HEIGHTS.normal
+
+  const ratio = scale.ratio
+  const base = scale.baseFontSize
+
+  const googleImport = generateGoogleFontsImport(themeState)
+
+  let css = ""
+
+  if (googleImport) {
+    css += `/* Google Fonts */\n${googleImport}\n\n`
+  }
+
+  css += `:root {
+  /* Typography */
+  --font-family-heading: ${headingFamily};
+  --font-family-body: ${bodyFamily};
+  --font-size-base: ${base}px;
+  --type-scale-ratio: ${ratio};
+  --line-height-heading: ${lineHeights.heading};
+  --line-height-body: ${lineHeights.body};
+
+  /* Computed Sizes */
+  --font-size-xs: ${(base / ratio / ratio).toFixed(2)}px;
+  --font-size-sm: ${(base / ratio).toFixed(2)}px;
+  --font-size-lg: ${(base * ratio).toFixed(2)}px;
+  --font-size-xl: ${(base * ratio * ratio).toFixed(2)}px;
+  --font-size-2xl: ${(base * ratio * ratio * ratio).toFixed(2)}px;
+  --font-size-3xl: ${(base * ratio * ratio * ratio * ratio).toFixed(2)}px;
+  --font-size-4xl: ${(base * ratio * ratio * ratio * ratio * ratio).toFixed(2)}px;
+}`
+
+  return css
 }
 
 /**

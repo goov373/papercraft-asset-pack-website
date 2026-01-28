@@ -33,7 +33,7 @@ function ComponentShowcase({ title, description, children }) {
     <div className="mb-12">
       <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="bg-white/50 rounded-lg p-6 border border-amber-200">
+      <div className="bg-card/50 rounded-lg p-6 border border-border">
         {children}
       </div>
     </div>
@@ -361,10 +361,10 @@ function DataDisplaySection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Vertical Scroll</h4>
             <p className="text-sm text-muted-foreground mb-4">Scroll through content with paper-edge scrollbar.</p>
-            <ScrollArea className="h-48 w-full rounded-md border border-amber-200 p-4">
+            <ScrollArea className="h-48 w-full rounded-md border border-border p-4">
               <div className="space-y-4">
                 {[...Array(10)].map((_, i) => (
-                  <div key={i} className="p-3 rounded bg-background/50 border border-amber-100">
+                  <div key={i} className="p-3 rounded bg-background/50 border border-border/60">
                     <p className="text-sm font-medium">Item {i + 1}</p>
                     <p className="text-xs text-muted-foreground">This is a scrollable paper item in the list.</p>
                   </div>
@@ -376,10 +376,10 @@ function DataDisplaySection() {
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Horizontal Scroll</h4>
             <p className="text-sm text-muted-foreground mb-4">Horizontal scrolling for wide content.</p>
-            <ScrollArea className="w-full whitespace-nowrap rounded-md border border-amber-200 p-4">
+            <ScrollArea className="w-full whitespace-nowrap rounded-md border border-border p-4">
               <div className="flex gap-4">
                 {[...Array(8)].map((_, i) => (
-                  <div key={i} className="w-40 shrink-0 p-3 rounded bg-amber-50/50 border border-amber-100">
+                  <div key={i} className="w-40 shrink-0 p-3 rounded bg-muted/50 border border-border/60">
                     <p className="text-sm font-medium">Card {i + 1}</p>
                     <p className="text-xs text-muted-foreground">Horizontal scroll item</p>
                   </div>
@@ -390,7 +390,7 @@ function DataDisplaySection() {
 
           <div>
             <h4 className="text-sm font-medium text-foreground mb-3">Long Text Content</h4>
-            <ScrollArea className="h-32 w-full rounded-md border border-amber-200 p-4">
+            <ScrollArea className="h-32 w-full rounded-md border border-border p-4">
               <p className="text-sm leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
               </p>

@@ -58,7 +58,7 @@ function CardStack({
               "border border-border/60",
               "[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
               // Dark mode
-              "dark:bg-amber-950/50 dark:border-border/40"
+              "dark:bg-card/50 dark:border-border/40"
             )}
             style={{
               transformOrigin: "top center",
@@ -141,7 +141,7 @@ function CardStackSimple({
               "[box-shadow:var(--paper-elevation-1,0_1px_2px_rgba(180,83,9,0.05),0_2px_4px_rgba(180,83,9,0.05))]",
               isTop &&
                 "[box-shadow:var(--paper-elevation-2,0_4px_8px_rgba(180,83,9,0.08),0_8px_16px_rgba(180,83,9,0.05))]",
-              "dark:bg-amber-950/50 dark:border-border/40"
+              "dark:bg-card/50 dark:border-border/40"
             )}
             onClick={() => handleClick(index)}
             style={{
